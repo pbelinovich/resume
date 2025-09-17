@@ -3,6 +3,24 @@ const webpack = require('webpack')
 const package = require('./package.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const fs = require('fs')
+const path = require('path')
+
+// Плагин для создания файла _redirects
+class CreateRedirectsPlugin {
+  apply(compiler) {
+    compiler.hooks.emit.tapAsync('CreateRedirectsPlugin', (compilation, callback) => {
+      const redirectsContent = '/*    /index.html   200'
+
+      compilation.assets['_redirects'] = {
+        source: () => redirectsContent,
+        size: () => redirectsContent.length,
+      }
+
+      callback()
+    })
+  }
+}
 
 module.exports = [
   {
@@ -24,8 +42,13 @@ module.exports = [
             {
               from: './src/static-resources/favicon.ico',
             },
+            {
+              from: './src/static-resources/images/',
+              to: 'images/',
+            },
           ],
         }),
+        new CreateRedirectsPlugin(),
       ],
     }),
     devServer: {

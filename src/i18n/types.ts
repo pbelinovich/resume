@@ -313,6 +313,14 @@ export interface ITranslationKeys {
     }
   }
 
+  // 404 page
+  notFound: {
+    pageTitle: string
+    title: string
+    subtitle: string
+    backButton: string
+  }
+
   // Recifra page
   recifra: {
     pageTitle: string

@@ -6,6 +6,7 @@ import { AboutPage } from './pages/about'
 import { ResumePage } from './pages/resume'
 import { JTCPage } from './pages/jtc'
 import { RecifraPage } from './pages/recifra'
+import { NotFoundPage } from './pages/not-found'
 import { ColorModeProvider } from './components/color-mode'
 import { I18nProvider } from './i18n'
 import './styles.css'
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: '/about',
     element: <AboutPage />,
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ])
 

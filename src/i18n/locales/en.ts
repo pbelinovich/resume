@@ -644,6 +644,13 @@ export const en: ITranslationKeys = {
     },
   },
 
+  notFound: {
+    pageTitle: '404 — Page Not Found',
+    title: '404 — Page Not Found',
+    subtitle: 'Seems like you got lost',
+    backButton: 'Go to Home',
+  },
+
   system: {
     toggleTheme: {
       light: 'Switch to light theme',

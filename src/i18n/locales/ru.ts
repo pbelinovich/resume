@@ -667,6 +667,13 @@ export const ru: ITranslationKeys = {
     },
   },
 
+  notFound: {
+    pageTitle: '404 — Страница не найдена',
+    title: '404 — Страница не найдена',
+    subtitle: 'Кажется, вы не туда попали',
+    backButton: 'На главную',
+  },
+
   system: {
     toggleTheme: {
       light: 'Переключить на светлую тему',
