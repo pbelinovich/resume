@@ -1,0 +1,33 @@
+<svg width="300" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .blue-text {
+                fill: #60a5fa;
+            }
+
+            .black-text {
+                fill: #f4f4f5;
+            }
+
+            .logo-text {
+                font-family: 'Inter', sans-serif;
+                font-weight: 800;
+                font-size: 80px;
+                text-anchor: middle;
+                dominant-baseline: central;
+            }
+        </style>
+    </defs>
+
+    <!-- Левая угловая скобка -->
+    <text x="5" y="100" class="logo-text blue-text">&lt;</text>
+
+    <!-- Буква p -->
+    <text x="75" y="100" class="logo-text black-text">p</text>
+
+    <!-- Буква B -->
+    <text x="125" y="100" class="logo-text blue-text">B</text>
+
+    <!-- Правая угловая скобка -->
+    <text x="195" y="100" class="logo-text blue-text">&gt;</text>
+</svg>

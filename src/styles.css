@@ -1,0 +1,11 @@
+html {
+    touch-action: none;
+    overflow: hidden;
+
+    /*To prevent reload page on pull down in mobile safari*/
+    overscroll-behavior: none;
+}
+
+.link-icon {
+    background-color: blue.500;
+}

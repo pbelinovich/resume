@@ -1,0 +1,147 @@
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { ChakraProvider, createSystem, defaultConfig } from '@chakra-ui/react'
+import { createBrowserRouter, RouterProvider } from 'react-router'
+import { AboutPage } from './pages/about'
+import { ResumePage } from './pages/resume'
+import { JTCPage } from './pages/jtc'
+import { RecifraPage } from './pages/recifra'
+import { ColorModeProvider } from './components/color-mode'
+import { I18nProvider } from './i18n'
+import './styles.css'
+import './static-resources/inter/inter.css'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <ResumePage />,
+  },
+  {
+    path: '/jtc',
+    element: <JTCPage />,
+  },
+  {
+    path: '/recifra',
+    element: <RecifraPage />,
+  },
+  {
+    path: '/about',
+    element: <AboutPage />,
+  },
+])
+
+const system = createSystem(defaultConfig, {
+  theme: {
+    semanticTokens: {
+      colors: {
+        bg: {
+          DEFAULT: {
+            value: { _light: '{colors.gray.100}', _dark: '{colors.gray.950}' }, // фон
+          },
+          subtle: {
+            value: { _light: '{colors.gray.50}', _dark: '{colors.gray.900}' },
+          },
+
+          blue: {
+            value: { _light: '{colors.blue.200}', _dark: '{colors.blue.800}' },
+          },
+          green: {
+            value: { _light: '{colors.green.200}', _dark: '{colors.green.800}' },
+          },
+          purple: {
+            value: { _light: '{colors.purple.200}', _dark: '{colors.purple.800}' },
+          },
+          orange: {
+            value: { _light: '{colors.orange.200}', _dark: '{colors.orange.800}' },
+          },
+        },
+        fg: {
+          DEFAULT: {
+            value: { _light: '{colors.gray.900}', _dark: '{colors.gray.100}' }, // текст
+          },
+          subtle: {
+            value: { _light: '{colors.gray.600}', _dark: '{colors.gray.400}' },
+          },
+
+          link: {
+            value: { _light: '{colors.blue.600}', _dark: '{colors.blue.400}' },
+          },
+          linkHovered: {
+            value: { _light: '{colors.blue.700}', _dark: '{colors.blue.300}' },
+          },
+          linkActive: {
+            value: { _light: '{colors.blue.700}', _dark: '{colors.blue.300}' },
+          },
+
+          blue: {
+            value: { _light: '{colors.blue.600}', _dark: '{colors.blue.400}' },
+          },
+          green: {
+            value: { _light: '{colors.green.600}', _dark: '{colors.green.400}' },
+          },
+          purple: {
+            value: { _light: '{colors.purple.600}', _dark: '{colors.purple.400}' },
+          },
+          orange: {
+            value: { _light: '{colors.orange.600}', _dark: '{colors.orange.400}' },
+          },
+        },
+        border: {
+          DEFAULT: {
+            value: { _light: '{colors.gray.200}', _dark: '{colors.gray.800}' },
+          },
+
+          blue: {
+            value: { _light: '{colors.blue.400}', _dark: '{colors.blue.600}' },
+          },
+          green: {
+            value: { _light: '{colors.green.400}', _dark: '{colors.green.600}' },
+          },
+          purple: {
+            value: { _light: '{colors.purple.400}', _dark: '{colors.purple.600}' },
+          },
+          orange: {
+            value: { _light: '{colors.orange.400}', _dark: '{colors.orange.600}' },
+          },
+        },
+      },
+    },
+  },
+})
+
+const AppContent = () => {
+  return (
+    <ChakraProvider value={system}>
+      <RouterProvider router={router} />
+    </ChakraProvider>
+  )
+}
+
+export const initializeWebApp = () => {
+  if (typeof window === 'undefined') {
+    throw new Error('The "initializeWebApp" function was not started in a main thread!')
+  }
+
+  const App = () => {
+    return (
+      <I18nProvider>
+        <ColorModeProvider>
+          <AppContent />
+        </ColorModeProvider>
+      </I18nProvider>
+    )
+  }
+
+  const renderApp = () => {
+    const root = createRoot(document.getElementById('app')!)
+    root.render(<App />)
+  }
+
+  if (document.readyState === 'complete') {
+    renderApp()
+  } else {
+    window.onload = () => renderApp()
+  }
+}
+
+initializeWebApp()

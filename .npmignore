@@ -1,0 +1,15 @@
+/src/
+/develop/
+/coverage
+.stylelintrc
+test-setup.js
+.vscode
+tsconfig.json
+tsconfig.test.json
+tslint.json
+webpack.config.js
+/projects-storage
+/public-configs
+/webpack.*.js
+/externals.js
+/dev-server
