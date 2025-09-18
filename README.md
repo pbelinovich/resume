@@ -18,8 +18,7 @@ A modern, responsive resume website showcasing the career journey of a Senior Fr
 - **React 18** with TypeScript
 - **Chakra UI v3** for modern component library
 - **Framer Motion** for animations
-- **React Router v7** for navigation
-- **Zustand** for state management
+- **React Router v6** for navigation
 
 ### Build Tools
 - **Webpack 5** with custom configuration
@@ -28,7 +27,7 @@ A modern, responsive resume website showcasing the career journey of a Senior Fr
 - **ESLint & Prettier** for code quality
 
 ### Development
-- **TypeScript 5.0** for type safety
+- **TypeScript 5.0.2** for type safety
 - **Jest** for testing
 - **Hot reload** development server
 
@@ -116,4 +115,4 @@ MIT License
 
 ---
 
-*Built with ❤️ using modern web technologies*
+*Built with ❤️ using vibe coding (almost entirely)*
