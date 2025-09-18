@@ -33,6 +33,7 @@ export interface ITranslationKeys {
     contacts: string
     connection: string
     cryptoPro: string
+    bitrix: string
   }
 
   // Resume page

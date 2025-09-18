@@ -386,7 +386,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
 
               <Box>
                 <Flex wrap="wrap" gap={2}>
-                  {['1С-Битрикс', 'jQuery', 'Backbone', 'Underscore', 'Cordova', 'Framework 7'].map(skill => (
+                  {[t.common.bitrix, 'jQuery', 'Backbone', 'Underscore', 'Cordova', 'Framework 7'].map(skill => (
                     <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
                       {skill}
                     </Badge>

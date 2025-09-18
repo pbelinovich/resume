@@ -12,7 +12,9 @@
     "build": "cross-env NODE_ENV=PRODUCTION META_MODE=none webpack --progress --config=webpack.config.js",
     "build:full": "npm run build && npm run generate:pdf",
     "generate:pdf": "node scripts/generate-pdf.js",
-    "update:pdf": "npm run build:full && git add src/static-resources/resume.pdf && git commit -m \"📄 Update PDF resume\"",
+    "generate:pdf:ru": "node scripts/generate-pdf.js --ru-only",
+    "generate:pdf:en": "node scripts/generate-pdf.js --en-only",
+    "update:pdf": "npm run build:full && git add src/static-resources/resume*.pdf && git commit -m \"📄 Update PDF resume\"",
     "prepublishOnly": "cross-env META_MODE=only_dts npm run build",
     "debug": "cross-env NODE_ENV=DEVELOPMENT DEBUG=true META_MODE=none webpack --progress --config=webpack.config-web.js --watch"
   },

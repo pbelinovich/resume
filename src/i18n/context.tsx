@@ -22,29 +22,19 @@ const translations: Record<Language, ITranslationKeys> = {
 }
 
 export const I18nProvider = ({ children, defaultLanguage = 'ru' }: I18nProviderProps) => {
-  const [language, setLanguage] = useState<Language>(defaultLanguage)
+  const [language, setLanguage] = useState(defaultLanguage)
 
   useEffect(() => {
     // Загружаем сохраненный язык из localStorage при инициализации
     const savedLanguage = localStorage.getItem('resume-language') as Language | null
-    if (savedLanguage && (savedLanguage === 'ru' || savedLanguage === 'en')) {
-      setLanguage(savedLanguage)
+
+    if (savedLanguage !== language) {
+      document.documentElement.setAttribute('lang', language)
+      localStorage.setItem('resume-language', language)
     }
-  }, [])
-
-  useEffect(() => {
-    // Сохраняем язык в localStorage при изменении
-    localStorage.setItem('resume-language', language)
-
-    // Устанавливаем lang атрибут на документ для SEO и accessibility
-    document.documentElement.setAttribute('lang', language)
   }, [language])
 
-  const value: II18nContext = {
-    language,
-    setLanguage,
-    t: translations[language],
-  }
+  const value = React.useMemo<II18nContext>(() => ({ language, setLanguage, t: translations[language] }), [language])
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }

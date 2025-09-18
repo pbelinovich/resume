@@ -51,6 +51,16 @@ module.exports = [
               to: 'resume.pdf',
               noErrorOnMissing: true,
             },
+            {
+              from: './src/static-resources/resume-ru.pdf',
+              to: 'resume-ru.pdf',
+              noErrorOnMissing: true,
+            },
+            {
+              from: './src/static-resources/resume-en.pdf',
+              to: 'resume-en.pdf',
+              noErrorOnMissing: true,
+            },
           ],
         }),
         new CreateRedirectsPlugin(),

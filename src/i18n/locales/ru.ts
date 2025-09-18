@@ -30,6 +30,7 @@ export const ru: ITranslationKeys = {
     contacts: 'Контакты',
     connection: 'Связь',
     cryptoPro: 'КриптоПро',
+    bitrix: '1С-Битрикс',
   },
 
   resume: {

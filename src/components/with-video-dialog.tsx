@@ -1,5 +1,5 @@
-import React from 'react'
-import { Dialog, Button, AspectRatio, IconButton, Box, HStack, Portal, chakra, Link, Text } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { Dialog, Button, AspectRatio, IconButton, Box, HStack, Portal, chakra, Link, Text, Spinner, Center } from '@chakra-ui/react'
 import PlayIconExternal from '../static-resources/icons/play.svg'
 
 const PlayIcon = chakra(PlayIconExternal)
@@ -48,6 +48,12 @@ const getColorByPalette = (colorPalette: ColorPalette) => {
 }
 
 export const WithVideoDialog = ({ embedUrl, maxWidth = '900px', children = null }: IWithVideoDialogProps) => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  const handleIframeLoad = () => {
+    setIsLoading(false)
+  }
+
   return (
     <Dialog.Root placement="center">
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
@@ -69,8 +75,30 @@ export const WithVideoDialog = ({ embedUrl, maxWidth = '900px', children = null 
                   }}
                   allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
                   allowFullScreen
+                  onLoad={handleIframeLoad}
                 />
               </AspectRatio>
+
+              {/* Loading overlay */}
+              {isLoading && (
+                <Box
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  right={0}
+                  bottom={0}
+                  bg="blackAlpha.600"
+                  borderRadius="8px"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  transition="opacity 0.3s ease-in-out"
+                >
+                  <Center>
+                    <Spinner size="lg" color="white" />
+                  </Center>
+                </Box>
+              )}
 
               <Dialog.CloseTrigger asChild>
                 <IconButton

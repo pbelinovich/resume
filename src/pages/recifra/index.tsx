@@ -107,7 +107,7 @@ export const RecifraPage: React.FC = () => {
                     <Badge colorPalette="purple" variant="solid" size="xs">
                       СТЕК
                     </Badge>
-                    {['1С-Битрикс', 'jQuery', 'HTML/CSS', 'JavaScript', 'MySQL'].map(tech => (
+                    {[t.common.bitrix, 'jQuery', 'HTML/CSS', 'JavaScript', 'MySQL'].map(tech => (
                       <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
                         {tech}
                       </Badge>
@@ -272,7 +272,7 @@ export const RecifraPage: React.FC = () => {
                     <Badge colorPalette="purple" variant="solid" size="xs">
                       СТЕК
                     </Badge>
-                    {['1С-Битрикс', 'HTML5', 'CSS3', 'JavaScript', 'jQuery', 'SASS/LESS', 'Bootstrap'].map(tech => (
+                    {[t.common.bitrix, 'HTML5', 'CSS3', 'JavaScript', 'jQuery', 'SASS/LESS', 'Bootstrap'].map(tech => (
                       <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
                         {tech}
                       </Badge>
