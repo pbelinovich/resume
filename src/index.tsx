@@ -76,7 +76,7 @@ const system = createSystem(defaultConfig, {
         },
         border: {
           DEFAULT: {
-            value: { _light: '{colors.gray.200}', _dark: '{colors.gray.800}', _pdf: '{colors.gray.200}' },
+            value: { _light: '{colors.gray.200}', _dark: '{colors.gray.800}', _pdf: '{colors.gray.200}' }, // граница
           },
 
           blue: {
