@@ -46,6 +46,11 @@ module.exports = [
               from: './src/static-resources/images/',
               to: 'images/',
             },
+            {
+              from: './src/static-resources/resume.pdf',
+              to: 'resume.pdf',
+              noErrorOnMissing: true,
+            },
           ],
         }),
         new CreateRedirectsPlugin(),

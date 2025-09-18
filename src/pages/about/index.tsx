@@ -39,27 +39,21 @@ export const AboutPage: React.FC = () => {
             {/* About Section */}
             <Box>
               <VStack align="start" gap={4}>
-                {t.about.description.map((paragraph, index) => (
-                  <Text key={index} fontSize="md" lineHeight={1.7} color="fg.subtle">
-                    {paragraph.includes('Problem solving') ? (
-                      <>
-                        <Text as="strong" color="fg.subtle">
-                          «Problem solving»
-                        </Text>{' '}
-                        как смысл жизни.
-                      </>
-                    ) : paragraph.includes('9+ лет') || paragraph.includes('9+ years') ? (
-                      <>
-                        За плечами{' '}
-                        <Text as="strong" color="fg.subtle">
-                          9+ лет
-                        </Text>{' '}
-                        опыта решения сложных технических задач в финтехе, разработке enterprise-систем и AI/ML интеграций.
-                      </>
-                    ) : (
-                      paragraph
-                    )}
-                  </Text>
+                {t.about.paragraphs.map((paragraph, pIndex) => (
+                  <Box key={pIndex}>
+                    {paragraph.map((line, index) => (
+                      <Text
+                        key={index}
+                        as="span"
+                        fontWeight={line.kind === 'strong' ? 'bold' : 'normal'}
+                        fontSize="md"
+                        lineHeight={1.7}
+                        color="fg.subtle"
+                      >
+                        {line.text}
+                      </Text>
+                    ))}
+                  </Box>
                 ))}
               </VStack>
             </Box>

@@ -3,11 +3,12 @@ import { Box, Flex, HStack, Link as ChakraLink } from '@chakra-ui/react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { ThemeToggle } from './theme-toggle'
 import { LanguageToggle } from './language-toggle'
+import { PdfDownloadButton } from './pdf-download-button'
 import { useT } from '../i18n'
-import styles from './styles.scss'
+import { useColorMode } from './color-mode'
 import LogoLight from '../static-resources/icons/logo-light.svg'
 import LogoDark from '../static-resources/icons/logo-dark.svg'
-import { useColorMode } from './color-mode'
+import styles from './styles.scss'
 
 export const TopLine: React.FC = () => {
   const location = useLocation()
@@ -15,7 +16,7 @@ export const TopLine: React.FC = () => {
   const Logo = colorMode === 'light' ? LogoLight : LogoDark
   const t = useT()
 
-  const navItems = [
+  const navItems: { path: string; label: string }[] = [
     { path: '/', label: t.nav.resume },
     { path: '/jtc', label: t.nav.jtc },
     { path: '/recifra', label: t.nav.recifra },
@@ -43,6 +44,7 @@ export const TopLine: React.FC = () => {
           </HStack>
         </HStack>
         <HStack gap={2}>
+          <PdfDownloadButton />
           <LanguageToggle />
           <ThemeToggle />
         </HStack>

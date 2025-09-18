@@ -1,5 +1,7 @@
 export type Language = 'ru' | 'en'
 
+export type TextLine = { kind: 'text'; text: string } | { kind: 'strong'; text: string }
+
 export interface ITranslationKeys {
   // Navigation
   nav: {
@@ -128,7 +130,7 @@ export interface ITranslationKeys {
   // About page
   about: {
     pageTitle: string
-    description: string[]
+    paragraphs: TextLine[][]
     contactNote: string
   }
 
@@ -418,5 +420,6 @@ export interface ITranslationKeys {
       en: string
       ru: string
     }
+    downloadPdf: string
   }
 }

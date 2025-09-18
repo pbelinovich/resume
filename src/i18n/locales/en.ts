@@ -1,4 +1,5 @@
 import { ITranslationKeys } from '../types'
+import { BIRTH_YEAR, START_YEAR } from './constants'
 
 export const en: ITranslationKeys = {
   nav: {
@@ -37,8 +38,9 @@ export const en: ITranslationKeys = {
 
     professionalSummary: {
       title: 'Professional Summary',
-      description:
-        'Senior Frontend Developer with 9+ years of experience building enterprise applications. Specializing in React ecosystem, architectural solutions, and AI/ML technology integration into products. Full-stack development experience including legacy system migrations and implementing modern architectural patterns.',
+      description: `Senior Frontend Developer with ${
+        new Date().getFullYear() - START_YEAR
+      }+ years of experience building enterprise applications. Specializing in React ecosystem, architectural solutions, and AI/ML technology integration into products. Full-stack development experience including legacy system migrations and implementing modern architectural patterns.`,
     },
 
     keySkills: {
@@ -158,11 +160,30 @@ export const en: ITranslationKeys = {
 
   about: {
     pageTitle: 'About Me',
-    description: [
-      'Working on something complex, new, that no one has ever done before.',
-      '"Problem solving" as life purpose.',
-      'Especially enjoy when work results can be seen, touched, shown to friends.',
-      'Behind me are 9+ years of experience solving complex technical problems in fintech, enterprise system development, and AI/ML integrations.',
+    paragraphs: [
+      [{ kind: 'strong', text: `Pavel Belinovich, ${new Date().getFullYear() - BIRTH_YEAR} years` }],
+      [{ kind: 'strong', text: 'Saint Petersburg' }],
+
+      [{ kind: 'text', text: 'Working on something complex, new, that no one has ever done before.' }],
+      [
+        { kind: 'strong', text: '«Problem solving»' },
+        { kind: 'text', text: ' as life purpose.' },
+      ],
+      [{ kind: 'text', text: 'Especially enjoy when work results can be seen, touched, shown to friends.' }],
+      [
+        {
+          kind: 'text',
+          text: 'Behind me are',
+        },
+        {
+          kind: 'strong',
+          text: ` ${new Date().getFullYear() - START_YEAR}+ years`,
+        },
+        {
+          kind: 'text',
+          text: ' of experience solving complex technical problems in fintech, enterprise system development, and AI/ML integrations.',
+        },
+      ],
     ],
     contactNote: "write me, maybe I'll reply 😄",
   },
@@ -648,7 +669,7 @@ export const en: ITranslationKeys = {
     pageTitle: '404 — Page Not Found',
     title: '404 — Page Not Found',
     subtitle: 'Seems like you got lost',
-    backButton: 'Go to Home',
+    backButton: 'Go to back',
   },
 
   system: {
@@ -660,5 +681,6 @@ export const en: ITranslationKeys = {
       en: 'Switch to English',
       ru: 'Переключиться на русский',
     },
+    downloadPdf: 'Download Resume PDF',
   },
 }

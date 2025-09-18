@@ -15,7 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <ScrollArea.Content textStyle="sm">
             <Container maxW="4xl" py={8}>
               <Box as="main" bg="bg.subtle" borderRadius="lg" p={8}>
-                <Container maxW="6xl">{children}</Container>
+                <Container>{children}</Container>
               </Box>
             </Container>
           </ScrollArea.Content>

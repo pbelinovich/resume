@@ -7,7 +7,7 @@ import SunIconExternal from '../static-resources/icons/sun.svg'
 const MoonIcon = chakra(MoonIconExternal)
 const SunIcon = chakra(SunIconExternal)
 
-type ColorMode = 'light' | 'dark'
+type ColorMode = 'light' | 'dark' | 'pdf'
 
 interface IColorModeContext {
   colorMode: ColorMode
@@ -32,7 +32,7 @@ export const ColorModeProvider = ({ children, forcedTheme }: ColorModeProviderPr
 
     // Загружаем тему из localStorage при инициализации
     const savedTheme = localStorage.getItem('chakra-ui-color-mode') as ColorMode | null
-    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'pdf')) {
       setColorMode(savedTheme)
     }
   }, [forcedTheme])
@@ -44,7 +44,7 @@ export const ColorModeProvider = ({ children, forcedTheme }: ColorModeProviderPr
     localStorage.setItem('chakra-ui-color-mode', colorMode)
 
     // Устанавливаем class на body для применения темы
-    document.documentElement.classList.remove('light', 'dark')
+    document.documentElement.classList.remove('light', 'dark', 'pdf')
     document.documentElement.classList.add(colorMode)
 
     // Также добавляем data-theme атрибут
@@ -75,6 +75,35 @@ export const useColorMode = (): IColorModeContext => {
 export function useColorModeValue<T>(light: T, dark: T): T {
   const { colorMode } = useColorMode()
   return colorMode === 'light' ? light : dark
+}
+
+export function useColorModeValueWithPdf<T>(light: T, dark: T, pdf: T): T {
+  const { colorMode } = useColorMode()
+  if (colorMode === 'pdf') return pdf
+  return colorMode === 'light' ? light : dark
+}
+
+// Утилитарные функции для переключения режимов (для разработки/тестирования)
+export const setPdfMode = () => {
+  if (typeof window !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', 'pdf')
+  }
+}
+
+export const setLightMode = () => {
+  if (typeof window !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', 'light')
+    localStorage.setItem('chakra-ui-color-mode', 'light')
+    window.location.reload()
+  }
+}
+
+export const setDarkMode = () => {
+  if (typeof window !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    localStorage.setItem('chakra-ui-color-mode', 'dark')
+    window.location.reload()
+  }
 }
 
 export const ColorModeButton = () => {
