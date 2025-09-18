@@ -29,6 +29,7 @@ export const en: ITranslationKeys = {
     workExperience: 'Work Experience',
     contacts: 'Contacts',
     connection: 'Contact',
+    cryptoPro: 'CryptoPro',
   },
 
   resume: {
@@ -340,7 +341,7 @@ export const en: ITranslationKeys = {
           },
         ],
         validation: {
-          title: 'Error Validation',
+          title: 'ERROR VALIDATION',
           items: [
             'Real-time syntax validation',
             'Highlighting erroneous code sections',
@@ -349,7 +350,7 @@ export const en: ITranslationKeys = {
           ],
         },
         domArchitecture: {
-          title: 'DOM Architecture',
+          title: 'DOM ARCHITECTURE',
           items: [
             'Complete rejection of text representation',
             'Each element is separate DOM element',
@@ -358,11 +359,11 @@ export const en: ITranslationKeys = {
           ],
         },
         typing: {
-          title: 'Typing',
+          title: 'TYPING',
           items: ['TypeScript typing at all levels', 'Automatic type detection', 'Context hints', 'Type compatibility checking'],
         },
         optimization: {
-          title: 'Optimization',
+          title: 'OPTIMIZATION',
           items: [
             '"Only what\'s needed" rendering system',
             'Code element formatting calculation system (+ caching)',
@@ -432,16 +433,19 @@ export const en: ITranslationKeys = {
         title: 'Banking System Module Development',
         description: 'Comprehensive module development for corporate banking systems with high security and functionality requirements.',
         clients: 'Clients: VTB, Gazprom, Otkritie',
-        modules: [
-          'Account module',
-          'Statement module',
-          'Payment order module',
-          'Employee management module',
-          'Bank card module',
-          'Admin panel',
-        ],
+        modules: {
+          title: 'IMPLEMENTED MODULES',
+          items: [
+            'Account module',
+            'Statement module',
+            'Payment order module',
+            'Employee management module',
+            'Bank card module',
+            'Admin panel',
+          ],
+        },
         features: {
-          title: 'Technical Features',
+          title: 'TECHNICAL FEATURES',
           items: [
             'Complex forms with multiple validation (frontend + backend)',
             'Multi-step forms with intermediate saves',
@@ -682,5 +686,11 @@ export const en: ITranslationKeys = {
       ru: 'Переключиться на русский',
     },
     downloadPdf: 'Download Resume PDF',
+    goal: 'GOAL',
+    features: 'FEATURES',
+    problem: 'PROBLEM',
+    solution: 'SOLUTION',
+    completed: 'COMPLETED',
+    more: 'MORE',
   },
 }

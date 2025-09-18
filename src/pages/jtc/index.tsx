@@ -17,7 +17,7 @@ const expEditorVideos: Record<string, string> = {
   'copy-paste': 'https://vkvideo.ru/video_ext.php?oid=-232713815&id=456239024&hd=2&hash=b991ebda7ffc35ee&autoplay=1',
 }
 
-export const JTCPage: React.FC = () => {
+export const JTCPage = () => {
   const { colorMode } = useColorMode()
   const LinkIcon = colorMode === 'light' ? LinkLightIcon : LinkDarkIcon
   const t = useT()
@@ -48,27 +48,23 @@ export const JTCPage: React.FC = () => {
           </Heading>
           <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4}>
             <Card.Root bg="bg">
-              <Card.Body p={4}>
-                <VStack align="stretch" gap={3}>
-                  <Heading size="sm" color="blue.solid" mb={0}>
-                    {t.jtc.workPeriods.senior.period}
-                  </Heading>
-                  <Text fontSize="lg" fontWeight="semibold" color="fg">
-                    {t.jtc.workPeriods.senior.position}
-                  </Text>
-                </VStack>
+              <Card.Body p={4} gap={3}>
+                <Heading size="sm" color="fg.subtle">
+                  {t.jtc.workPeriods.senior.period}
+                </Heading>
+                <Text fontSize="lg" fontWeight="semibold" color="fg">
+                  {t.jtc.workPeriods.senior.position}
+                </Text>
               </Card.Body>
             </Card.Root>
             <Card.Root bg="bg">
-              <Card.Body p={4}>
-                <VStack align="stretch" gap={3}>
-                  <Heading size="sm" color="green.solid" mb={0}>
-                    {t.jtc.workPeriods.middle.period}
-                  </Heading>
-                  <Text fontSize="lg" fontWeight="semibold" color="fg">
-                    {t.jtc.workPeriods.middle.position}
-                  </Text>
-                </VStack>
+              <Card.Body p={4} gap={3}>
+                <Heading size="sm" color="fg.subtle">
+                  {t.jtc.workPeriods.middle.period}
+                </Heading>
+                <Text fontSize="lg" fontWeight="semibold" color="fg">
+                  {t.jtc.workPeriods.middle.position}
+                </Text>
               </Card.Body>
             </Card.Root>
           </Grid>
@@ -85,183 +81,6 @@ export const JTCPage: React.FC = () => {
             </Heading>
           </Box>
 
-          {/* Architecture Migration */}
-          <Card.Root mb={4} bg="bg">
-            <Card.Body p={4}>
-              <VStack align="stretch" gap={4}>
-                <Box>
-                  <Heading size="md" color="fg" lineHeight={1.4} mb={3}>
-                    {t.jtc.codeless.migration.title}
-                  </Heading>
-
-                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
-                    {t.jtc.codeless.migration.description}
-                  </Text>
-
-                  <Box mb={3}>
-                    <Badge colorPalette="red" variant="solid" size="xs" mb={2}>
-                      ПРОБЛЕМА
-                    </Badge>
-                    <Text color="fg" lineHeight={1.4} fontSize="sm">
-                      {t.jtc.codeless.migration.problem}
-                    </Text>
-                  </Box>
-
-                  <Box mb={3}>
-                    <Badge colorPalette="green" variant="solid" size="xs" mb={2}>
-                      РЕШЕНИЕ
-                    </Badge>
-                    <Text color="fg" lineHeight={1.4} fontSize="sm">
-                      {t.jtc.codeless.migration.solution}
-                    </Text>
-                  </Box>
-
-                  <Box>
-                    <Badge colorPalette="blue" variant="solid" size="xs" mb={2}>
-                      ЧТО СДЕЛАНО
-                    </Badge>
-                    <List.Root pl={4} gap={1} fontSize="sm">
-                      {t.jtc.codeless.migration.completed.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List.Root>
-                  </Box>
-                </Box>
-
-                <Box>
-                  <Flex wrap="wrap" gap={2}>
-                    <Badge colorPalette="purple" variant="solid" size="xs">
-                      СТЕК
-                    </Badge>
-                    {['Node.js', 'RavenDB', 'Express', 'TypeScript'].map(tech => (
-                      <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </Flex>
-                </Box>
-              </VStack>
-            </Card.Body>
-          </Card.Root>
-
-          {/* Pod System */}
-          <Card.Root mb={4} bg="bg">
-            <Card.Body p={4}>
-              <VStack align="stretch" gap={4}>
-                <Box>
-                  <Heading size="md" color="fg" lineHeight={1.4} mb={3}>
-                    {t.jtc.codeless.podSystem.title}
-                  </Heading>
-
-                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
-                    {t.jtc.codeless.podSystem.description}
-                  </Text>
-
-                  <Box mb={3}>
-                    <Badge colorPalette="red" variant="solid" size="xs" mb={2}>
-                      ПРОБЛЕМА
-                    </Badge>
-                    <Text color="fg" lineHeight={1.4} fontSize="sm">
-                      {t.jtc.codeless.podSystem.problem}
-                    </Text>
-                  </Box>
-
-                  <Box mb={3}>
-                    <Badge colorPalette="green" variant="solid" size="xs" mb={2}>
-                      РЕШЕНИЕ
-                    </Badge>
-                    <Text color="fg" lineHeight={1.4} fontSize="sm">
-                      {t.jtc.codeless.podSystem.solution}
-                    </Text>
-                  </Box>
-
-                  <Box>
-                    <Badge colorPalette="blue" variant="solid" size="xs" mb={2}>
-                      ЧТО СДЕЛАНО
-                    </Badge>
-                    <List.Root pl={4} gap={1} fontSize="sm">
-                      {t.jtc.codeless.podSystem.completed.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List.Root>
-                  </Box>
-                </Box>
-
-                <Box>
-                  <Flex wrap="wrap" gap={2}>
-                    <Badge colorPalette="purple" variant="solid" size="xs">
-                      СТЕК
-                    </Badge>
-                    {['Node.js', 'Child Processes', 'Express', 'Proxy', 'TypeScript'].map(tech => (
-                      <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </Flex>
-                </Box>
-              </VStack>
-            </Card.Body>
-          </Card.Root>
-
-          {/* SSE Communicator */}
-          <Card.Root mb={4} bg="bg">
-            <Card.Body p={4}>
-              <VStack align="stretch" gap={4}>
-                <Box>
-                  <Heading size="md" color="fg" lineHeight={1.4} mb={3}>
-                    {t.jtc.codeless.sseSystem.title}
-                  </Heading>
-
-                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
-                    {t.jtc.codeless.sseSystem.description}
-                  </Text>
-
-                  <Box mb={3}>
-                    <Badge colorPalette="red" variant="solid" size="xs" mb={2}>
-                      ПРОБЛЕМА
-                    </Badge>
-                    <Text color="fg" lineHeight={1.4} fontSize="sm">
-                      {t.jtc.codeless.sseSystem.problem}
-                    </Text>
-                  </Box>
-
-                  <Box mb={3}>
-                    <Badge colorPalette="green" variant="solid" size="xs" mb={2}>
-                      РЕШЕНИЕ
-                    </Badge>
-                    <Text color="fg" lineHeight={1.4} fontSize="sm">
-                      {t.jtc.codeless.sseSystem.solution}
-                    </Text>
-                  </Box>
-
-                  <Box>
-                    <Badge colorPalette="blue" variant="solid" size="xs" mb={2}>
-                      ЧТО СДЕЛАНО
-                    </Badge>
-                    <List.Root pl={4} gap={1} fontSize="sm">
-                      {t.jtc.codeless.sseSystem.completed.map((item, index) => (
-                        <List.Item key={index}>{item}</List.Item>
-                      ))}
-                    </List.Root>
-                  </Box>
-                </Box>
-
-                <Box>
-                  <Flex wrap="wrap" gap={2}>
-                    <Badge colorPalette="purple" variant="solid" size="xs">
-                      СТЕК
-                    </Badge>
-                    {['TypeScript', 'Server-Sent Events', 'Node.js', 'Proxy API'].map(tech => (
-                      <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </Flex>
-                </Box>
-              </VStack>
-            </Card.Body>
-          </Card.Root>
-
           {/* Expression Editor */}
           <Card.Root mb={4} bg="bg">
             <Card.Body p={4}>
@@ -276,8 +95,8 @@ export const JTCPage: React.FC = () => {
                   </Text>
 
                   <Box>
-                    <Badge colorPalette="orange" variant="solid" size="xs" mb={2}>
-                      ЦЕЛЬ
+                    <Badge colorPalette="gray" variant="outline" size="xs" mb={2} bg="bg.badge">
+                      {t.system.goal}
                     </Badge>
                     <Text color="fg" lineHeight={1.4} fontSize="sm">
                       {t.jtc.codeless.expressionEditor.goal}
@@ -286,8 +105,8 @@ export const JTCPage: React.FC = () => {
                 </Box>
 
                 <Box>
-                  <Badge colorPalette="blue" variant="solid" size="xs" mb={3}>
-                    ОСОБЕННОСТИ
+                  <Badge colorPalette="gray" variant="outline" size="xs" mb={3} bg="bg.badge">
+                    {t.system.features}
                   </Badge>
                   <VStack align="left">
                     {t.jtc.codeless.expressionEditor.features.map(feature => (
@@ -303,9 +122,9 @@ export const JTCPage: React.FC = () => {
                 <Box>
                   <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap={4}>
                     <Box>
-                      <Text fontWeight="semibold" color="fg.blue" mb={2}>
+                      <Badge colorPalette="gray" variant="outline" size="xs" mb={2} bg="bg.badge">
                         {t.jtc.codeless.expressionEditor.validation.title}
-                      </Text>
+                      </Badge>
                       <List.Root pl={4} gap={1} fontSize="sm">
                         {t.jtc.codeless.expressionEditor.validation.items.map((item, index) => (
                           <List.Item key={index}>{item}</List.Item>
@@ -313,9 +132,9 @@ export const JTCPage: React.FC = () => {
                       </List.Root>
                     </Box>
                     <Box>
-                      <Text fontWeight="semibold" color="fg.green" mb={2}>
+                      <Badge colorPalette="gray" variant="outline" size="xs" mb={2} bg="bg.badge">
                         {t.jtc.codeless.expressionEditor.domArchitecture.title}
-                      </Text>
+                      </Badge>
                       <List.Root pl={4} gap={1} fontSize="sm">
                         {t.jtc.codeless.expressionEditor.domArchitecture.items.map((item, index) => (
                           <List.Item key={index}>{item}</List.Item>
@@ -323,9 +142,9 @@ export const JTCPage: React.FC = () => {
                       </List.Root>
                     </Box>
                     <Box>
-                      <Text fontWeight="semibold" color="fg.orange" mb={2}>
+                      <Badge colorPalette="gray" variant="outline" size="xs" mb={2} bg="bg.badge">
                         {t.jtc.codeless.expressionEditor.typing.title}
-                      </Text>
+                      </Badge>
                       <List.Root pl={4} gap={1} fontSize="sm">
                         {t.jtc.codeless.expressionEditor.typing.items.map((item, index) => (
                           <List.Item key={index}>{item}</List.Item>
@@ -333,9 +152,9 @@ export const JTCPage: React.FC = () => {
                       </List.Root>
                     </Box>
                     <Box>
-                      <Text fontWeight="semibold" color="fg.purple" mb={2}>
+                      <Badge colorPalette="gray" variant="outline" size="xs" mb={2} bg="bg.badge">
                         {t.jtc.codeless.expressionEditor.optimization.title}
-                      </Text>
+                      </Badge>
                       <List.Root pl={4} gap={1} fontSize="sm">
                         {t.jtc.codeless.expressionEditor.optimization.items.map((item, index) => (
                           <List.Item key={index}>{item}</List.Item>
@@ -344,14 +163,24 @@ export const JTCPage: React.FC = () => {
                     </Box>
                   </Grid>
                 </Box>
+
+                <Separator />
+
+                <Box>
+                  <Flex wrap="wrap" gap={2}>
+                    {['React', 'TypeScript'].map(tech => (
+                      <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Flex>
+                </Box>
               </VStack>
             </Card.Body>
           </Card.Root>
 
-          <Separator mb={4} />
-
           {/* Other Systems */}
-          <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4}>
+          <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4} mb={4}>
             {/* Config Comparison */}
             <Card.Root bg="bg" height="100%">
               <Card.Body p={4} display="flex" flexDirection="column" height="100%">
@@ -370,6 +199,15 @@ export const JTCPage: React.FC = () => {
                     </List.Root>
                   </Box>
                   <Box marginTop="auto">
+                    <Flex wrap="wrap" gap={2}>
+                      {['TypeScript', 'Web Workers'].map(tech => (
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Flex>
+                  </Box>
+                  <Box>
                     <VideoButton
                       width="100%"
                       embedUrl="https://vkvideo.ru/video_ext.php?oid=-232713815&id=456239025&hd=2&hash=8b2b7f927c189873&autoplay=1"
@@ -399,6 +237,15 @@ export const JTCPage: React.FC = () => {
                     </List.Root>
                   </Box>
                   <Box marginTop="auto">
+                    <Flex wrap="wrap" gap={2}>
+                      {['TypeScript', 'Web Workers', 'Fast Diff'].map(tech => (
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Flex>
+                  </Box>
+                  <Box>
                     <VideoButton
                       width="100%"
                       embedUrl="https://vkvideo.ru/video_ext.php?oid=-232713815&id=456239026&hd=2&hash=706adecc7db619d7&autoplay=1"
@@ -416,7 +263,7 @@ export const JTCPage: React.FC = () => {
               <Card.Body p={4} display="flex" flexDirection="column" height="100%">
                 <VStack align="stretch" gap={4} flex="1">
                   <Box>
-                    <Heading size="sm" color="fg.orange" mb={4}>
+                    <Heading size="sm" color="fg.purple" mb={4}>
                       {t.jtc.codeless.integrationSystem.title}
                     </Heading>
                     <Text color="fg.subtle" mb={4} fontSize="sm">
@@ -429,10 +276,19 @@ export const JTCPage: React.FC = () => {
                     </List.Root>
                   </Box>
                   <Box marginTop="auto">
+                    <Flex wrap="wrap" gap={2}>
+                      {['Node.js', 'TypeScript'].map(tech => (
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Flex>
+                  </Box>
+                  <Box>
                     <VideoButton
                       width="100%"
                       embedUrl="https://vkvideo.ru/video_ext.php?oid=-232713815&id=456239027&hd=2&hash=77a172a90336eeac&autoplay=1"
-                      buttonColorPalette="orange"
+                      buttonColorPalette="purple"
                     >
                       {t.common.demo}
                     </VideoButton>
@@ -446,7 +302,7 @@ export const JTCPage: React.FC = () => {
               <Card.Body p={4} display="flex" flexDirection="column" height="100%">
                 <VStack align="stretch" gap={4} flex="1">
                   <Box>
-                    <Heading size="sm" color="fg.purple" mb={4}>
+                    <Heading size="sm" color="fg.orange" mb={4}>
                       {t.jtc.codeless.moduleSystem.title}
                     </Heading>
                     <Text color="fg.subtle" mb={4} fontSize="sm">
@@ -459,10 +315,19 @@ export const JTCPage: React.FC = () => {
                     </List.Root>
                   </Box>
                   <Box marginTop="auto">
+                    <Flex wrap="wrap" gap={2}>
+                      {['Node.js', 'TypeScript', 'NPM/Nexus'].map(tech => (
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Flex>
+                  </Box>
+                  <Box>
                     <VideoButton
                       width="100%"
                       embedUrl="https://vkvideo.ru/video_ext.php?oid=-232713815&id=456239028&hd=2&hash=c551971178a9a64c&autoplay=1"
-                      buttonColorPalette="purple"
+                      buttonColorPalette="orange"
                     >
                       {t.common.demo}
                     </VideoButton>
@@ -471,6 +336,174 @@ export const JTCPage: React.FC = () => {
               </Card.Body>
             </Card.Root>
           </Grid>
+
+          {/* Architecture Migration */}
+          <Card.Root mb={4} bg="bg">
+            <Card.Body p={4}>
+              <VStack align="stretch" gap={4}>
+                <Box>
+                  <Heading size="md" color="fg" lineHeight={1.4} mb={3}>
+                    {t.jtc.codeless.migration.title}
+                  </Heading>
+
+                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
+                    {t.jtc.codeless.migration.description}
+                  </Text>
+
+                  <Box mb={3}>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.red" mb={2}>
+                      {t.system.problem}
+                    </Badge>
+                    <Text color="fg" lineHeight={1.4} fontSize="sm">
+                      {t.jtc.codeless.migration.problem}
+                    </Text>
+                  </Box>
+
+                  <Box mb={3}>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.green" mb={2}>
+                      {t.system.solution}
+                    </Badge>
+                    <Text color="fg" lineHeight={1.4} fontSize="sm">
+                      {t.jtc.codeless.migration.solution}
+                    </Text>
+                  </Box>
+
+                  <Box>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.blue" mb={2}>
+                      {t.system.completed}
+                    </Badge>
+                    <List.Root pl={4} gap={1} fontSize="sm">
+                      {t.jtc.codeless.migration.completed.map((item, index) => (
+                        <List.Item key={index}>{item}</List.Item>
+                      ))}
+                    </List.Root>
+                  </Box>
+                </Box>
+
+                <Box>
+                  <Flex wrap="wrap" gap={2}>
+                    {['Node.js', 'RavenDB', 'Express', 'TypeScript'].map(tech => (
+                      <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Flex>
+                </Box>
+              </VStack>
+            </Card.Body>
+          </Card.Root>
+
+          {/* Pod System */}
+          <Card.Root mb={4} bg="bg">
+            <Card.Body p={4}>
+              <VStack align="stretch" gap={4}>
+                <Box>
+                  <Heading size="md" color="fg" lineHeight={1.4} mb={3}>
+                    {t.jtc.codeless.podSystem.title}
+                  </Heading>
+
+                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
+                    {t.jtc.codeless.podSystem.description}
+                  </Text>
+
+                  <Box mb={3}>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.red" mb={2}>
+                      {t.system.problem}
+                    </Badge>
+                    <Text color="fg" lineHeight={1.4} fontSize="sm">
+                      {t.jtc.codeless.podSystem.problem}
+                    </Text>
+                  </Box>
+
+                  <Box mb={3}>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.green" mb={2}>
+                      {t.system.solution}
+                    </Badge>
+                    <Text color="fg" lineHeight={1.4} fontSize="sm">
+                      {t.jtc.codeless.podSystem.solution}
+                    </Text>
+                  </Box>
+
+                  <Box>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.blue" mb={2}>
+                      {t.system.completed}
+                    </Badge>
+                    <List.Root pl={4} gap={1} fontSize="sm">
+                      {t.jtc.codeless.podSystem.completed.map((item, index) => (
+                        <List.Item key={index}>{item}</List.Item>
+                      ))}
+                    </List.Root>
+                  </Box>
+                </Box>
+
+                <Box>
+                  <Flex wrap="wrap" gap={2}>
+                    {['Node.js', 'Child Processes', 'Express', 'Proxy', 'TypeScript'].map(tech => (
+                      <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Flex>
+                </Box>
+              </VStack>
+            </Card.Body>
+          </Card.Root>
+
+          {/* SSE Communicator */}
+          <Card.Root bg="bg">
+            <Card.Body p={4}>
+              <VStack align="stretch" gap={4}>
+                <Box>
+                  <Heading size="md" color="fg" lineHeight={1.4} mb={3}>
+                    {t.jtc.codeless.sseSystem.title}
+                  </Heading>
+
+                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
+                    {t.jtc.codeless.sseSystem.description}
+                  </Text>
+
+                  <Box mb={3}>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.red" mb={2}>
+                      {t.system.problem}
+                    </Badge>
+                    <Text color="fg" lineHeight={1.4} fontSize="sm">
+                      {t.jtc.codeless.sseSystem.problem}
+                    </Text>
+                  </Box>
+
+                  <Box mb={3}>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.green" mb={2}>
+                      {t.system.solution}
+                    </Badge>
+                    <Text color="fg" lineHeight={1.4} fontSize="sm">
+                      {t.jtc.codeless.sseSystem.solution}
+                    </Text>
+                  </Box>
+
+                  <Box>
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.blue" mb={2}>
+                      {t.system.completed}
+                    </Badge>
+                    <List.Root pl={4} gap={1} fontSize="sm">
+                      {t.jtc.codeless.sseSystem.completed.map((item, index) => (
+                        <List.Item key={index}>{item}</List.Item>
+                      ))}
+                    </List.Root>
+                  </Box>
+                </Box>
+
+                <Box>
+                  <Flex wrap="wrap" gap={2}>
+                    {['TypeScript', 'Server-Sent Events', 'Node.js', 'Proxy API'].map(tech => (
+                      <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </Flex>
+                </Box>
+              </VStack>
+            </Card.Body>
+          </Card.Root>
         </Box>
 
         <Separator />
@@ -495,12 +528,9 @@ export const JTCPage: React.FC = () => {
                     </Text>
                   </Box>
                   <Box>
-                    <Text fontWeight="semibold" fontSize="sm" mb={2}>
-                      {t.common.techStack}:
-                    </Text>
                     <Flex wrap="wrap" gap={2}>
                       {['React Native', 'TypeScript', 'PayControl SDK'].map(tech => (
-                        <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
                           {tech}
                         </Badge>
                       ))}
@@ -525,12 +555,9 @@ export const JTCPage: React.FC = () => {
                     </List.Root>
                   </Box>
                   <Box>
-                    <Text fontWeight="semibold" fontSize="sm" mb={2}>
-                      {t.common.techStack}:
-                    </Text>
                     <Flex wrap="wrap" gap={2}>
                       {['React', 'TypeScript'].map(tech => (
-                        <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
                           {tech}
                         </Badge>
                       ))}
@@ -563,12 +590,9 @@ export const JTCPage: React.FC = () => {
                     </Box>
                   </Box>
                   <Box>
-                    <Text fontWeight="semibold" fontSize="sm" mb={2}>
-                      {t.common.techStack}:
-                    </Text>
                     <Flex wrap="wrap" gap={2}>
                       {['React', 'TypeScript', 'TypeDoc'].map(tech => (
-                        <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
                           {tech}
                         </Badge>
                       ))}
@@ -605,11 +629,11 @@ export const JTCPage: React.FC = () => {
                   </Text>
 
                   <Box mb={3}>
-                    <Badge colorPalette="blue" variant="solid" size="xs" mb={2}>
-                      РЕАЛИЗОВАННЫЕ МОДУЛИ
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.blue" mb={3}>
+                      {t.jtc.dboExperience.banking.modules.title}
                     </Badge>
                     <Flex wrap="wrap" gap={2} mb={2}>
-                      {t.jtc.dboExperience.banking.modules.map(module => (
+                      {t.jtc.dboExperience.banking.modules.items.map(module => (
                         <Badge key={module} colorPalette="blue" variant="outline" fontSize="xs">
                           {module}
                         </Badge>
@@ -618,8 +642,8 @@ export const JTCPage: React.FC = () => {
                   </Box>
 
                   <Box>
-                    <Badge colorPalette="orange" variant="solid" size="xs" mb={2}>
-                      {t.jtc.dboExperience.banking.features.title.toUpperCase()}
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.orange" mb={2}>
+                      {t.jtc.dboExperience.banking.features.title}
                     </Badge>
                     <List.Root pl={4} gap={1} fontSize="sm">
                       {t.jtc.dboExperience.banking.features.items.map((item, index) => (
@@ -631,11 +655,8 @@ export const JTCPage: React.FC = () => {
 
                 <Box>
                   <Flex wrap="wrap" gap={2}>
-                    <Badge colorPalette="purple" variant="solid" size="xs">
-                      СТЕК
-                    </Badge>
-                    {['React', 'Redux', 'Redux Form', 'TypeScript', 'Крипто-Про'].map(tech => (
-                      <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
+                    {['React', 'Redux', 'Redux Form', 'TypeScript', t.common.cryptoPro].map(tech => (
+                      <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
                         {tech}
                       </Badge>
                     ))}
@@ -658,8 +679,8 @@ export const JTCPage: React.FC = () => {
                   </Text>
 
                   <Box mb={3}>
-                    <Badge colorPalette="red" variant="solid" size="xs" mb={2}>
-                      ПРОБЛЕМА
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.red" mb={2}>
+                      {t.system.problem}
                     </Badge>
                     <Text color="fg" lineHeight={1.4} fontSize="sm">
                       {t.jtc.dboExperience.helper.problem}
@@ -667,8 +688,8 @@ export const JTCPage: React.FC = () => {
                   </Box>
 
                   <Box mb={3}>
-                    <Badge colorPalette="green" variant="solid" size="xs" mb={2}>
-                      РЕШЕНИЕ
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.green" mb={2}>
+                      {t.system.solution}
                     </Badge>
                     <Text color="fg" lineHeight={1.4} fontSize="sm">
                       {t.jtc.dboExperience.helper.solution}
@@ -676,8 +697,8 @@ export const JTCPage: React.FC = () => {
                   </Box>
 
                   <Box>
-                    <Badge colorPalette="blue" variant="solid" size="xs" mb={2}>
-                      ЧТО СДЕЛАНО
+                    <Badge colorPalette="gray" variant="solid" size="xs" bg="bg.badge.blue" mb={2}>
+                      {t.system.completed}
                     </Badge>
                     <List.Root pl={4} gap={1} fontSize="sm">
                       {t.jtc.dboExperience.helper.completed.map((item, index) => (
@@ -689,11 +710,8 @@ export const JTCPage: React.FC = () => {
 
                 <Box>
                   <Flex wrap="wrap" gap={2}>
-                    <Badge colorPalette="purple" variant="solid" size="xs">
-                      СТЕК
-                    </Badge>
                     {['React', 'TypeScript'].map(tech => (
-                      <Badge key={tech} colorPalette="purple" variant="outline" fontSize="xs">
+                      <Badge key={tech} colorPalette="gray" variant="outline" fontSize="xs">
                         {tech}
                       </Badge>
                     ))}
@@ -725,7 +743,7 @@ export const JTCPage: React.FC = () => {
                     </Text>
                     <Flex wrap="wrap" gap={1}>
                       {['React', 'Redux', 'TypeScript'].map(tech => (
-                        <Badge key={tech} colorPalette="blue" variant="solid" color="gray.50" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="solid" fontSize="xs" bg="bg.badge.blue">
                           {tech}
                         </Badge>
                       ))}
@@ -737,7 +755,7 @@ export const JTCPage: React.FC = () => {
                     </Text>
                     <Flex wrap="wrap" gap={1}>
                       {['Node.js', 'Express'].map(tech => (
-                        <Badge key={tech} colorPalette="green" variant="solid" color="gray.50" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="solid" fontSize="xs" bg="bg.badge.green">
                           {tech}
                         </Badge>
                       ))}
@@ -749,7 +767,7 @@ export const JTCPage: React.FC = () => {
                     </Text>
                     <Flex wrap="wrap" gap={1}>
                       {['React Native'].map(tech => (
-                        <Badge key={tech} colorPalette="purple" variant="solid" color="gray.50" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="solid" fontSize="xs" bg="bg.badge.red">
                           {tech}
                         </Badge>
                       ))}
@@ -761,7 +779,7 @@ export const JTCPage: React.FC = () => {
                     </Text>
                     <Flex wrap="wrap" gap={1}>
                       {['RavenDB'].map(tech => (
-                        <Badge key={tech} colorPalette="orange" variant="solid" color="gray.50" fontSize="xs">
+                        <Badge key={tech} colorPalette="gray" variant="solid" fontSize="xs" bg="bg.badge.orange">
                           {tech}
                         </Badge>
                       ))}

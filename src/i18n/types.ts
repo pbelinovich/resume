@@ -32,6 +32,7 @@ export interface ITranslationKeys {
     workExperience: string
     contacts: string
     connection: string
+    cryptoPro: string
   }
 
   // Resume page
@@ -277,7 +278,10 @@ export interface ITranslationKeys {
         title: string
         description: string
         clients: string
-        modules: string[]
+        modules: {
+          title: string
+          items: string[]
+        }
         features: {
           title: string
           items: string[]
@@ -421,5 +425,11 @@ export interface ITranslationKeys {
       ru: string
     }
     downloadPdf: string
+    goal: string
+    features: string
+    problem: string
+    solution: string
+    completed: string
+    more: string
   }
 }

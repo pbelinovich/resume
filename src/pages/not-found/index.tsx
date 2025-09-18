@@ -31,7 +31,7 @@ export const NotFoundPage: React.FC = () => {
             {t.notFound.subtitle}
           </Text>
 
-          <Button size="lg" colorPalette="blue" px={8} py={6} fontSize="lg" onClick={handleBack}>
+          <Button size="lg" variant="solid" colorPalette="gray" px={8} py={6} fontSize="lg" onClick={handleBack} bg="bg.badge.blue">
             {t.notFound.backButton}
           </Button>
         </Stack>

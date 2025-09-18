@@ -18,6 +18,7 @@ import {
   WrapItem,
   chakra,
   SystemStyleObject,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { useColorMode } from '../../components/color-mode'
@@ -28,14 +29,16 @@ import LinkDarkIcon from '../../static-resources/icons/link-dark.svg'
 import GithubIconExternal from '../../static-resources/icons/github.svg'
 import TelegramIconExternal from '../../static-resources/icons/telegram.svg'
 import EmailIconExternal from '../../static-resources/icons/email.svg'
+import RightIconExternal from '../../static-resources/icons/right.svg'
 
 const GithubIcon = chakra(GithubIconExternal)
 const TelegramIcon = chakra(TelegramIconExternal)
 const EmailIcon = chakra(EmailIconExternal)
+const RightIcon = chakra(RightIconExternal)
 
 const LinkComponent = ({ href, children }: { href: string; children: React.ReactNode }) => {
   return (
-    <Link href={href} color="fg.link" fontWeight="medium" target="_blank">
+    <Link href={href} color="fg.link" fontSize="sm" fontWeight="medium" target="_blank">
       {children}
     </Link>
   )
@@ -43,16 +46,15 @@ const LinkComponent = ({ href, children }: { href: string; children: React.React
 
 const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
   const { colorMode } = useColorMode()
-  const LinkIcon = colorMode === 'dark' ? LinkDarkIcon : LinkLightIcon
+  const t = useT()
 
+  const LinkIcon = colorMode === 'dark' ? LinkDarkIcon : LinkLightIcon
   const pageBreak: SystemStyleObject | undefined = pdf
     ? {
         pageBreakBefore: 'always',
         breakBefore: 'page',
       }
     : undefined
-
-  const t = useT()
 
   return (
     <Stack gap={8}>
@@ -107,7 +109,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Heading>
               <Flex wrap="wrap" gap={2}>
                 {['React', 'TypeScript', 'Redux', 'Web Workers', 'WebSocket', 'SCSS/CSS', 'React Native'].map(skill => (
-                  <Badge key={skill} colorPalette="blue" variant="solid" color="gray.50">
+                  <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.blue">
                     {skill}
                   </Badge>
                 ))}
@@ -122,7 +124,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Heading>
               <Flex wrap="wrap" gap={2}>
                 {['Node.js', 'Express', 'RavenDB', 'REST API', 'SSE'].map(skill => (
-                  <Badge key={skill} colorPalette="green" variant="solid" color="gray.50">
+                  <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.green">
                     {skill}
                   </Badge>
                 ))}
@@ -137,7 +139,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Heading>
               <Flex wrap="wrap" gap={2}>
                 {['Fine-tuning', 'LoRA', 'Ollama', 'Mistral 7B', 'Model Optimization', 'Quantization'].map(skill => (
-                  <Badge key={skill} colorPalette="purple" variant="solid" color="gray.50">
+                  <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.purple">
                     {skill}
                   </Badge>
                 ))}
@@ -152,7 +154,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Heading>
               <Flex wrap="wrap" gap={2}>
                 {['Webpack', 'Git', 'Docker', 'CI/CD', 'NPM CLI', 'Cursor'].map(skill => (
-                  <Badge key={skill} colorPalette="orange" variant="solid" color="gray.50">
+                  <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.orange">
                     {skill}
                   </Badge>
                 ))}
@@ -172,38 +174,52 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Card.Root mb={8} bg="bg.card">
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
-              <Box>
-                <Heading size="sm" color="fg.subtle" mb={1}>
-                  {t.resume.workExperience.jtcSenior.period}
-                </Heading>
-                <RouterLink to="/jtc">
-                  <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
-                    {t.resume.workExperience.jtcSenior.position}
-                  </Link>
-                </RouterLink>
-                <Wrap>
-                  <WrapItem>
-                    <Link href="https://jtc.ooo/" color="fg.subtle" target="_blank">
-                      <LinkIcon width={16} height={16} />
-                      {t.resume.workExperience.jtcSenior.company}
+              <Flex align="start" justify="space-between" gap={2}>
+                <Box>
+                  <Heading size="sm" color="fg.subtle" mb={1}>
+                    {t.resume.workExperience.jtcSenior.period}
+                  </Heading>
+                  <RouterLink to="/jtc">
+                    <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
+                      {t.resume.workExperience.jtcSenior.position}
                     </Link>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text color="fg.subtle">•</Text>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text color="fg.subtle">{t.resume.workExperience.jtcSenior.location}</Text>
-                  </WrapItem>
-                </Wrap>
-              </Box>
+                  </RouterLink>
+                  <Wrap>
+                    <WrapItem>
+                      <Link href="https://jtc.ooo/" color="fg.subtle" fontSize="sm" target="_blank">
+                        <LinkIcon width={16} height={16} />
+                        {t.resume.workExperience.jtcSenior.company}
+                      </Link>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text color="fg.subtle" fontSize="sm">
+                        •
+                      </Text>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text color="fg.subtle" fontSize="sm">
+                        {t.resume.workExperience.jtcSenior.location}
+                      </Text>
+                    </WrapItem>
+                  </Wrap>
+                </Box>
+                <RouterLink to="/jtc">
+                  <ChakraLink colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1}>
+                    {t.system.more}
+                    <RightIcon w={3} h={3} fill="fg.blue" />
+                  </ChakraLink>
+                </RouterLink>
+              </Flex>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
                   {t.resume.workExperience.jtcSenior.migration.title}
                 </Heading>
-                <List.Root pl={4} gap={2}>
+                <List.Root pl={4} gap={1}>
                   {t.resume.workExperience.jtcSenior.migration.description.map((item, index) => (
-                    <List.Item key={index}>{item}</List.Item>
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
                   ))}
                 </List.Root>
               </Box>
@@ -212,9 +228,11 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 <Heading size="sm" mb={3} color="fg">
                   {t.resume.workExperience.jtcSenior.frontend.title}
                 </Heading>
-                <List.Root pl={4} gap={2}>
+                <List.Root pl={4} gap={1}>
                   {t.resume.workExperience.jtcSenior.frontend.description.map((item, index) => (
-                    <List.Item key={index}>{item}</List.Item>
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
                   ))}
                 </List.Root>
               </Box>
@@ -223,17 +241,23 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 <Heading size="sm" mb={3} color="fg">
                   {t.resume.workExperience.jtcSenior.integration.title}
                 </Heading>
-                <List.Root pl={4} gap={2}>
+                <List.Root pl={4} gap={1}>
                   {t.resume.workExperience.jtcSenior.integration.description.map((item, index) => (
-                    <List.Item key={index}>{item}</List.Item>
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
                   ))}
                 </List.Root>
               </Box>
 
               <Box>
-                <Text fontWeight="semibold" color="fg.subtle">
-                  {t.common.techStack}: React, TypeScript, Node.js, RavenDB, Web Workers, SSE, Express, React Native
-                </Text>
+                <Flex wrap="wrap" gap={2}>
+                  {['React', 'TypeScript', 'Node.js', 'RavenDB', 'Web Workers', 'SSE', 'Express', 'React Native'].map(skill => (
+                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </Flex>
               </Box>
             </VStack>
           </Card.Body>
@@ -243,46 +267,64 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Card.Root mb={8} bg="bg.card" css={pageBreak}>
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
-              <Box>
-                <Heading size="sm" color="fg.subtle" mb={1}>
-                  {t.resume.workExperience.jtcMiddle.period}
-                </Heading>
-                <RouterLink to="/jtc">
-                  <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
-                    {t.resume.workExperience.jtcMiddle.position}
-                  </Link>
-                </RouterLink>
-                <Wrap>
-                  <WrapItem>
-                    <Link href="https://jtc.ooo/" color="fg.subtle" target="_blank">
-                      <LinkIcon width={16} height={16} />
-                      {t.resume.workExperience.jtcMiddle.company}
+              <Flex align="start" justify="space-between" gap={2}>
+                <Box>
+                  <Heading size="sm" color="fg.subtle" mb={1}>
+                    {t.resume.workExperience.jtcMiddle.period}
+                  </Heading>
+                  <RouterLink to="/jtc">
+                    <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
+                      {t.resume.workExperience.jtcMiddle.position}
                     </Link>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text color="fg.subtle">•</Text>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text color="fg.subtle">{t.resume.workExperience.jtcMiddle.location}</Text>
-                  </WrapItem>
-                </Wrap>
-              </Box>
+                  </RouterLink>
+                  <Wrap>
+                    <WrapItem>
+                      <Link href="https://jtc.ooo/" color="fg.subtle" fontSize="sm" target="_blank">
+                        <LinkIcon width={16} height={16} />
+                        {t.resume.workExperience.jtcMiddle.company}
+                      </Link>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text color="fg.subtle" fontSize="sm">
+                        •
+                      </Text>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text color="fg.subtle" fontSize="sm">
+                        {t.resume.workExperience.jtcMiddle.location}
+                      </Text>
+                    </WrapItem>
+                  </Wrap>
+                </Box>
+                <RouterLink to="/jtc">
+                  <ChakraLink colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1}>
+                    {t.system.more}
+                    <RightIcon w={3} h={3} fill="fg.blue" />
+                  </ChakraLink>
+                </RouterLink>
+              </Flex>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
                   {t.resume.workExperience.jtcMiddle.dbo.title}
                 </Heading>
-                <List.Root pl={4} gap={2}>
+                <List.Root pl={4} gap={1}>
                   {t.resume.workExperience.jtcMiddle.dbo.description.map((item, index) => (
-                    <List.Item key={index}>{item}</List.Item>
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
                   ))}
                 </List.Root>
               </Box>
 
               <Box>
-                <Text fontWeight="semibold" color="fg.subtle">
-                  {t.common.techStack}: React, Redux, Redux Form, TypeScript, Crypto-Pro
-                </Text>
+                <Flex wrap="wrap" gap={2}>
+                  {['React', 'Redux', 'Redux Form', 'TypeScript', t.common.cryptoPro].map(skill => (
+                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </Flex>
               </Box>
             </VStack>
           </Card.Body>
@@ -292,46 +334,64 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Card.Root bg="bg.card">
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
-              <Box>
-                <Heading size="sm" color="fg.subtle" mb={1}>
-                  {t.resume.workExperience.recifra.period}
-                </Heading>
-                <RouterLink to="/recifra">
-                  <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
-                    {t.resume.workExperience.recifra.position}
-                  </Link>
-                </RouterLink>
-                <Wrap>
-                  <WrapItem>
-                    <Link href="https://recifra.ru/" color="fg.subtle" target="_blank">
-                      <LinkIcon width={16} height={16} />
-                      {t.resume.workExperience.recifra.company}
+              <Flex align="start" justify="space-between" gap={2}>
+                <Box>
+                  <Heading size="sm" color="fg.subtle" mb={1}>
+                    {t.resume.workExperience.recifra.period}
+                  </Heading>
+                  <RouterLink to="/recifra">
+                    <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
+                      {t.resume.workExperience.recifra.position}
                     </Link>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text color="fg.subtle">•</Text>
-                  </WrapItem>
-                  <WrapItem>
-                    <Text color="fg.subtle">{t.resume.workExperience.recifra.location}</Text>
-                  </WrapItem>
-                </Wrap>
-              </Box>
+                  </RouterLink>
+                  <Wrap>
+                    <WrapItem>
+                      <Link href="https://recifra.ru/" color="fg.subtle" fontSize="sm" target="_blank">
+                        <LinkIcon width={16} height={16} />
+                        {t.resume.workExperience.recifra.company}
+                      </Link>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text color="fg.subtle" fontSize="sm">
+                        •
+                      </Text>
+                    </WrapItem>
+                    <WrapItem>
+                      <Text color="fg.subtle" fontSize="sm">
+                        {t.resume.workExperience.recifra.location}
+                      </Text>
+                    </WrapItem>
+                  </Wrap>
+                </Box>
+                <RouterLink to="/recifra">
+                  <ChakraLink colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1}>
+                    {t.system.more}
+                    <RightIcon w={3} h={3} fill="fg.blue" />
+                  </ChakraLink>
+                </RouterLink>
+              </Flex>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
                   {t.resume.workExperience.recifra.projects.title}
                 </Heading>
-                <List.Root pl={4} gap={2}>
+                <List.Root pl={4} gap={1}>
                   {t.resume.workExperience.recifra.projects.description.map((item, index) => (
-                    <List.Item key={index}>{item}</List.Item>
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
                   ))}
                 </List.Root>
               </Box>
 
               <Box>
-                <Text fontWeight="semibold" color="fg.subtle">
-                  {t.common.techStack}: 1С-Битрикс, jQuery, Backbone, Underscore, Cordova, Framework 7
-                </Text>
+                <Flex wrap="wrap" gap={2}>
+                  {['1С-Битрикс', 'jQuery', 'Backbone', 'Underscore', 'Cordova', 'Framework 7'].map(skill => (
+                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </Flex>
               </Box>
             </VStack>
           </Card.Body>
@@ -348,35 +408,47 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
               <Box>
-                <Flex align="center" justify="space-between" gap={2} mb={3}>
-                  <Link href="https://t.me/SmartAICartBot" fontSize="lg" color="fg.blue" fontWeight="600" mb={1} target="_blank">
-                    Smart Cart Bot
-                  </Link>
-                  <Link href="https://github.com/pbelinovich/smart-cart" color="blue.500" fontWeight="medium" target="_blank">
-                    <GithubIcon w={4} h={4} fill="fg.blue" />
-                    smart-cart
-                  </Link>
+                <Flex align="start" justify="space-between" gap={2}>
+                  <VStack align="start" justify="start">
+                    <Link href="https://t.me/SmartAICartBot" fontSize="lg" color="fg.blue" fontWeight="600" mb={1} target="_blank">
+                      Smart Cart Bot
+                    </Link>
+                    <Text color="fg.subtle">{t.resume.personalProjects.smartCart.description}</Text>
+                  </VStack>
+                  <VStack align="start" justify="start">
+                    <LinkComponent href="https://t.me/SmartAICartBot">
+                      <TelegramIcon w={4} h={4} fill="fg.blue" />
+                      smartaicartbot
+                    </LinkComponent>
+                    <LinkComponent href="https://github.com/pbelinovich/smart-cart">
+                      <GithubIcon w={4} h={4} fill="fg.blue" />
+                      smart-cart
+                    </LinkComponent>
+                  </VStack>
                 </Flex>
-                <Text color="fg.subtle" mb={2}>
-                  {t.resume.personalProjects.smartCart.description}
-                </Text>
               </Box>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
                   {t.resume.personalProjects.smartCart.features.title}
                 </Heading>
-                <List.Root pl={4} gap={2}>
+                <List.Root pl={4} gap={1}>
                   {t.resume.personalProjects.smartCart.features.items.map((item, index) => (
-                    <List.Item key={index}>{item}</List.Item>
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
                   ))}
                 </List.Root>
               </Box>
 
               <Box>
-                <Text fontWeight="semibold" color="fg.subtle">
-                  {t.common.techStack}: Node.js, TypeScript, Express, RavenDB, Mistral 7B, LoRA, Ollama, Telegram API
-                </Text>
+                <Flex wrap="wrap" gap={2}>
+                  {['Node.js', 'TypeScript', 'Express', 'RavenDB', 'Mistral 7B', 'LoRA', 'Ollama', 'Telegram API'].map(skill => (
+                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </Flex>
               </Box>
             </VStack>
           </Card.Body>
@@ -391,7 +463,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
 
         <Card.Root bg="bg.card">
           <Card.Body p={6}>
-            <VStack align="stretch" gap={3}>
+            <VStack align="stretch" gap={4}>
               <Box>
                 <Heading size="sm" color="fg.subtle" mb={1}>
                   {t.resume.education.university.period}
@@ -399,16 +471,26 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 <Link href="https://www.ugrasu.ru/" fontSize="lg" color="fg.blue" fontWeight="600" target="_blank" mb={1}>
                   {t.resume.education.university.name}
                 </Link>
-                <Text color="fg.subtle" mb={2}>
-                  {t.resume.education.university.degree}
-                </Text>
+                <Text color="fg.subtle">{t.resume.education.university.degree}</Text>
               </Box>
 
-              <List.Root pl={4} gap={2}>
+              <List.Root pl={4} gap={1}>
                 {t.resume.education.university.achievements.map((item, index) => (
-                  <List.Item key={index}>{item}</List.Item>
+                  <List.Item key={index}>
+                    <Text fontSize="sm">{item}</Text>
+                  </List.Item>
                 ))}
               </List.Root>
+
+              <Box>
+                <Flex wrap="wrap" gap={2}>
+                  {['Backbone.js', 'Underscore.js', 'jQuery', 'Cordova', 'Framework 7', 'HTML/CSS', 'JavaScript'].map(skill => (
+                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </Flex>
+              </Box>
             </VStack>
           </Card.Body>
         </Card.Root>
@@ -424,24 +506,24 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
               <Box>
-                <Text fontWeight="semibold" mb={2}>
+                <Text fontWeight="semibold" fontSize="sm" mb={2}>
                   {t.resume.additionalInfo.preferences.title}
                 </Text>
-                <Text>{t.resume.additionalInfo.preferences.description}</Text>
+                <Text fontSize="sm">{t.resume.additionalInfo.preferences.description}</Text>
               </Box>
 
               <Box>
-                <Text fontWeight="semibold" mb={2}>
+                <Text fontWeight="semibold" fontSize="sm" mb={2}>
                   {t.resume.additionalInfo.interests.title}
                 </Text>
-                <Text>{t.resume.additionalInfo.interests.description}</Text>
+                <Text fontSize="sm">{t.resume.additionalInfo.interests.description}</Text>
               </Box>
 
               <Box>
-                <Text fontWeight="semibold" mb={2}>
+                <Text fontWeight="semibold" fontSize="sm" mb={2}>
                   {t.resume.additionalInfo.status.title}
                 </Text>
-                <Text>{t.resume.additionalInfo.status.description}</Text>
+                <Text fontSize="sm">{t.resume.additionalInfo.status.description}</Text>
               </Box>
             </VStack>
           </Card.Body>

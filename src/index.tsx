@@ -27,7 +27,27 @@ const system = createSystem(defaultConfig, {
             value: { _light: '{colors.gray.50}', _dark: '{colors.gray.900}', _pdf: 'white' },
           },
           card: {
-            value: { _light: '{colors.gray.50}', _dark: '{colors.gray.900}', _pdf: '{colors.gray.50}' },
+            value: { _light: '{colors.gray.100}', _dark: '{colors.gray.900}', _pdf: '{colors.gray.50}' },
+          },
+          badge: {
+            DEFAULT: {
+              value: { _light: 'white', _dark: 'black', _pdf: 'white' },
+            },
+            blue: {
+              value: { _light: '{colors.blue.400}', _dark: '{colors.blue.400}', _pdf: '{colors.blue.400}' },
+            },
+            red: {
+              value: { _light: '{colors.red.400}', _dark: '{colors.red.400}', _pdf: '{colors.red.400}' },
+            },
+            green: {
+              value: { _light: '{colors.green.400}', _dark: '{colors.green.400}', _pdf: '{colors.green.400}' },
+            },
+            orange: {
+              value: { _light: '{colors.orange.400}', _dark: '{colors.orange.400}', _pdf: '{colors.orange.400}' },
+            },
+            purple: {
+              value: { _light: '{colors.purple.400}', _dark: '{colors.purple.400}', _pdf: '{colors.purple.400}' },
+            },
           },
 
           blue: {
@@ -52,26 +72,26 @@ const system = createSystem(defaultConfig, {
           },
 
           link: {
-            value: { _light: '{colors.blue.600}', _dark: '{colors.blue.400}', _pdf: '{colors.blue.600}' },
+            value: { _light: '{colors.blue.500}', _dark: '{colors.blue.400}', _pdf: '{colors.blue.500}' },
           },
           linkHovered: {
-            value: { _light: '{colors.blue.700}', _dark: '{colors.blue.300}', _pdf: '{colors.blue.700}' },
+            value: { _light: '{colors.blue.600}', _dark: '{colors.blue.300}', _pdf: '{colors.blue.600}' },
           },
           linkActive: {
-            value: { _light: '{colors.blue.700}', _dark: '{colors.blue.300}', _pdf: '{colors.blue.700}' },
+            value: { _light: '{colors.blue.600}', _dark: '{colors.blue.300}', _pdf: '{colors.blue.600}' },
           },
 
           blue: {
-            value: { _light: '{colors.blue.600}', _dark: '{colors.blue.400}', _pdf: '{colors.blue.600}' },
+            value: { _light: '{colors.blue.500}', _dark: '{colors.blue.400}', _pdf: '{colors.blue.400}' },
           },
           green: {
-            value: { _light: '{colors.green.600}', _dark: '{colors.green.400}', _pdf: '{colors.green.600}' },
+            value: { _light: '{colors.green.500}', _dark: '{colors.green.400}', _pdf: '{colors.green.500}' },
           },
           purple: {
-            value: { _light: '{colors.purple.600}', _dark: '{colors.purple.400}', _pdf: '{colors.purple.600}' },
+            value: { _light: '{colors.purple.500}', _dark: '{colors.purple.400}', _pdf: '{colors.purple.500}' },
           },
           orange: {
-            value: { _light: '{colors.orange.600}', _dark: '{colors.orange.400}', _pdf: '{colors.orange.600}' },
+            value: { _light: '{colors.orange.500}', _dark: '{colors.orange.400}', _pdf: '{colors.orange.500}' },
           },
         },
         border: {

@@ -29,7 +29,7 @@ module.exports = [
       outputFolder: './dist',
       plugins: [
         new HtmlWebpackPlugin({
-          title: "Pavel Belinovich's Resume",
+          title: 'Pavel Belinovich',
           hash: true,
           template: './src/static-resources/index.html',
           publicPath: '/',

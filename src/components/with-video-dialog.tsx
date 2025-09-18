@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog, Button, AspectRatio, IconButton, Box, HStack, Portal, chakra, Link } from '@chakra-ui/react'
+import { Dialog, Button, AspectRatio, IconButton, Box, HStack, Portal, chakra, Link, Text } from '@chakra-ui/react'
 import PlayIconExternal from '../static-resources/icons/play.svg'
 
 const PlayIcon = chakra(PlayIconExternal)
@@ -113,7 +113,7 @@ export const VideoButton = ({
       <Button size={buttonSize} variant={buttonVariant} colorPalette={buttonColorPalette} width={width}>
         <HStack gap={1}>
           <PlayIcon w={6} h={6} fill={color} />
-          {children && <Box>{children}</Box>}
+          {children && <Text color={color}>{children}</Text>}
         </HStack>
       </Button>
     </WithVideoDialog>
