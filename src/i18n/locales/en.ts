@@ -57,6 +57,7 @@ export const en: ITranslationKeys = {
       title: 'Work Experience',
       jtcSenior: {
         period: 'October 2019 – August 2025',
+        periodShort: '2019 – 2025',
         position: 'Senior Frontend Developer',
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
@@ -89,6 +90,7 @@ export const en: ITranslationKeys = {
       },
       jtcMiddle: {
         period: 'October 2018 – October 2019',
+        periodShort: '2018 – 2019',
         position: 'Frontend Developer',
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
@@ -103,6 +105,7 @@ export const en: ITranslationKeys = {
       },
       recifra: {
         period: 'August 2016 – September 2018',
+        periodShort: '2016 – 2018',
         position: '1C-Bitrix Developer, Frontend Developer',
         company: 'Recifra (LLC "Yugra Internet Solutions")',
         location: 'Russia, Khanty-Mansiysk',
@@ -137,6 +140,7 @@ export const en: ITranslationKeys = {
       title: 'Education',
       university: {
         period: 'September 2013 – June 2017',
+        periodShort: '2013 – 2017',
         name: 'Yugra State University',
         degree: 'Bachelor, "Computer Science and Engineering"',
         achievements: ['Higher technical education', 'KHMAO-Yugra Governor Scholar', 'Thesis: "Web interface for Smart Home system"'],
@@ -197,10 +201,12 @@ export const en: ITranslationKeys = {
     workPeriods: {
       senior: {
         period: 'October 2019 – August 2025',
+        periodShort: '2019 – 2025',
         position: 'Senior Frontend Developer',
       },
       middle: {
         period: 'October 2018 – October 2019',
+        periodShort: '2018 – 2019',
         position: 'Frontend Developer',
       },
     },

@@ -57,6 +57,7 @@ export const ru: ITranslationKeys = {
       title: 'Опыт работы',
       jtcSenior: {
         period: 'Октябрь 2019 – Август 2025',
+        periodShort: '2019 – 2025',
         position: 'Старший фронтенд разработчик',
         company: 'JTC (ООО «ДжейТи Консалтинг»)',
         location: 'Россия, Санкт-Петербург',
@@ -89,6 +90,7 @@ export const ru: ITranslationKeys = {
       },
       jtcMiddle: {
         period: 'Октябрь 2018 – Октябрь 2019',
+        periodShort: '2018 – 2019',
         position: 'Фронтенд разработчик',
         company: 'JTC (ООО «ДжейТи Консалтинг»)',
         location: 'Россия, Санкт-Петербург',
@@ -103,6 +105,7 @@ export const ru: ITranslationKeys = {
       },
       recifra: {
         period: 'Август 2016 – Сентябрь 2018',
+        periodShort: '2016 – 2018',
         position: 'Разработчик 1С-Битрикс, верстальщик',
         company: 'Рецифра (ООО «Югорские интернет решения»)',
         location: 'Россия, Ханты-Мансийск',
@@ -138,6 +141,7 @@ export const ru: ITranslationKeys = {
       title: 'Образование',
       university: {
         period: 'Сентябрь 2013 – Июнь 2017',
+        periodShort: '2013 – 2017',
         name: 'Югорский государственный университет',
         degree: 'Бакалавриат, «Информатика и вычислительная техника»',
         achievements: [
@@ -202,10 +206,12 @@ export const ru: ITranslationKeys = {
     workPeriods: {
       senior: {
         period: 'Октябрь 2019 – Август 2025',
+        periodShort: '2019 – 2025',
         position: 'Старший фронт-энд разработчик',
       },
       middle: {
         period: 'Октябрь 2018 – Октябрь 2019',
+        periodShort: '2018 – 2019',
         position: 'Фронт-энд разработчик',
       },
     },

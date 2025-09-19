@@ -100,3 +100,5 @@ yarn-error.log
 
 # testing
 /coverage
+
+.cursor

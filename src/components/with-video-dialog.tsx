@@ -154,8 +154,10 @@ export const VideoLink = ({ embedUrl, maxWidth, children, linkColorPalette = 'bl
   return (
     <WithVideoDialog embedUrl={embedUrl} maxWidth={maxWidth}>
       <Link color={color}>
-        <PlayIcon w={4} h={4} fill={color} />
-        {children}
+        <HStack gap={2} align="center">
+          <PlayIcon w={4} h={4} fill={color} flexShrink={0} />
+          <Box>{children}</Box>
+        </HStack>
       </Link>
     </WithVideoDialog>
   )

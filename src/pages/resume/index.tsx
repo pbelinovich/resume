@@ -18,7 +18,7 @@ import {
   WrapItem,
   chakra,
   SystemStyleObject,
-  Link as ChakraLink,
+  Button,
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { useColorMode } from '../../components/color-mode'
@@ -60,10 +60,10 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
     <Stack gap={8}>
       {/* Header Section */}
       <Box textAlign="center" pt={4}>
-        <Heading size="4xl" mb={2} fontWeight="bold" color="fg">
+        <Heading size={{ base: '2xl', md: '4xl' }} mb={2} fontWeight="bold" color="fg">
           {t.resume.name}
         </Heading>
-        <Text fontSize="xl" color="fg.subtle" lineHeight={1.4} mb={4}>
+        <Text fontSize={{ base: 'sm', md: 'xl' }} color="fg.subtle" lineHeight={1.4} mb={4}>
           {t.resume.jobTitle}
         </Text>
         <HStack justify="center" gapX={6} flexWrap="wrap">
@@ -89,20 +89,20 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Heading size="lg" mb={4} color="fg">
           {t.resume.professionalSummary.title}
         </Heading>
-        <Text fontSize="md" lineHeight={1.7} color="fg.subtle">
+        <Text fontSize={{ base: 'sm', md: 'md' }} lineHeight={1.7} color="fg.subtle">
           {t.resume.professionalSummary.description}
         </Text>
       </Box>
 
       <Separator />
 
-      {/* Skills Section */}
+      {/* Key skills */}
       <Box>
         <Heading size="lg" mb={6} color="fg">
           {t.resume.keySkills.title}
         </Heading>
         <Grid templateColumns="repeat(auto-fit, minmax(250px, 1fr))" gap={6}>
-          <Card.Root p={6} bg="bg.card">
+          <Card.Root p={{ base: 0, md: 6 }} justifyContent={{ base: 'center', md: 'flex-start' }} bg="bg.card">
             <Card.Body>
               <Heading size="md" mb={4} color="fg.blue">
                 {t.resume.keySkills.frontend}
@@ -117,7 +117,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
             </Card.Body>
           </Card.Root>
 
-          <Card.Root p={6} bg="bg.card">
+          <Card.Root p={{ base: 0, md: 6 }} justifyContent={{ base: 'center', md: 'flex-start' }} bg="bg.card">
             <Card.Body>
               <Heading size="md" mb={4} color="fg.green">
                 {t.resume.keySkills.backendDatabases}
@@ -132,7 +132,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
             </Card.Body>
           </Card.Root>
 
-          <Card.Root p={6} bg="bg.card">
+          <Card.Root p={{ base: 0, md: 6 }} justifyContent={{ base: 'center', md: 'flex-start' }} bg="bg.card">
             <Card.Body>
               <Heading size="md" mb={4} color="fg.purple">
                 {t.resume.keySkills.aiMachineLearning}
@@ -147,7 +147,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
             </Card.Body>
           </Card.Root>
 
-          <Card.Root p={6} bg="bg.card">
+          <Card.Root p={{ base: 0, md: 6 }} justifyContent={{ base: 'center', md: 'flex-start' }} bg="bg.card">
             <Card.Body>
               <Heading size="md" mb={4} color="fg.orange">
                 {t.resume.keySkills.tools}
@@ -174,42 +174,59 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Card.Root mb={8} bg="bg.card">
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
-              <Flex align="start" justify="space-between" gap={2}>
-                <Box>
-                  <Heading size="sm" color="fg.subtle" mb={1}>
-                    {t.resume.workExperience.jtcSenior.period}
-                  </Heading>
-                  <RouterLink to="/jtc">
-                    <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
-                      {t.resume.workExperience.jtcSenior.position}
-                    </Link>
-                  </RouterLink>
-                  <Wrap>
-                    <WrapItem>
-                      <Link href="https://jtc.ooo/" color="fg.subtle" fontSize="sm" target="_blank">
-                        <LinkIcon width={16} height={16} />
-                        {t.resume.workExperience.jtcSenior.company}
+              <Box>
+                <Flex align="start" justify="space-between" mb={1} gap={4}>
+                  <Box>
+                    <Heading display={{ base: 'none', md: 'block' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.jtcSenior.period}
+                    </Heading>
+                    <Heading display={{ base: 'block', md: 'none' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.jtcSenior.periodShort}
+                    </Heading>
+                    <RouterLink to="/jtc">
+                      <Link color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold">
+                        {t.resume.workExperience.jtcSenior.position}
                       </Link>
-                    </WrapItem>
-                    <WrapItem>
-                      <Text color="fg.subtle" fontSize="sm">
-                        •
-                      </Text>
-                    </WrapItem>
-                    <WrapItem>
-                      <Text color="fg.subtle" fontSize="sm">
-                        {t.resume.workExperience.jtcSenior.location}
-                      </Text>
-                    </WrapItem>
-                  </Wrap>
-                </Box>
-                <RouterLink to="/jtc">
-                  <ChakraLink colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1}>
-                    {t.system.more}
-                    <RightIcon w={3} h={3} fill="fg.blue" />
-                  </ChakraLink>
-                </RouterLink>
-              </Flex>
+                    </RouterLink>
+                  </Box>
+                  <RouterLink to="/jtc">
+                    <Button
+                      variant="outline"
+                      colorPalette="blue"
+                      fontSize="xs"
+                      fontWeight="medium"
+                      color="fg.blue"
+                      gap={1}
+                      size="xs"
+                      mb={1}
+                    >
+                      <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
+                      <RightIcon w={3} h={3} fill="fg.blue" />
+                    </Button>
+                  </RouterLink>
+                </Flex>
+
+                <Wrap display={{ base: 'block', md: 'flex' }}>
+                  <WrapItem>
+                    <Link href="https://jtc.ooo/" color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} target="_blank">
+                      <Box display={{ base: 'none', md: 'block' }}>
+                        <LinkIcon width={16} height={16} />
+                      </Box>
+                      {t.resume.workExperience.jtcSenior.company}
+                    </Link>
+                  </WrapItem>
+                  <WrapItem display={{ base: 'none', md: 'flex' }}>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }}>
+                      •
+                    </Text>
+                  </WrapItem>
+                  <WrapItem>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} fontStyle="italic">
+                      {t.resume.workExperience.jtcSenior.location}
+                    </Text>
+                  </WrapItem>
+                </Wrap>
+              </Box>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
@@ -267,42 +284,51 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Card.Root mb={8} bg="bg.card" css={pageBreak}>
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
-              <Flex align="start" justify="space-between" gap={2}>
-                <Box>
-                  <Heading size="sm" color="fg.subtle" mb={1}>
-                    {t.resume.workExperience.jtcMiddle.period}
-                  </Heading>
-                  <RouterLink to="/jtc">
-                    <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
-                      {t.resume.workExperience.jtcMiddle.position}
-                    </Link>
-                  </RouterLink>
-                  <Wrap>
-                    <WrapItem>
-                      <Link href="https://jtc.ooo/" color="fg.subtle" fontSize="sm" target="_blank">
-                        <LinkIcon width={16} height={16} />
-                        {t.resume.workExperience.jtcMiddle.company}
+              <Box>
+                <Flex align="start" justify="space-between" gap={4}>
+                  <Box>
+                    <Heading display={{ base: 'none', md: 'block' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.jtcMiddle.period}
+                    </Heading>
+                    <Heading display={{ base: 'block', md: 'none' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.jtcMiddle.periodShort}
+                    </Heading>
+
+                    <RouterLink to="/jtc">
+                      <Link color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
+                        {t.resume.workExperience.jtcMiddle.position}
                       </Link>
-                    </WrapItem>
-                    <WrapItem>
-                      <Text color="fg.subtle" fontSize="sm">
-                        •
-                      </Text>
-                    </WrapItem>
-                    <WrapItem>
-                      <Text color="fg.subtle" fontSize="sm">
-                        {t.resume.workExperience.jtcMiddle.location}
-                      </Text>
-                    </WrapItem>
-                  </Wrap>
-                </Box>
-                <RouterLink to="/jtc">
-                  <ChakraLink colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1}>
-                    {t.system.more}
-                    <RightIcon w={3} h={3} fill="fg.blue" />
-                  </ChakraLink>
-                </RouterLink>
-              </Flex>
+                    </RouterLink>
+                  </Box>
+                  <RouterLink to="/jtc">
+                    <Button variant="outline" colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1} size="xs">
+                      <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
+                      <RightIcon w={3} h={3} fill="fg.blue" />
+                    </Button>
+                  </RouterLink>
+                </Flex>
+
+                <Wrap display={{ base: 'block', md: 'flex' }}>
+                  <WrapItem>
+                    <Link href="https://jtc.ooo/" color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} target="_blank">
+                      <Box display={{ base: 'none', md: 'block' }}>
+                        <LinkIcon width={16} height={16} />
+                      </Box>
+                      {t.resume.workExperience.jtcMiddle.company}
+                    </Link>
+                  </WrapItem>
+                  <WrapItem display={{ base: 'none', md: 'flex' }}>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }}>
+                      •
+                    </Text>
+                  </WrapItem>
+                  <WrapItem>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} fontStyle="italic">
+                      {t.resume.workExperience.jtcMiddle.location}
+                    </Text>
+                  </WrapItem>
+                </Wrap>
+              </Box>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
@@ -334,42 +360,51 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
         <Card.Root bg="bg.card">
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
-              <Flex align="start" justify="space-between" gap={2}>
-                <Box>
-                  <Heading size="sm" color="fg.subtle" mb={1}>
-                    {t.resume.workExperience.recifra.period}
-                  </Heading>
-                  <RouterLink to="/recifra">
-                    <Link color="fg.blue" fontSize="lg" fontWeight="semibold" mb={1}>
-                      {t.resume.workExperience.recifra.position}
-                    </Link>
-                  </RouterLink>
-                  <Wrap>
-                    <WrapItem>
-                      <Link href="https://recifra.ru/" color="fg.subtle" fontSize="sm" target="_blank">
-                        <LinkIcon width={16} height={16} />
-                        {t.resume.workExperience.recifra.company}
+              <Box>
+                <Flex align="start" justify="space-between" gap={2}>
+                  <Box>
+                    <Heading display={{ base: 'none', md: 'block' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.recifra.period}
+                    </Heading>
+                    <Heading display={{ base: 'block', md: 'none' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.recifra.periodShort}
+                    </Heading>
+
+                    <RouterLink to="/recifra">
+                      <Link color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
+                        {t.resume.workExperience.recifra.position}
                       </Link>
-                    </WrapItem>
-                    <WrapItem>
-                      <Text color="fg.subtle" fontSize="sm">
-                        •
-                      </Text>
-                    </WrapItem>
-                    <WrapItem>
-                      <Text color="fg.subtle" fontSize="sm">
-                        {t.resume.workExperience.recifra.location}
-                      </Text>
-                    </WrapItem>
-                  </Wrap>
-                </Box>
-                <RouterLink to="/recifra">
-                  <ChakraLink colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1}>
-                    {t.system.more}
-                    <RightIcon w={3} h={3} fill="fg.blue" />
-                  </ChakraLink>
-                </RouterLink>
-              </Flex>
+                    </RouterLink>
+                  </Box>
+                  <RouterLink to="/recifra">
+                    <Button variant="outline" colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1} size="xs">
+                      <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
+                      <RightIcon w={3} h={3} fill="fg.blue" />
+                    </Button>
+                  </RouterLink>
+                </Flex>
+
+                <Wrap display={{ base: 'block', md: 'flex' }}>
+                  <WrapItem>
+                    <Link href="https://recifra.ru/" color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} target="_blank">
+                      <Box display={{ base: 'none', md: 'block' }}>
+                        <LinkIcon width={16} height={16} />
+                      </Box>
+                      {t.resume.workExperience.recifra.company}
+                    </Link>
+                  </WrapItem>
+                  <WrapItem display={{ base: 'none', md: 'flex' }}>
+                    <Text color="fg.subtle" fontSize="sm">
+                      •
+                    </Text>
+                  </WrapItem>
+                  <WrapItem>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} fontStyle="italic">
+                      {t.resume.workExperience.recifra.location}
+                    </Text>
+                  </WrapItem>
+                </Wrap>
+              </Box>
 
               <Box>
                 <Heading size="sm" mb={3} color="fg">
@@ -408,9 +443,16 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
               <Box>
-                <Flex align="start" justify="space-between" gap={2}>
-                  <VStack align="start" justify="start">
-                    <Link href="https://t.me/SmartAICartBot" fontSize="lg" color="fg.blue" fontWeight="600" mb={1} target="_blank">
+                <Flex display={{ base: 'block', md: 'flex' }} alignItems="start" justifyContent="space-between" gap={2}>
+                  <VStack align="start" justify="start" mb={{ base: 4, md: 0 }}>
+                    <Link
+                      href="https://t.me/SmartAICartBot"
+                      fontSize={{ base: 'md', md: 'lg' }}
+                      color="fg.blue"
+                      fontWeight="600"
+                      mb={1}
+                      target="_blank"
+                    >
                       Smart Cart Bot
                     </Link>
                     <Text color="fg.subtle">{t.resume.personalProjects.smartCart.description}</Text>
@@ -465,13 +507,25 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
               <Box>
-                <Heading size="sm" color="fg.subtle" mb={1}>
+                <Heading display={{ base: 'none', md: 'block' }} size="sm" color="fg.subtle" mb={1}>
                   {t.resume.education.university.period}
                 </Heading>
-                <Link href="https://www.ugrasu.ru/" fontSize="lg" color="fg.blue" fontWeight="600" target="_blank" mb={1}>
+                <Heading display={{ base: 'block', md: 'none' }} size="sm" color="fg.subtle" mb={1}>
+                  {t.resume.education.university.periodShort}
+                </Heading>
+                <Link
+                  href="https://www.ugrasu.ru/"
+                  fontSize={{ base: 'md', md: 'lg' }}
+                  color="fg.blue"
+                  fontWeight="600"
+                  target="_blank"
+                  mb={1}
+                >
                   {t.resume.education.university.name}
                 </Link>
-                <Text color="fg.subtle">{t.resume.education.university.degree}</Text>
+                <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }}>
+                  {t.resume.education.university.degree}
+                </Text>
               </Box>
 
               <List.Root pl={4} gap={1}>

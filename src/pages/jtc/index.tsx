@@ -27,10 +27,10 @@ export const JTCPage = () => {
       <Stack gap={8}>
         {/* Header Section */}
         <Box textAlign="center" pt={4}>
-          <Heading size="4xl" mb={2} fontWeight="bold" color="fg">
+          <Heading size={{ base: '2xl', md: '4xl' }} mb={2} fontWeight="bold" color="fg">
             {t.jtc.pageTitle}
           </Heading>
-          <Text fontSize="md" color="fg.subtle" mb={4}>
+          <Text fontSize={{ base: 'sm', md: 'md' }} color="fg.subtle" mb={4}>
             {t.jtc.company}
           </Text>
           <Link href="https://jtc.ooo/" color="fg.link" fontWeight="medium" target="_blank">
@@ -48,21 +48,27 @@ export const JTCPage = () => {
           </Heading>
           <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={4}>
             <Card.Root bg="bg">
-              <Card.Body p={4} gap={3}>
-                <Heading size="sm" color="fg.subtle">
+              <Card.Body p={4} gap={{ base: 1, md: 3 }}>
+                <Heading size="sm" color="fg.subtle" display={{ base: 'none', md: 'block' }}>
                   {t.jtc.workPeriods.senior.period}
                 </Heading>
-                <Text fontSize="lg" fontWeight="semibold" color="fg">
+                <Heading size="sm" color="fg.subtle" display={{ base: 'block', md: 'none' }}>
+                  {t.jtc.workPeriods.senior.periodShort}
+                </Heading>
+                <Text fontSize={{ base: 'sm', md: 'lg' }} fontWeight="semibold" color="fg">
                   {t.jtc.workPeriods.senior.position}
                 </Text>
               </Card.Body>
             </Card.Root>
             <Card.Root bg="bg">
-              <Card.Body p={4} gap={3}>
-                <Heading size="sm" color="fg.subtle">
+              <Card.Body p={4} gap={{ base: 1, md: 3 }}>
+                <Heading size="sm" color="fg.subtle" display={{ base: 'none', md: 'block' }}>
                   {t.jtc.workPeriods.middle.period}
                 </Heading>
-                <Text fontSize="lg" fontWeight="semibold" color="fg">
+                <Heading size="sm" color="fg.subtle" display={{ base: 'block', md: 'none' }}>
+                  {t.jtc.workPeriods.middle.periodShort}
+                </Heading>
+                <Text fontSize={{ base: 'sm', md: 'lg' }} fontWeight="semibold" color="fg">
                   {t.jtc.workPeriods.middle.position}
                 </Text>
               </Card.Body>

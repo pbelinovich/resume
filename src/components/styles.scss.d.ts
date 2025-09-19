@@ -1,6 +1,8 @@
 declare namespace StylesScssNamespace {
   export interface IStylesScss {
     cl: string
+    hamburgerClosed: string
+    hamburgerOpen: string
     topLine: string
   }
 }

@@ -56,6 +56,7 @@ export interface ITranslationKeys {
       title: string
       jtcSenior: {
         period: string
+        periodShort: string
         position: string
         company: string
         location: string
@@ -74,6 +75,7 @@ export interface ITranslationKeys {
       }
       jtcMiddle: {
         period: string
+        periodShort: string
         position: string
         company: string
         location: string
@@ -84,6 +86,7 @@ export interface ITranslationKeys {
       }
       recifra: {
         period: string
+        periodShort: string
         position: string
         company: string
         location: string
@@ -107,6 +110,7 @@ export interface ITranslationKeys {
       title: string
       university: {
         period: string
+        periodShort: string
         name: string
         degree: string
         achievements: string[]
@@ -143,10 +147,12 @@ export interface ITranslationKeys {
     workPeriods: {
       senior: {
         period: string
+        periodShort: string
         position: string
       }
       middle: {
         period: string
+        periodShort: string
         position: string
       }
     }

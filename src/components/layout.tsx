@@ -10,12 +10,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <Box h="100vh" w="100vw" bg="bg">
       <TopLine />
-      <ScrollArea.Root h="calc(100vh - 72px)" w="100vw" type="always">
+      <ScrollArea.Root w="100%" h={{ base: 'calc(100% - 60px)', md: 'calc(100% - 72px)' }} type="always">
         <ScrollArea.Viewport>
           <ScrollArea.Content textStyle="sm">
             <Container maxW="4xl" py={8}>
-              <Box as="main" bg="bg.subtle" borderRadius="lg" p={8}>
-                <Container>{children}</Container>
+              <Box as="main" bg="bg.subtle" borderRadius="lg" p={{ base: 2, md: 8 }}>
+                <Container pb={{ base: 4, md: 8 }}>{children}</Container>
               </Box>
             </Container>
           </ScrollArea.Content>
