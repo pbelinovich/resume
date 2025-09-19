@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const package = require('./package.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 const fs = require('fs')
 const path = require('path')
 
@@ -35,6 +36,14 @@ module.exports = [
           hash: true,
           template: './src/static-resources/index.html',
           publicPath: '/',
+        }),
+        new Dotenv({
+          path: './.env',
+          safe: true,
+          allowEmptyValues: true,
+          systemvars: true,
+          silent: true,
+          defaults: false,
         }),
         new webpack.DefinePlugin({
           'process.env.VERSION': JSON.stringify(package.version),

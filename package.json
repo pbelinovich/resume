@@ -50,6 +50,7 @@
     "cross-env": "7.0.3",
     "css": "3.0.0",
     "css-loader": "6.7.3",
+    "dotenv-webpack": "^8.1.1",
     "eslint": "8.37.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-prettier": "4.2.1",
