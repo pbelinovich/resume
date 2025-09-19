@@ -67,10 +67,6 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           {t.resume.jobTitle}
         </Text>
         <HStack justify="center" gapX={6} flexWrap="wrap">
-          <LinkComponent href="https://t.me/pbelinovich">
-            <TelegramIcon w={4} h={4} fill="fg.blue" />
-            pbelinovich
-          </LinkComponent>
           <LinkComponent href="https://github.com/pbelinovich">
             <GithubIcon w={4} h={4} fill="fg.blue" />
             pbelinovich
