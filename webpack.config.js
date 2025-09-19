@@ -47,11 +47,6 @@ module.exports = [
               to: 'images/',
             },
             {
-              from: './src/static-resources/resume.pdf',
-              to: 'resume.pdf',
-              noErrorOnMissing: true,
-            },
-            {
               from: './src/static-resources/resume-ru.pdf',
               to: 'resume-ru.pdf',
               noErrorOnMissing: true,

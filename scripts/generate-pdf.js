@@ -222,17 +222,6 @@ async function generatePDF(languages = ['ru']) {
       generatedFiles.push(pdfPath)
     }
 
-    // Создаем основную ссылку на русскую версию (для обратной совместимости)
-    if (languages.includes('ru')) {
-      const mainPdfPath = path.join(PDF_OUTPUT_DIR, 'resume.pdf')
-      const russianPdfPath = path.join(PDF_OUTPUT_DIR, 'resume-ru.pdf')
-
-      if (fs.existsSync(russianPdfPath)) {
-        fs.copyFileSync(russianPdfPath, mainPdfPath)
-        console.log(`📋 Main PDF link created: ${mainPdfPath}`)
-      }
-    }
-
     console.log('📋 PDFs will be copied to dist/ during webpack build')
     return generatedFiles
   } catch (error) {
