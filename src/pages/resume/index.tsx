@@ -20,9 +20,8 @@ import {
   SystemStyleObject,
   Button,
 } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
+import { CLink, Layout } from '../../components'
 import { useColorMode } from '../../components/color-mode'
-import { Layout } from '../../components/layout'
 import { useT } from '../../i18n'
 import LinkLightIcon from '../../static-resources/icons/link-light.svg'
 import LinkDarkIcon from '../../static-resources/icons/link-dark.svg'
@@ -60,10 +59,10 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
     <Stack gap={8}>
       {/* Header Section */}
       <Box textAlign="center" pt={4}>
-        <Heading size={{ base: '2xl', md: '4xl' }} mb={2} fontWeight="bold" color="fg">
+        <Heading size={{ base: '2xl', sm: '3xl', md: '4xl' }} mb={2} fontWeight="bold" color="fg">
           {t.resume.name}
         </Heading>
-        <Text fontSize={{ base: 'sm', md: 'xl' }} color="fg.subtle" lineHeight={1.4} mb={4}>
+        <Text fontSize={{ base: 'sm', sm: 'lg', md: 'xl' }} color="fg.subtle" lineHeight={1.4} mb={4}>
           {t.resume.jobTitle}
         </Text>
         <HStack justify="center" gapX={6} flexWrap="wrap">
@@ -183,13 +182,11 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                     <Heading display={{ base: 'block', md: 'none' }} size="sm" color="fg.subtle" mb={1}>
                       {t.resume.workExperience.jtcSenior.periodShort}
                     </Heading>
-                    <RouterLink to="/jtc">
-                      <Link color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold">
-                        {t.resume.workExperience.jtcSenior.position}
-                      </Link>
-                    </RouterLink>
+                    <CLink to="/jtc" pdf={pdf} color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold">
+                      {t.resume.workExperience.jtcSenior.position}
+                    </CLink>
                   </Box>
-                  <RouterLink to="/jtc">
+                  <CLink to="/jtc" pdf={pdf} _hover={{ textDecoration: 'none' }}>
                     <Button
                       variant="outline"
                       colorPalette="blue"
@@ -203,7 +200,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                       <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
                       <RightIcon w={3} h={3} fill="fg.blue" />
                     </Button>
-                  </RouterLink>
+                  </CLink>
                 </Flex>
 
                 <Wrap display={{ base: 'block', md: 'flex' }}>
@@ -294,18 +291,16 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                       {t.resume.workExperience.jtcMiddle.periodShort}
                     </Heading>
 
-                    <RouterLink to="/jtc">
-                      <Link color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
-                        {t.resume.workExperience.jtcMiddle.position}
-                      </Link>
-                    </RouterLink>
+                    <CLink to="/jtc" pdf={pdf} color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
+                      {t.resume.workExperience.jtcMiddle.position}
+                    </CLink>
                   </Box>
-                  <RouterLink to="/jtc">
+                  <CLink to="/jtc" pdf={pdf} _hover={{ textDecoration: 'none' }}>
                     <Button variant="outline" colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1} size="xs">
                       <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
                       <RightIcon w={3} h={3} fill="fg.blue" />
                     </Button>
-                  </RouterLink>
+                  </CLink>
                 </Flex>
 
                 <Wrap display={{ base: 'block', md: 'flex' }}>
@@ -370,18 +365,16 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                       {t.resume.workExperience.recifra.periodShort}
                     </Heading>
 
-                    <RouterLink to="/recifra">
-                      <Link color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
-                        {t.resume.workExperience.recifra.position}
-                      </Link>
-                    </RouterLink>
+                    <CLink to="/recifra" pdf={pdf} color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
+                      {t.resume.workExperience.recifra.position}
+                    </CLink>
                   </Box>
-                  <RouterLink to="/recifra">
+                  <CLink to="/recifra" pdf={pdf} _hover={{ textDecoration: 'none' }}>
                     <Button variant="outline" colorPalette="blue" fontSize="xs" fontWeight="medium" color="fg.blue" gap={1} size="xs">
                       <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
                       <RightIcon w={3} h={3} fill="fg.blue" />
                     </Button>
-                  </RouterLink>
+                  </CLink>
                 </Flex>
 
                 <Wrap display={{ base: 'block', md: 'flex' }}>
@@ -455,7 +448,9 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                     >
                       Smart Cart Bot
                     </Link>
-                    <Text color="fg.subtle">{t.resume.personalProjects.smartCart.description}</Text>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }}>
+                      {t.resume.personalProjects.smartCart.description}
+                    </Text>
                   </VStack>
                   <VStack align="start" justify="start">
                     <LinkComponent href="https://t.me/SmartAICartBot">

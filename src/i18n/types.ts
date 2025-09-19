@@ -449,5 +449,6 @@ export interface ITranslationKeys {
     governmentPortals: string
     commercialProjects: string
     webProjectsTitle: string
+    videoLoading: string[]
   }
 }

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Dialog, Button, AspectRatio, IconButton, Box, HStack, Portal, chakra, Link, Text, Spinner, Center } from '@chakra-ui/react'
+import React, { useState, useEffect } from 'react'
+import { Dialog, Button, AspectRatio, IconButton, Box, HStack, Portal, chakra, Link, Text, Spinner, Center, VStack } from '@chakra-ui/react'
 import PlayIconExternal from '../static-resources/icons/play.svg'
+import { useTranslation } from '../i18n/context'
 
 const PlayIcon = chakra(PlayIconExternal)
 
@@ -49,10 +50,29 @@ const getColorByPalette = (colorPalette: ColorPalette) => {
 
 export const WithVideoDialog = ({ embedUrl, maxWidth = '900px', children = null }: IWithVideoDialogProps) => {
   const [isLoading, setIsLoading] = useState(true)
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
+  const { t } = useTranslation()
 
   const handleIframeLoad = () => {
     setIsLoading(false)
   }
+
+  useEffect(() => {
+    if (!isLoading) {
+      setCurrentMessageIndex(0)
+    }
+  }, [isLoading])
+
+  useEffect(() => {
+    if (isLoading) {
+      // Меняем сообщение каждые 2 секунды
+      const interval = setInterval(() => {
+        setCurrentMessageIndex(prevIndex => (prevIndex + 1) % t.system.videoLoading.length)
+      }, 4000)
+
+      return () => clearInterval(interval)
+    }
+  }, [isLoading, t.system.videoLoading.length])
 
   return (
     <Dialog.Root placement="center">
@@ -95,7 +115,12 @@ export const WithVideoDialog = ({ embedUrl, maxWidth = '900px', children = null 
                   transition="opacity 0.3s ease-in-out"
                 >
                   <Center>
-                    <Spinner size="lg" color="white" />
+                    <VStack gap={3}>
+                      <Spinner size="lg" color="white" />
+                      <Text color="white" fontSize="sm" textAlign="center" maxWidth="200px" whiteSpace="nowrap">
+                        {t.system.videoLoading[currentMessageIndex]}
+                      </Text>
+                    </VStack>
                   </Center>
                 </Box>
               )}

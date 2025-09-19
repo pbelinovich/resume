@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Flex, HStack, VStack, Link as ChakraLink, Button, Drawer, Portal, CloseButton } from '@chakra-ui/react'
-import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { CLink } from './clink'
 import { ThemeToggle } from './theme-toggle'
 import { LanguageToggle } from './language-toggle'
 import { PdfDownloadButton } from './pdf-download-button'
@@ -37,24 +38,24 @@ export const TopLine: React.FC = () => {
       <Flex align="center" justify="space-between" minH={{ base: '60px', md: '72px' }} style={{ width: '100%' }}>
         {/* Left Side - Mobile Logo */}
         <Box display={{ base: 'block', lg: 'none' }}>
-          <RouterLink to="/">
+          <CLink to="/">
             <Logo width={80} height={60} />
-          </RouterLink>
+          </CLink>
         </Box>
 
         {/* Center - Desktop Logo and Navigation */}
         <Flex flex="1" justify={{ base: 'center', lg: 'flex-start' }} align="center" px={4} display={{ base: 'none', lg: 'flex' }}>
           {/* Desktop Logo */}
           <Box mr={8}>
-            <RouterLink to="/">
+            <CLink to="/">
               <Logo width={120} height={72} />
-            </RouterLink>
+            </CLink>
           </Box>
 
           {/* Desktop Navigation */}
           <HStack gap={6}>
             {navItems.map(item => (
-              <RouterLink key={item.path} to={item.path}>
+              <CLink key={item.path} to={item.path}>
                 <ChakraLink
                   fontWeight="semibold"
                   color={location.pathname === item.path ? 'fg' : 'fg.link'}
@@ -64,7 +65,7 @@ export const TopLine: React.FC = () => {
                 >
                   {item.label}
                 </ChakraLink>
-              </RouterLink>
+              </CLink>
             ))}
           </HStack>
         </Flex>
@@ -142,7 +143,7 @@ export const TopLine: React.FC = () => {
               <Drawer.Body>
                 <VStack gap={4} align="stretch" py={4}>
                   {navItems.map(item => (
-                    <RouterLink key={item.path} to={item.path} onClick={handleNavClick}>
+                    <CLink key={item.path} to={item.path} onClick={handleNavClick}>
                       <Button
                         width="100%"
                         justifyContent="flex-start"
@@ -162,7 +163,7 @@ export const TopLine: React.FC = () => {
                       >
                         {item.label}
                       </Button>
-                    </RouterLink>
+                    </CLink>
                   ))}
                 </VStack>
               </Drawer.Body>

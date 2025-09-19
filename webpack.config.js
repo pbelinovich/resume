@@ -22,6 +22,8 @@ class CreateRedirectsPlugin {
   }
 }
 
+const PORT = process.env.PORT || 8001
+
 module.exports = [
   {
     ...configs.getDefaultConfig({
@@ -36,6 +38,7 @@ module.exports = [
         }),
         new webpack.DefinePlugin({
           'process.env.VERSION': JSON.stringify(package.version),
+          'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL || `http://localhost:${PORT}`),
         }),
         new CopyWebpackPlugin({
           patterns: [
@@ -63,7 +66,7 @@ module.exports = [
     }),
     devServer: {
       host: '0.0.0.0',
-      port: 8001,
+      port: PORT,
       historyApiFallback: {
         index: '/index.html', // Указываем, что на все запросы возвращать index.html
       },

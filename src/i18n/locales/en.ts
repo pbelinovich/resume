@@ -710,5 +710,15 @@ export const en: ITranslationKeys = {
     governmentPortals: 'Government Portals:',
     commercialProjects: 'Commercial Projects:',
     webProjectsTitle: 'Web Projects of Various Scales',
+    videoLoading: [
+      'Calculating fonts...',
+      'Loading content...',
+      'Preparing interface...',
+      'Processing data...',
+      'Preparing page...',
+      'Loading video...',
+      'Loading sounds...',
+      'Loading with all my might...',
+    ],
   },
 }
