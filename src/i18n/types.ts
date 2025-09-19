@@ -438,5 +438,16 @@ export interface ITranslationKeys {
     solution: string
     completed: string
     more: string
+    projectGoal: string
+    functionality: string
+    projectDescription: string
+    projects: string
+    requirements: string
+    development: string
+    keySkills: string
+    impact: string
+    governmentPortals: string
+    commercialProjects: string
+    webProjectsTitle: string
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Heading, Text, Link, HStack, VStack, Image, Flex, chakra } from '@chakra-ui/react'
+import { Box, Stack, Heading, Text, Link, HStack, VStack, Image, Flex, chakra, BoxProps, TextProps } from '@chakra-ui/react'
 import { Layout } from '../../components/layout'
 import { useT } from '../../i18n'
 import GithubIconExternal from '../../static-resources/icons/github.svg'
@@ -19,6 +19,26 @@ const LinkComponent = ({ href, children }: { href: string; children: React.React
   )
 }
 
+const Photo = (props: BoxProps) => {
+  const t = useT()
+
+  return (
+    <Box {...props}>
+      <Image src={ProfileImage} alt={t.resume.name} boxSize={{ base: '200px', md: '300px' }} borderRadius="100%" fit="cover" />
+    </Box>
+  )
+}
+
+const ContactNote = (props: TextProps) => {
+  const t = useT()
+
+  return (
+    <Text fontSize="sm" color="fg.subtle" lineHeight={1.4} style={{ opacity: 0.2 }} textAlign="right" {...props}>
+      {t.about.contactNote}
+    </Text>
+  )
+}
+
 export const AboutPage: React.FC = () => {
   const t = useT()
 
@@ -31,6 +51,8 @@ export const AboutPage: React.FC = () => {
             {t.about.pageTitle}
           </Heading>
         </Box>
+
+        <Photo display={{ base: 'flex', md: 'none' }} alignItems="center" justifyContent="center" width="100%" />
 
         {/* Main Content: Links Left, Photo Right */}
         <Flex gap={12} align="start" direction={{ base: 'column', md: 'row' }}>
@@ -60,17 +82,15 @@ export const AboutPage: React.FC = () => {
           </VStack>
 
           {/* Right Side: Photo */}
-          <Box flex="0 0 auto">
-            <Image src={ProfileImage} alt={t.resume.name} boxSize={{ base: '200px', md: '300px' }} borderRadius="100%" fit="cover" />
-          </Box>
+          <Photo display={{ base: 'none', md: 'block' }} />
         </Flex>
 
         {/* Contact Links */}
-        <Box>
-          <Heading size="lg" mb={4} color="fg">
+        <VStack gap={4} align="start">
+          <Heading size="lg" color="fg">
             {t.common.connection}
           </Heading>
-          <Flex align="end" justify="space-between">
+          <Flex align="end" justify="space-between" width="100%">
             <VStack align="start" gap={4}>
               <LinkComponent href="https://t.me/pbelinovich">
                 <HStack gap={3}>
@@ -93,11 +113,10 @@ export const AboutPage: React.FC = () => {
                 </HStack>
               </LinkComponent>
             </VStack>
-            <Text fontSize="sm" color="fg.subtle" lineHeight={1.4} style={{ opacity: 0.1 }} textAlign="right">
-              {t.about.contactNote}
-            </Text>
+            <ContactNote display={{ base: 'none', md: 'block' }} />
           </Flex>
-        </Box>
+          <ContactNote display={{ base: 'block', md: 'none' }} textAlign="right" width="100%" />
+        </VStack>
       </Stack>
     </Layout>
   )

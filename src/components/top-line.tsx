@@ -56,7 +56,7 @@ export const TopLine: React.FC = () => {
             {navItems.map(item => (
               <RouterLink key={item.path} to={item.path}>
                 <ChakraLink
-                  fontWeight={location.pathname === item.path ? 'semibold' : 'normal'}
+                  fontWeight="semibold"
                   color={location.pathname === item.path ? 'fg' : 'fg.link'}
                   fontSize={{ lg: 'md' }}
                   _hover={{ color: 'fg' }}
@@ -146,7 +146,7 @@ export const TopLine: React.FC = () => {
                       <Button
                         width="100%"
                         justifyContent="flex-start"
-                        fontWeight={location.pathname === item.path ? 'semibold' : 'normal'}
+                        fontWeight="semibold"
                         fontSize="lg"
                         variant={location.pathname === item.path ? 'solid' : 'ghost'}
                         colorPalette={location.pathname === item.path ? 'blue' : 'gray'}
@@ -155,6 +155,7 @@ export const TopLine: React.FC = () => {
                         borderRadius="lg"
                         _hover={{
                           bg: location.pathname === item.path ? 'blue.600' : 'gray.100',
+                          color: location.pathname === item.path ? 'white' : 'gray.900',
                           transform: 'translateX(4px)',
                         }}
                         transition="all 0.2s ease"
