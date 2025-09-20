@@ -436,32 +436,30 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
               <Box>
-                <Flex display={{ base: 'block', md: 'flex' }} alignItems="start" justifyContent="space-between" gap={2}>
-                  <VStack align="start" justify="start" mb={{ base: 4, md: 0 }}>
-                    <Link
-                      href="https://t.me/SmartAICartBot"
-                      fontSize={{ base: 'md', md: 'lg' }}
-                      color="fg.blue"
-                      fontWeight="600"
-                      mb={1}
-                      target="_blank"
-                    >
+                <Flex align="start" justify="space-between" gap={4}>
+                  <Box>
+                    <CLink to="/smart-cart" pdf={pdf} color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold" mb={1}>
                       Smart Cart Bot
-                    </Link>
+                    </CLink>
                     <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }}>
                       {t.resume.personalProjects.smartCart.description}
                     </Text>
-                  </VStack>
-                  <VStack align="start" justify="start">
-                    <LinkComponent href="https://t.me/SmartAICartBot">
-                      <TelegramIcon w={4} h={4} fill="fg.blue" />
-                      smartaicartbot
-                    </LinkComponent>
-                    <LinkComponent href="https://github.com/pbelinovich/smart-cart">
-                      <GithubIcon w={4} h={4} fill="fg.blue" />
-                      smart-cart
-                    </LinkComponent>
-                  </VStack>
+                  </Box>
+                  <CLink to="/smart-cart" pdf={pdf} _hover={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="outline"
+                      colorPalette="blue"
+                      fontSize="xs"
+                      fontWeight="medium"
+                      color="fg.blue"
+                      gap={1}
+                      size="xs"
+                      mb={1}
+                    >
+                      <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
+                      <RightIcon w={3} h={3} fill="fg.blue" />
+                    </Button>
+                  </CLink>
                 </Flex>
               </Box>
 
@@ -476,6 +474,19 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                     </List.Item>
                   ))}
                 </List.Root>
+              </Box>
+
+              <Box>
+                <HStack gap={4} flexWrap="wrap">
+                  <LinkComponent href="https://t.me/smartaicartbot">
+                    <TelegramIcon w={4} h={4} fill="fg.blue" />
+                    smartaicartbot
+                  </LinkComponent>
+                  <LinkComponent href="https://github.com/pbelinovich/smart-cart">
+                    <GithubIcon w={4} h={4} fill="fg.blue" />
+                    pbelinovich/smart-cart
+                  </LinkComponent>
+                </HStack>
               </Box>
 
               <Box>

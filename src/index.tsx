@@ -6,6 +6,7 @@ import { AboutPage } from './pages/about'
 import { ResumePage, ResumePDF } from './pages/resume'
 import { JTCPage } from './pages/jtc'
 import { RecifraPage } from './pages/recifra'
+import { SmartCartPage } from './pages/smart-cart'
 import { NotFoundPage } from './pages/not-found'
 import { ColorModeProvider } from './components/color-mode'
 import { I18nProvider, Language } from './i18n'
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: '/recifra',
     element: <RecifraPage />,
+  },
+  {
+    path: '/smart-cart',
+    element: <SmartCartPage />,
   },
   {
     path: '/about',

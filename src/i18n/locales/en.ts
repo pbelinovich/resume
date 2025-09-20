@@ -7,6 +7,7 @@ export const en: ITranslationKeys = {
     jtc: 'jtc',
     recifra: 'recifra',
     about: 'about me',
+    smartCart: 'smart cart',
   },
 
   common: {
@@ -57,7 +58,7 @@ export const en: ITranslationKeys = {
       title: 'Work Experience',
       jtcSenior: {
         period: 'October 2019 – August 2025',
-        periodShort: '2019 – 2025',
+        periodShort: 'Oct 2019 – Aug 2025',
         position: 'Senior Frontend Developer',
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
@@ -90,7 +91,7 @@ export const en: ITranslationKeys = {
       },
       jtcMiddle: {
         period: 'October 2018 – October 2019',
-        periodShort: '2018 – 2019',
+        periodShort: 'Oct 2018 – Oct 2019',
         position: 'Frontend Developer',
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
@@ -105,7 +106,7 @@ export const en: ITranslationKeys = {
       },
       recifra: {
         period: 'August 2016 – September 2018',
-        periodShort: '2016 – 2018',
+        periodShort: 'Aug 2016 – Sep 2018',
         position: '1C-Bitrix Developer, Frontend Developer',
         company: 'Recifra (LLC "Yugra Internet Solutions")',
         location: 'Russia, Khanty-Mansiysk',
@@ -140,7 +141,7 @@ export const en: ITranslationKeys = {
       title: 'Education',
       university: {
         period: 'September 2013 – June 2017',
-        periodShort: '2013 – 2017',
+        periodShort: 'Sep 2013 – Jun 2017',
         name: 'Yugra State University',
         degree: 'Bachelor, "Computer Science and Engineering"',
         achievements: ['Higher technical education', 'KHMAO-Yugra Governor Scholar', 'Thesis: "Web interface for Smart Home system"'],
@@ -201,12 +202,12 @@ export const en: ITranslationKeys = {
     workPeriods: {
       senior: {
         period: 'October 2019 – August 2025',
-        periodShort: '2019 – 2025',
+        periodShort: 'Oct 2019 – Aug 2025',
         position: 'Senior Frontend Developer',
       },
       middle: {
         period: 'October 2018 – October 2019',
-        periodShort: '2018 – 2019',
+        periodShort: 'Oct 2018 – Oct 2019',
         position: 'Frontend Developer',
       },
     },
@@ -672,6 +673,145 @@ export const en: ITranslationKeys = {
           description:
             'Recifra work experience laid solid foundation for further web development growth. Gained skills working with different project types - from government portals to commercial applications - formed understanding of different IT field specifics.',
         },
+      },
+    },
+  },
+
+  smartCart: {
+    pageTitle: 'Smart Cart Bot',
+    subtitle: 'AI-powered Telegram bot for automatic cart building in grocery stores',
+
+    overview: {
+      title: 'Project Overview',
+      description:
+        'Smart Cart Bot is an AI-powered Telegram bot for grocery price comparison. Currently, it is the only service capable of finding the cheapest or most popular product simply by user input, automatically comparing prices across multiple retailers and building optimal shopping carts.',
+      goal: 'Create a completely free service that helps users find the cheapest groceries and build optimal shopping carts without manual price comparison across different stores.',
+      features: [
+        { id: 'ai-parsing', title: 'AI-powered natural language parsing into structured JSON data' },
+        { id: 'price-comparison', title: 'Automatic price comparison across multiple retailers (Pyaterochka, Magnit, Dixi, Perekrestok)' },
+        { id: 'optimal-carts', title: 'Intelligent cart formation with optimal price selection' },
+        { id: 'product-replacement', title: 'Easy product replacement within assembled carts' },
+        { id: 'city-support', title: 'Multi-city support with automatic price updates' },
+        { id: 'impulse-free', title: 'Impulse buying prevention through focused interface' },
+      ],
+    },
+
+    demo: {
+      title: 'Functionality Demonstration',
+      simpleFlow: {
+        title: 'Basic Shopping Flow',
+        description: 'Complete user journey from /start command to receiving optimized shopping carts with price comparison',
+      },
+      categoryFiltering: {
+        title: 'Category Filtering',
+        description: 'Smart understanding of product categories - bot can apply category filters to all products or to specific ones',
+      },
+      cityChange: {
+        title: 'City Selection',
+        description: 'Dynamic city switching with automatic price updates and retailer availability changes',
+      },
+      productReplacement: {
+        title: 'Product Replacement',
+        description: 'Easy product substitution within assembled carts with real-time price recalculation',
+      },
+    },
+
+    architecture: {
+      title: 'System Architecture',
+      microservices: {
+        title: 'Microservices Architecture',
+        description:
+          'The application is built using a microservices architecture with clear separation of concerns between data processing and user interaction layers',
+        backend: {
+          title: 'BACKEND SERVICE',
+          description: 'Independent data processing service that can be connected to any platform (web, mobile, tg bot).',
+          features: [
+            'AI model integration and inference',
+            'Retailer API integration and data processing',
+            'Price comparison algorithms',
+            'Database management and caching',
+            'REST API for external integrations',
+          ],
+        },
+        bot: {
+          title: 'TELEGRAM BOT SERVICE',
+          description: 'Lightweight service that acts as a communication layer between users and the backend.',
+          features: [
+            'Telegram Bot API integration',
+            'User interaction management',
+            'Message processing and validation',
+            'Real-time status updates via SSE',
+            'Error handling and user feedback',
+          ],
+        },
+        communication: {
+          title: 'SERVICE COMMUNICATION',
+          description: 'Communication between services via REST API and Server-Sent Events (SSE) for instant status updates.',
+          features: [
+            'REST API for main operations',
+            'SSE for cart building status tracking',
+            'SSE for city change tracking',
+            'Error status broadcasting',
+            'User progress tracking',
+            'Seamless service coordination',
+          ],
+        },
+      },
+    },
+
+    aiMl: {
+      title: 'AI/ML Implementation',
+      modelTraining: {
+        title: 'Model Fine-tuning',
+        description: 'Custom fine-tuning of Mistral 7B model with specialized dataset for grocery product recognition and parsing',
+        features: [
+          'Generated 1500+ training records using GPT-4',
+          'LoRA (Low-Rank Adaptation) for efficient fine-tuning',
+          'FP16 precision for memory optimization',
+          'Q4_K_M quantization for 12GB VRAM compatibility',
+          'Specialized training for egg-related products recognition',
+        ],
+      },
+      nlpProcessing: {
+        title: 'Product List Parsing',
+        description: 'Converting user messages into structured shopping data',
+        features: [
+          'Natural language to JSON parsing',
+          'Product name extraction and normalization',
+          'Quantity and unit recognition',
+          'Price category classification',
+        ],
+      },
+      optimization: {
+        title: 'Performance Optimization',
+        description: 'Multiple optimization techniques to ensure fast and efficient AI inference on consumer hardware',
+        features: [
+          'Model quantization for reduced memory usage',
+          'FP16 precision for faster inference',
+          'Ollama integration for local model serving',
+          'Caching strategies for repeated queries',
+          'Custom request queue implementation for model requests',
+        ],
+      },
+    },
+
+    techStack: {
+      title: 'Technology Stack',
+      backend: {
+        title: 'Backend Technologies',
+        server: 'Server:',
+        database: 'Database:',
+        communication: 'Communication:',
+      },
+      bot: {
+        title: 'Bot Technologies',
+        telegram: 'Telegram:',
+        ai: 'AI/ML:',
+        integrations: 'Integrations:',
+      },
+      development: {
+        title: 'Development Tools',
+        tools: ['Webpack', 'TypeScript', 'Docker', 'Git', 'NPM'],
       },
     },
   },

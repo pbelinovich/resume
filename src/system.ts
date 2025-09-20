@@ -15,7 +15,7 @@ export const system = createSystem(defaultConfig, {
             value: { _light: '{colors.gray.50}', _dark: '{colors.gray.900}', _pdf: 'white' },
           },
           card: {
-            value: { _light: '{colors.gray.100}', _dark: '{colors.gray.900}', _pdf: '{colors.gray.50}' },
+            value: { _light: '{colors.gray.100}', _dark: '{colors.gray.950}', _pdf: '{colors.gray.50}' },
           },
           badge: {
             DEFAULT: {

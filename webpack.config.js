@@ -47,7 +47,6 @@ module.exports = [
         }),
         new webpack.DefinePlugin({
           'process.env.VERSION': JSON.stringify(package.version),
-          'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL || `http://localhost:${PORT}`),
         }),
         new CopyWebpackPlugin({
           patterns: [

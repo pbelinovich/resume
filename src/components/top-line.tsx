@@ -22,6 +22,7 @@ export const TopLine: React.FC = () => {
     { path: '/', label: t.nav.resume },
     { path: '/jtc', label: t.nav.jtc },
     { path: '/recifra', label: t.nav.recifra },
+    { path: '/smart-cart', label: t.nav.smartCart },
     { path: '/about', label: t.nav.about },
   ]
 
@@ -133,7 +134,7 @@ export const TopLine: React.FC = () => {
         <Portal>
           <Drawer.Backdrop />
           <Drawer.Positioner>
-            <Drawer.Content placement="start" size="sm">
+            <Drawer.Content placement="start" size="sm" maxW={{ base: '60%', sm: '320px' }} minW="220px">
               <Drawer.Header>
                 <Drawer.CloseTrigger asChild>
                   <CloseButton size="sm" />

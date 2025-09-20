@@ -9,6 +9,7 @@ export interface ITranslationKeys {
     jtc: string
     recifra: string
     about: string
+    smartCart: string
   }
 
   // Common
@@ -322,6 +323,99 @@ export interface ITranslationKeys {
       apis: {
         title: string
         items: string[]
+      }
+    }
+  }
+
+  // Smart Cart page
+  smartCart: {
+    pageTitle: string
+    subtitle: string
+    overview: {
+      title: string
+      description: string
+      goal: string
+      features: Array<{
+        id: string
+        title: string
+      }>
+    }
+    demo: {
+      title: string
+      simpleFlow: {
+        title: string
+        description: string
+      }
+      categoryFiltering: {
+        title: string
+        description: string
+      }
+      cityChange: {
+        title: string
+        description: string
+      }
+      productReplacement: {
+        title: string
+        description: string
+      }
+    }
+    architecture: {
+      title: string
+      microservices: {
+        title: string
+        description: string
+        backend: {
+          title: string
+          description: string
+          features: string[]
+        }
+        bot: {
+          title: string
+          description: string
+          features: string[]
+        }
+        communication: {
+          title: string
+          description: string
+          features: string[]
+        }
+      }
+    }
+    aiMl: {
+      title: string
+      modelTraining: {
+        title: string
+        description: string
+        features: string[]
+      }
+      nlpProcessing: {
+        title: string
+        description: string
+        features: string[]
+      }
+      optimization: {
+        title: string
+        description: string
+        features: string[]
+      }
+    }
+    techStack: {
+      title: string
+      backend: {
+        title: string
+        server: string
+        database: string
+        communication: string
+      }
+      bot: {
+        title: string
+        telegram: string
+        ai: string
+        integrations: string
+      }
+      development: {
+        title: string
+        tools: string[]
       }
     }
   }
