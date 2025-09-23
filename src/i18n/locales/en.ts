@@ -699,7 +699,7 @@ export const en: ITranslationKeys = {
     demo: {
       title: 'Functionality Demonstration',
       simpleFlow: {
-        title: 'Basic Shopping Flow',
+        title: 'Basic Flow',
         description: 'Complete user journey from /start command to receiving optimized shopping carts with price comparison',
       },
       categoryFiltering: {

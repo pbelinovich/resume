@@ -13,7 +13,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <ScrollArea.Root w="100%" h={{ base: 'calc(100% - 60px)', md: 'calc(100% - 72px)' }} type="always">
         <ScrollArea.Viewport>
           <ScrollArea.Content textStyle="sm">
-            <Container maxW="4xl" py={8}>
+            <Container maxW="4xl" py={8} mb={{ base: 4, md: 0 }}>
               <Box as="main" bg="bg.subtle" borderRadius="lg" p={{ base: 2, md: 8 }}>
                 <Container pb={{ base: 4, md: 8 }}>{children}</Container>
               </Box>

@@ -725,7 +725,7 @@ export const ru: ITranslationKeys = {
     demo: {
       title: 'Демонстрация функционала',
       simpleFlow: {
-        title: 'Базовый флоу покупок',
+        title: 'Базовый флоу',
         description: 'Полный пользовательский путь от команды /start до получения оптимизированных корзин с сравнением цен',
       },
       categoryFiltering: {

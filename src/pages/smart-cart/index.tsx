@@ -54,7 +54,7 @@ export const SmartCartPage = () => {
             <Card.Body p={4}>
               <VStack align="stretch" gap={4}>
                 <Box>
-                  <Text color="fg.subtle" lineHeight={1.4} mb={3}>
+                  <Text color="fg.subtle" lineHeight={1.4}>
                     {t.smartCart.overview.description}
                   </Text>
                 </Box>
