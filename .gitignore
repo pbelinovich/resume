@@ -103,3 +103,4 @@ yarn-error.log
 
 .cursor
 .env
+webpack-stats.json

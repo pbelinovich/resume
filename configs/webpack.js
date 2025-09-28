@@ -44,7 +44,6 @@ const getDefaultConfig = (options = {}) => {
   const libraryTarget = options.libraryTarget || (buildForReactNative ? 'commonjs2' : 'umd')
   const useBabelFor = options.useBabelFor || ''
   const pathToBabelConfig = options.pathToBabelConfig || path.resolve(__dirname, './babel.config.js')
-  const outputJsFileName = options.outputJsFileName || 'index.js'
   const dictionariesOutputPath = options.dictionariesOutputPath || './'
 
   const babelConfig = require(pathToBabelConfig)
@@ -160,7 +159,7 @@ const getDefaultConfig = (options = {}) => {
       },
     ],
     output: {
-      filename: outputJsFileName,
+      filename: env === 'production' ? '[name].[contenthash].js' : '[name].js',
       path: path.resolve(distFolder),
       assetModuleFilename: 'resources/[hash][ext][query]',
       globalObject: 'this',
@@ -188,8 +187,48 @@ const getDefaultConfig = (options = {}) => {
       minimizer: [
         new TerserPlugin({
           extractComments: false,
+          terserOptions: {
+            compress: {
+              drop_console: env === 'production', // Убираем console.log в продакшне
+              drop_debugger: true,
+              unused: true, // Убираем неиспользуемый код
+            },
+            mangle: {
+              safari10: true, // Фикс для Safari 10
+            },
+          },
         }),
       ],
+      usedExports: true,
+      sideEffects: false,
+      providedExports: true, // Помогает tree shaking
+      innerGraph: true, // Улучшенный tree shaking для вложенных экспортов
+
+      // Разделение бандла на чанки
+      splitChunks: {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 2500000,
+        cacheGroups: {
+          // Библиотеки node_modules
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 10,
+            reuseExistingChunk: true,
+          },
+          // Общий код приложения
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+        },
+      },
+
+      // Лучший tree shaking
+      concatenateModules: true, // ModuleConcatenationPlugin
     },
     plugins: [
       new CleanWebpackPlugin(cleanWebpackPluginOptions),
