@@ -19,8 +19,29 @@ const PDF_CONFIG = {
   preferCSSPageSize: true,
 }
 
+const CHROME_PATHS = {
+  darwin: [
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Chromium.app/Contents/MacOS/Chromium',
+    process.env.PUPPETEER_EXECUTABLE_PATH,
+  ].filter(Boolean),
+  linux: ['/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser', process.env.PUPPETEER_EXECUTABLE_PATH].filter(
+    Boolean
+  ),
+  win32: [process.env.PUPPETEER_EXECUTABLE_PATH, 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'].filter(Boolean),
+}
+
+function getChromeExecutablePath() {
+  const candidates = CHROME_PATHS[process.platform] || []
+  for (const p of candidates) {
+    if (p && fs.existsSync(p)) return p
+  }
+  return undefined
+}
+
 const BROWSER_CONFIG = {
   headless: 'new',
+  executablePath: getChromeExecutablePath(),
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',
@@ -35,6 +56,12 @@ const VIEWPORT_CONFIG = {
   height: 1600,
   deviceScaleFactor: 2,
 }
+
+const PAGE_CONFIGS = [
+  { path: 'resume-pdf', outputName: 'resume', languages: ['ru', 'en'] },
+  { path: 'jtc-pdf', outputName: 'jtc', languages: ['ru', 'en'] },
+  { path: 'recifra-pdf', outputName: 'recifra', languages: ['ru', 'en'] },
+]
 
 // Общие функции для генерации PDF
 
@@ -60,7 +87,20 @@ function ensurePdfDirectory() {
  */
 async function setupBrowser() {
   console.log('🌐 Launching browser...')
-  const browser = await puppeteer.launch(BROWSER_CONFIG)
+  const config = { ...BROWSER_CONFIG }
+  if (!config.executablePath) {
+    console.log('💡 Chrome not found in standard paths. Run: npx puppeteer browsers install chrome')
+  }
+  let browser
+  try {
+    browser = await puppeteer.launch(config)
+  } catch (err) {
+    if (err.message && err.message.includes('Could not find Chrome')) {
+      console.error('❌ Install Chrome for PDF generation: npx puppeteer browsers install chrome')
+      console.error('   Or install Google Chrome / Chromium in Applications (macOS).')
+    }
+    throw err
+  }
   const page = await browser.newPage()
 
   // Устанавливаем viewport для корректного рендеринга
@@ -84,38 +124,31 @@ async function setupBrowser() {
 /**
  * Загружает страницу и устанавливает язык
  */
-async function loadPageWithLanguage(page, language) {
-  const url = `http://localhost:3000/resume-pdf?lang=${language}`
-  console.log(`📄 Loading resume PDF page (${language})...`)
+async function loadPageWithLanguage(page, pagePath, language) {
+  const url = `http://localhost:3000/${pagePath}?lang=${language}`
+  console.log(`📄 Loading ${pagePath} (${language})...`)
 
   await page.goto(url, {
     waitUntil: 'networkidle0',
     timeout: 30000,
   })
 
-  // Ждем загрузки и применения языка
   await new Promise(resolve => setTimeout(resolve, 3000))
 
-  // Проверяем, что язык применился
-  const pageText = await page.evaluate(() => {
-    return document.body.innerText.toLowerCase()
-  })
-
-  // Отладочная информация
+  const pageText = await page.evaluate(() => document.body.innerText.toLowerCase())
   console.log(`📝 Page text preview: ${pageText.substring(0, 200)}...`)
 
-  // Проверяем наличие характерных слов для каждого языка
-  const isEnglish = pageText.includes('professional summary') || pageText.includes('work experience')
-  const isRussian = pageText.includes('профессиональное резюме') || pageText.includes('опыт работы')
-
-  console.log(`🔍 Language detection: English=${isEnglish}, Russian=${isRussian}`)
+  const isEnglish =
+    pageText.includes('professional summary') || pageText.includes('work experience') || pageText.includes('expression editor')
+  const isRussian =
+    pageText.includes('профессиональное резюме') || pageText.includes('опыт работы') || pageText.includes('редактор выражений')
 
   if (language === 'en' && isEnglish && !isRussian) {
-    console.log(`✅ English language applied successfully`)
+    console.log(`✅ English applied for ${pagePath}`)
   } else if (language === 'ru' && isRussian && !isEnglish) {
-    console.log(`✅ Russian language applied successfully`)
+    console.log(`✅ Russian applied for ${pagePath}`)
   } else {
-    console.warn(`⚠️ Language may not have been applied correctly for ${language}`)
+    console.warn(`⚠️ Language may not match for ${pagePath} (${language})`)
   }
 }
 
@@ -167,12 +200,12 @@ async function validatePageLoad(page, language) {
 }
 
 /**
- * Генерирует PDF для конкретного языка
+ * Генерирует PDF для страницы и языка
  */
-async function generatePdfForLanguage(language) {
-  const pdfOutput = path.join(PDF_OUTPUT_DIR, `resume-${language}.pdf`)
+async function generatePdfForPage(pagePath, outputName, language) {
+  const pdfOutput = path.join(PDF_OUTPUT_DIR, `${outputName}-${language}.pdf`)
 
-  console.log(`📋 Generating PDF for ${language}...`)
+  console.log(`📋 Generating ${outputName}-${language}.pdf...`)
 
   if (fs.existsSync(pdfOutput)) {
     fs.unlinkSync(pdfOutput)
@@ -181,7 +214,7 @@ async function generatePdfForLanguage(language) {
   const { browser, page } = await setupBrowser()
 
   try {
-    await loadPageWithLanguage(page, language)
+    await loadPageWithLanguage(page, pagePath, language)
     await applyPdfTheme(page)
     await validatePageLoad(page, language)
 
@@ -190,7 +223,7 @@ async function generatePdfForLanguage(language) {
       ...PDF_CONFIG,
     })
 
-    console.log(`✅ PDF generated successfully for ${language}: ${pdfOutput}`)
+    console.log(`✅ ${outputName}-${language}.pdf: ${pdfOutput}`)
     return pdfOutput
   } finally {
     await browser.close()
@@ -200,26 +233,29 @@ async function generatePdfForLanguage(language) {
 /**
  * Основная функция генерации PDF
  */
-async function generatePDF(languages = ['ru']) {
+async function generatePDF(languages = ['ru'], pageFilter = null) {
   console.log('🚀 Starting PDF generation...')
 
   checkBuildExists()
   ensurePdfDirectory()
 
+  const configs = pageFilter != null ? PAGE_CONFIGS.filter(c => c.outputName === pageFilter) : PAGE_CONFIGS
+
   let serverStarted = false
 
   try {
-    // Запускаем статический сервер
     console.log('📡 Starting static server...')
     await startServer()
     serverStarted = true
 
     const generatedFiles = []
 
-    // Генерируем PDF для каждого языка
-    for (const language of languages) {
-      const pdfPath = await generatePdfForLanguage(language)
-      generatedFiles.push(pdfPath)
+    for (const pageConfig of configs) {
+      const pageLangs = pageConfig.languages.filter(l => languages.includes(l))
+      for (const language of pageLangs) {
+        const pdfPath = await generatePdfForPage(pageConfig.path, pageConfig.outputName, language)
+        generatedFiles.push(pdfPath)
+      }
     }
 
     console.log('📋 PDFs will be copied to dist/ during webpack build')
@@ -228,7 +264,6 @@ async function generatePDF(languages = ['ru']) {
     console.error('❌ Error generating PDF:', error)
     process.exit(1)
   } finally {
-    // Останавливаем сервер
     if (serverStarted) {
       await stopServer()
     }
@@ -238,17 +273,25 @@ async function generatePDF(languages = ['ru']) {
 // Экспортируем функции для использования в других скриптах
 module.exports = {
   generatePDF,
-  generatePdfForLanguage,
+  generatePdfForPage,
+  PAGE_CONFIGS,
   PDF_CONFIG,
   BROWSER_CONFIG,
   VIEWPORT_CONFIG,
 }
 
-// Запускаем генерацию для обоих языков
 if (require.main === module) {
-  const languages = process.argv.includes('--en-only') ? ['en'] : process.argv.includes('--ru-only') ? ['ru'] : ['ru', 'en']
+  const argv = process.argv
+  const languages = argv.includes('--en-only') ? ['en'] : argv.includes('--ru-only') ? ['ru'] : ['ru', 'en']
+  const pageFilter = argv.includes('--resume-only')
+    ? 'resume'
+    : argv.includes('--jtc-only')
+    ? 'jtc'
+    : argv.includes('--recifra-only')
+    ? 'recifra'
+    : null
 
-  generatePDF(languages).catch(error => {
+  generatePDF(languages, pageFilter).catch(error => {
     console.error('Fatal error:', error)
     process.exit(1)
   })

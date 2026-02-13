@@ -4,8 +4,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { AboutPage } from './pages/about'
 import { ResumePage, ResumePDF } from './pages/resume'
-import { JTCPage } from './pages/jtc'
-import { RecifraPage } from './pages/recifra'
+import { JTCPage, JTCPDF } from './pages/jtc'
+import { RecifraPage, RecifraPDF } from './pages/recifra'
 import { SmartCartPage } from './pages/smart-cart'
 import { NotFoundPage } from './pages/not-found'
 import { ColorModeProvider } from './components/color-mode'
@@ -13,6 +13,8 @@ import { I18nProvider, Language } from './i18n'
 import { system } from './system'
 import './styles.css'
 import './static-resources/inter/inter.css'
+
+export * from './tasks'
 
 const router = createBrowserRouter([
   {
@@ -24,8 +26,16 @@ const router = createBrowserRouter([
     element: <ResumePDF />,
   },
   {
+    path: '/jtc-pdf',
+    element: <JTCPDF />,
+  },
+  {
     path: '/jtc',
     element: <JTCPage />,
+  },
+  {
+    path: '/recifra-pdf',
+    element: <RecifraPDF />,
   },
   {
     path: '/recifra',

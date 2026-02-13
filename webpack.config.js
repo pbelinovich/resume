@@ -67,6 +67,26 @@ module.exports = [
               to: 'resume-en.pdf',
               noErrorOnMissing: true,
             },
+            {
+              from: './src/static-resources/jtc-ru.pdf',
+              to: 'jtc-ru.pdf',
+              noErrorOnMissing: true,
+            },
+            {
+              from: './src/static-resources/jtc-en.pdf',
+              to: 'jtc-en.pdf',
+              noErrorOnMissing: true,
+            },
+            {
+              from: './src/static-resources/recifra-ru.pdf',
+              to: 'recifra-ru.pdf',
+              noErrorOnMissing: true,
+            },
+            {
+              from: './src/static-resources/recifra-en.pdf',
+              to: 'recifra-en.pdf',
+              noErrorOnMissing: true,
+            },
           ],
         }),
         new CreateRedirectsPlugin(),
