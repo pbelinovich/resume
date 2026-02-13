@@ -41,7 +41,7 @@ export const en: ITranslationKeys = {
 
     professionalSummary: {
       title: 'Professional Summary',
-      description: `Senior Frontend/Fullstack Developer with 9+ years of experience designing and developing enterprise applications with React, TypeScript, and Node.js. Architected CMS platform migration from file system to RavenDB, built an innovative DOM-based code editor and an automated deployment system. Applying AI/ML in practice: fine-tuned Mistral 7B for NLP tasks in a personal pet project with microservices architecture.`,
+      description: `Senior Frontend/Fullstack Developer with 9+ years of experience designing and developing enterprise applications with React, TypeScript, and Node.js. Experienced in building fintech solutions for top Russian banks (VTB, Gazprom Bank, UBRiR, Otkritie). Architected low-code platform migration from file system to RavenDB, built an innovative DOM-based code editor and an automated deployment system. Applying AI/ML in practice: fine-tuned Mistral 7B for NLP tasks in a personal pet project with microservices architecture.`,
     },
 
     keySkills: {
@@ -61,11 +61,14 @@ export const en: ITranslationKeys = {
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
         achievements: [
-          'Designed and implemented CODELESS CMS data storage migration from file system to RavenDB, eliminating performance issues as projects scaled and enabling horizontal scaling',
+          'Designed and implemented CODELESS low-code platform data storage migration from file system to RavenDB, eliminating performance issues as projects scaled and enabling horizontal scaling',
           'Developed an automated isolated environment ("pod") creation system, replacing manual DevOps setup and reducing deployment time for new versions',
           'Built an innovative DOM-based code editor with real-time validation, autocompletion, and full typing — a key tool for accelerating project creation on the platform',
           'Migrated real-time communication from WebSocket to SSE, reducing server load by eliminating persistent bidirectional connections; implemented a typed API layer via Proxy',
           'Implemented a configuration comparison system in Web Workers, preventing main thread blocking when processing large data volumes',
+          'Established code quality culture: Jest unit tests, custom documentation tool DNA (TypeDoc-based) with commit blocking on missing docs, video tutorials and regular demos for management',
+          'Maintained and evolved the internal platform UI-KIT over several years, ensuring interface consistency and accelerating new module development',
+          'Mentored CODELESS developers: assisted with onboarding, platform adaptation, and technical problem resolution',
         ],
       },
       jtcMiddle: {
@@ -75,7 +78,7 @@ export const en: ITranslationKeys = {
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
         achievements: [
-          'Developed account, statement, and payment order modules for major bank digital banking systems (VTB, Gazprom Bank, Otkritie Bank), serving millions of clients',
+          'Developed account, statement, and payment order modules for major bank digital banking systems (VTB, Gazprom Bank, UBRiR, Absolut Bank, Otkritie), serving millions of clients',
           'Created a standard page generator for digital banking, unifying architecture and accelerating new module development by several times',
         ],
       },
@@ -123,7 +126,7 @@ export const en: ITranslationKeys = {
       title: 'Additional Information',
       workFormat: {
         title: 'Work format:',
-        description: 'Remote work, hybrid format, open to relocation',
+        description: 'Remote work, hybrid format, open to relocation. Experience working in distributed teams using Agile/Scrum',
       },
       interests: {
         title: 'Interests:',

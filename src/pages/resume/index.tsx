@@ -107,7 +107,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.frontend}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['React', 'TypeScript', 'Redux', 'Web Workers', 'WebSocket', 'SCSS/CSS', 'React Native'].map(skill => (
+                {['JavaScript', 'React', 'TypeScript', 'Redux', 'Web Workers', 'WebSocket', 'SCSS/CSS', 'React Native'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.blue">
                     {skill}
                   </Badge>
@@ -152,7 +152,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.tools}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['Webpack', 'Git', 'Docker', 'CI/CD', 'NPM CLI', 'Cursor'].map(skill => (
+                {['Jest', 'Webpack', 'Git', 'Docker', 'Gerrit', 'Jenkins', 'Nexus', 'NPM CLI'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.orange">
                     {skill}
                   </Badge>
@@ -237,7 +237,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
 
               <Box>
                 <Flex wrap="wrap" gap={2}>
-                  {['React', 'TypeScript', 'Node.js', 'RavenDB', 'Web Workers', 'SSE', 'Express', 'React Native'].map(skill => (
+                  {['React', 'TypeScript', 'Node.js', 'RavenDB', 'Web Workers', 'SSE', 'Express', 'Jest', 'React Native'].map(skill => (
                     <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
                       {skill}
                     </Badge>
