@@ -61,18 +61,7 @@ export interface ITranslationKeys {
         position: string
         company: string
         location: string
-        migration: {
-          title: string
-          description: string[]
-        }
-        frontend: {
-          title: string
-          description: string[]
-        }
-        integration: {
-          title: string
-          description: string[]
-        }
+        achievements: string[]
       }
       jtcMiddle: {
         period: string
@@ -80,10 +69,7 @@ export interface ITranslationKeys {
         position: string
         company: string
         location: string
-        dbo: {
-          title: string
-          description: string[]
-        }
+        achievements: string[]
       }
       recifra: {
         period: string
@@ -91,10 +77,7 @@ export interface ITranslationKeys {
         position: string
         company: string
         location: string
-        projects: {
-          title: string
-          description: string[]
-        }
+        achievements: string[]
       }
     }
     personalProjects: {
@@ -119,15 +102,11 @@ export interface ITranslationKeys {
     }
     additionalInfo: {
       title: string
-      preferences: {
+      workFormat: {
         title: string
         description: string
       }
       interests: {
-        title: string
-        description: string
-      }
-      status: {
         title: string
         description: string
       }

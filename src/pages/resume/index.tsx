@@ -137,7 +137,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.aiMachineLearning}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['Fine-tuning', 'LoRA', 'Ollama', 'Mistral 7B', 'Model Optimization', 'Quantization'].map(skill => (
+                {['Fine-tuning', 'LoRA', 'Ollama', 'Mistral 7B', 'Quantization', 'NLP'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.purple">
                     {skill}
                   </Badge>
@@ -226,37 +226,8 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Box>
 
               <Box>
-                <Heading size="sm" mb={3} color="fg">
-                  {t.resume.workExperience.jtcSenior.migration.title}
-                </Heading>
                 <List.Root pl={4} gap={1}>
-                  {t.resume.workExperience.jtcSenior.migration.description.map((item, index) => (
-                    <List.Item key={index}>
-                      <Text fontSize="sm">{item}</Text>
-                    </List.Item>
-                  ))}
-                </List.Root>
-              </Box>
-
-              <Box>
-                <Heading size="sm" mb={3} color="fg">
-                  {t.resume.workExperience.jtcSenior.frontend.title}
-                </Heading>
-                <List.Root pl={4} gap={1}>
-                  {t.resume.workExperience.jtcSenior.frontend.description.map((item, index) => (
-                    <List.Item key={index}>
-                      <Text fontSize="sm">{item}</Text>
-                    </List.Item>
-                  ))}
-                </List.Root>
-              </Box>
-
-              <Box>
-                <Heading size="sm" mb={3} color="fg">
-                  {t.resume.workExperience.jtcSenior.integration.title}
-                </Heading>
-                <List.Root pl={4} gap={1}>
-                  {t.resume.workExperience.jtcSenior.integration.description.map((item, index) => (
+                  {t.resume.workExperience.jtcSenior.achievements.map((item, index) => (
                     <List.Item key={index}>
                       <Text fontSize="sm">{item}</Text>
                     </List.Item>
@@ -326,11 +297,8 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Box>
 
               <Box>
-                <Heading size="sm" mb={3} color="fg">
-                  {t.resume.workExperience.jtcMiddle.dbo.title}
-                </Heading>
                 <List.Root pl={4} gap={1}>
-                  {t.resume.workExperience.jtcMiddle.dbo.description.map((item, index) => (
+                  {t.resume.workExperience.jtcMiddle.achievements.map((item, index) => (
                     <List.Item key={index}>
                       <Text fontSize="sm">{item}</Text>
                     </List.Item>
@@ -400,11 +368,8 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
               </Box>
 
               <Box>
-                <Heading size="sm" mb={3} color="fg">
-                  {t.resume.workExperience.recifra.projects.title}
-                </Heading>
                 <List.Root pl={4} gap={1}>
-                  {t.resume.workExperience.recifra.projects.description.map((item, index) => (
+                  {t.resume.workExperience.recifra.achievements.map((item, index) => (
                     <List.Item key={index}>
                       <Text fontSize="sm">{item}</Text>
                     </List.Item>
@@ -414,7 +379,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
 
               <Box>
                 <Flex wrap="wrap" gap={2}>
-                  {[t.common.bitrix, 'jQuery', 'Backbone', 'Underscore', 'Cordova', 'Framework 7'].map(skill => (
+                  {[t.common.bitrix, 'jQuery', 'Backbone.js', 'Cordova', 'Framework 7'].map(skill => (
                     <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
                       {skill}
                     </Badge>
@@ -541,16 +506,6 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                   </List.Item>
                 ))}
               </List.Root>
-
-              <Box>
-                <Flex wrap="wrap" gap={2}>
-                  {['Backbone.js', 'Underscore.js', 'jQuery', 'Cordova', 'Framework 7', 'HTML/CSS', 'JavaScript'].map(skill => (
-                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
-                      {skill}
-                    </Badge>
-                  ))}
-                </Flex>
-              </Box>
             </VStack>
           </Card.Body>
         </Card.Root>
@@ -567,9 +522,9 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
             <VStack align="stretch" gap={4}>
               <Box>
                 <Text fontWeight="semibold" fontSize="sm" mb={2}>
-                  {t.resume.additionalInfo.preferences.title}
+                  {t.resume.additionalInfo.workFormat.title}
                 </Text>
-                <Text fontSize="sm">{t.resume.additionalInfo.preferences.description}</Text>
+                <Text fontSize="sm">{t.resume.additionalInfo.workFormat.description}</Text>
               </Box>
 
               <Box>
@@ -577,13 +532,6 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                   {t.resume.additionalInfo.interests.title}
                 </Text>
                 <Text fontSize="sm">{t.resume.additionalInfo.interests.description}</Text>
-              </Box>
-
-              <Box>
-                <Text fontWeight="semibold" fontSize="sm" mb={2}>
-                  {t.resume.additionalInfo.status.title}
-                </Text>
-                <Text fontSize="sm">{t.resume.additionalInfo.status.description}</Text>
               </Box>
             </VStack>
           </Card.Body>

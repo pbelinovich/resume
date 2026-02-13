@@ -37,13 +37,13 @@ export const en: ITranslationKeys = {
   resume: {
     pageTitle: 'Resume - Pavel Belinovich',
     name: 'Pavel Belinovich',
-    jobTitle: 'Senior Frontend Developer | AI & Machine Learning Enthusiast',
+    jobTitle: 'Senior Frontend / Fullstack Developer',
 
     professionalSummary: {
       title: 'Professional Summary',
-      description: `Senior Frontend Developer with ${
+      description: `Senior Frontend/Fullstack Developer with ${
         new Date().getFullYear() - START_YEAR
-      }+ years of experience building enterprise applications. Specializing in React ecosystem, architectural solutions, and AI/ML technology integration into products. Full-stack development experience including legacy system migrations and implementing modern architectural patterns.`,
+      }+ years of experience designing and developing enterprise applications with React, TypeScript, and Node.js. Architected CMS platform migration from file system to RavenDB, built an innovative DOM-based code editor and an automated deployment system. Applying AI/ML in practice: fine-tuned Mistral 7B for NLP tasks in a personal pet project with microservices architecture.`,
     },
 
     keySkills: {
@@ -62,32 +62,13 @@ export const en: ITranslationKeys = {
         position: 'Senior Frontend Developer',
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
-        migration: {
-          title: 'CODELESS CMS System Migration',
-          description: [
-            'Participated in designing and implementing migration from file system to RavenDB + Node.js',
-            'Developed automatic isolated environment ("pods") creation system with dynamic nginx configuration',
-            'Created SSE communicator with typed API methods through Proxy API',
-            'Implemented repository architecture with transaction support in memory/database layers',
-          ],
-        },
-        frontend: {
-          title: 'Frontend Development',
-          description: [
-            'Developed code editor with real-time validation, autocompletion, and DOM rendering',
-            'Created figma-style main page interface with adaptive grid system',
-            'Implemented configuration comparison system with Web Workers calculations',
-            'Built usage calculation mechanism for project element navigation',
-          ],
-        },
-        integration: {
-          title: 'Integration Solutions',
-          description: [
-            'Created project integration mechanism between different CODELESS instances',
-            'Developed module connection system with npm/Nexus repository integration',
-            'Implemented React Native module for PayControl — seamless document signing integration',
-          ],
-        },
+        achievements: [
+          'Designed and implemented CODELESS CMS data storage migration from file system to RavenDB, eliminating performance issues as projects scaled and enabling horizontal scaling',
+          'Developed an automated isolated environment ("pod") creation system, replacing manual DevOps setup and reducing deployment time for new versions',
+          'Built an innovative DOM-based code editor with real-time validation, autocompletion, and full typing — a key tool for accelerating project creation on the platform',
+          'Migrated real-time communication from WebSocket to SSE, reducing server load by eliminating persistent bidirectional connections; implemented a typed API layer via Proxy',
+          'Implemented a configuration comparison system in Web Workers, preventing main thread blocking when processing large data volumes',
+        ],
       },
       jtcMiddle: {
         period: 'October 2018 – October 2019',
@@ -95,14 +76,10 @@ export const en: ITranslationKeys = {
         position: 'Frontend Developer',
         company: 'JTC (JSC "JT Consulting")',
         location: 'Russia, Saint Petersburg',
-        dbo: {
-          title: 'Banking System Module Development',
-          description: [
-            'Created account, statement, and payment order modules for VTB, Gazprom Bank, Otkritie Bank',
-            'Worked with client-side microservice architecture',
-            'Implemented complex forms with multi-stage validation and error handling',
-          ],
-        },
+        achievements: [
+          'Developed account, statement, and payment order modules for major bank digital banking systems (VTB, Gazprom Bank, Otkritie Bank), serving millions of clients',
+          'Created a standard page generator for digital banking, unifying architecture and accelerating new module development by several times',
+        ],
       },
       recifra: {
         period: 'August 2016 – September 2018',
@@ -110,28 +87,25 @@ export const en: ITranslationKeys = {
         position: '1C-Bitrix Developer, Frontend Developer',
         company: 'Recifra (LLC "Yugra Internet Solutions")',
         location: 'Russia, Khanty-Mansiysk',
-        projects: {
-          title: 'Major Projects',
-          description: [
-            'HANS pizza chain IS — order management system (Dodo system analog)',
-            'KHMAO Gosuslugi mobile app — regional version for iOS/Android',
-            'Corporate portals: Yugra Development Fund, Yugra Investment Portal',
-          ],
-        },
+        achievements: [
+          'Developed an order management IS for the regional HANS pizza chain (Dodo system analog): ordering, tracking, delivery',
+          'Built a cross-platform KHMAO Gosuslugi mobile app for iOS/Android',
+          'Created government portals for the Yugra Development Fund and Yugra Investment Portal',
+        ],
       },
     },
 
     personalProjects: {
       title: 'Personal Projects',
       smartCart: {
-        description: 'AI-powered Telegram bot for comparing grocery store prices and automatically collecting carts from user messages',
+        description:
+          'AI-powered Telegram bot for comparing grocery store prices and automatically building optimal shopping carts',
         features: {
           title: 'Features',
           items: [
-            'Fine-tuning Mistral 7B with custom dataset (1500+ records)',
-            'Natural language parsing into structured data (JSON)',
-            'Integration with multiple retailer APIs (Pyaterochka, Magnit, Dixi, Perekrestok)',
-            'Automatic price comparison and optimal cart formation',
+            'Fine-tuned Mistral 7B (LoRA, Q4_K_M quantization) on a custom dataset of 1500+ records for parsing natural language into structured data',
+            'Designed microservices architecture: independent backend service + Telegram bot, connected via REST API and SSE',
+            'Integrated APIs of four retailers (Pyaterochka, Magnit, Dixi, Perekrestok) with automatic price comparison and optimal cart formation',
           ],
         },
       },
@@ -144,23 +118,21 @@ export const en: ITranslationKeys = {
         periodShort: 'Sep 2013 – Jun 2017',
         name: 'Yugra State University',
         degree: 'Bachelor, "Computer Science and Engineering"',
-        achievements: ['Higher technical education', 'KHMAO-Yugra Governor Scholar', 'Thesis: "Web interface for Smart Home system"'],
+        achievements: [
+          'KHMAO-Yugra Governor Scholar',
+        ],
       },
     },
 
     additionalInfo: {
       title: 'Additional Information',
-      preferences: {
-        title: 'Preferences:',
-        description: 'Remote work, open to relocation',
+      workFormat: {
+        title: 'Work format:',
+        description: 'Remote work, hybrid format, open to relocation',
       },
       interests: {
         title: 'Interests:',
-        description: 'AI/ML development, frontend application architecture, performance optimization',
-      },
-      status: {
-        title: 'Status:',
-        description: 'Actively seeking Senior Frontend/Fullstack Developer position with AI/ML technology opportunities',
+        description: 'AI/ML, frontend application architecture, performance optimization',
       },
     },
   },

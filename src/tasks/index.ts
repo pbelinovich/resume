@@ -50,7 +50,7 @@ console.log('!!', curry(sum)(1, 2, 3))
 console.log('!!', curry(sum)(1, 2)(3))
 console.log('!!', curry(sum)(1)(2)(3)) */
 
-const timeLimited = (fn, t) => {
+const timeLimited = (fn: (...args: any[]) => any, t: number) => {
   return (...args: any[]) => {
     return new Promise((resolve, reject) => {
       const timer = setTimeout(() => {
