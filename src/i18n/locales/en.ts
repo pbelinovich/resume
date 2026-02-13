@@ -41,9 +41,7 @@ export const en: ITranslationKeys = {
 
     professionalSummary: {
       title: 'Professional Summary',
-      description: `Senior Frontend/Fullstack Developer with ${
-        new Date().getFullYear() - START_YEAR
-      }+ years of experience designing and developing enterprise applications with React, TypeScript, and Node.js. Architected CMS platform migration from file system to RavenDB, built an innovative DOM-based code editor and an automated deployment system. Applying AI/ML in practice: fine-tuned Mistral 7B for NLP tasks in a personal pet project with microservices architecture.`,
+      description: `Senior Frontend/Fullstack Developer with 9+ years of experience designing and developing enterprise applications with React, TypeScript, and Node.js. Architected CMS platform migration from file system to RavenDB, built an innovative DOM-based code editor and an automated deployment system. Applying AI/ML in practice: fine-tuned Mistral 7B for NLP tasks in a personal pet project with microservices architecture.`,
     },
 
     keySkills: {
@@ -98,8 +96,7 @@ export const en: ITranslationKeys = {
     personalProjects: {
       title: 'Personal Projects',
       smartCart: {
-        description:
-          'AI-powered Telegram bot for comparing grocery store prices and automatically building optimal shopping carts',
+        description: 'AI-powered Telegram bot for comparing grocery store prices and automatically building optimal shopping carts',
         features: {
           title: 'Features',
           items: [
@@ -118,9 +115,7 @@ export const en: ITranslationKeys = {
         periodShort: 'Sep 2013 – Jun 2017',
         name: 'Yugra State University',
         degree: 'Bachelor, "Computer Science and Engineering"',
-        achievements: [
-          'KHMAO-Yugra Governor Scholar',
-        ],
+        achievements: ['KHMAO-Yugra Governor Scholar'],
       },
     },
 

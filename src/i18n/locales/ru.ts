@@ -41,9 +41,7 @@ export const ru: ITranslationKeys = {
 
     professionalSummary: {
       title: 'Профессиональное резюме',
-      description: `Senior Frontend/Fullstack разработчик с ${
-        new Date().getFullYear() - START_YEAR
-      }+ годами опыта в проектировании и развитии enterprise-приложений на React, TypeScript и Node.js. Спроектировал архитектуру миграции CMS-платформы с файловой системы на RavenDB, создал инновационный DOM-based редактор кода и систему автоматического развертывания. Применяю AI/ML на практике: дообучил Mistral 7B для NLP-задач в собственном pet-проекте с микросервисной архитектурой.`,
+      description: `Senior Frontend/Fullstack разработчик с 9+ годами опыта в проектировании и развитии enterprise-приложений на React, TypeScript и Node.js. Спроектировал архитектуру миграции CMS-платформы с файловой системы на RavenDB, создал инновационный DOM-based редактор кода и систему автоматического развертывания. Применяю AI/ML на практике: дообучил Mistral 7B для NLP-задач в собственном pet-проекте с микросервисной архитектурой.`,
     },
 
     keySkills: {
@@ -98,8 +96,7 @@ export const ru: ITranslationKeys = {
     personalProjects: {
       title: 'Личные проекты',
       smartCart: {
-        description:
-          'AI-powered Telegram бот для сравнения цен в продуктовых магазинах и автоматического сбора оптимальных корзин',
+        description: 'AI-powered Telegram бот для сравнения цен в продуктовых магазинах и автоматического сбора оптимальных корзин',
         features: {
           title: 'Особенности',
           items: [
@@ -118,9 +115,7 @@ export const ru: ITranslationKeys = {
         periodShort: 'Сен 2013 – Июн 2017',
         name: 'Югорский государственный университет',
         degree: 'Бакалавриат, «Информатика и вычислительная техника»',
-        achievements: [
-          'Стипендиат Губернатора ХМАО-Югры',
-        ],
+        achievements: ['Стипендиат Губернатора ХМАО-Югры'],
       },
     },
 
