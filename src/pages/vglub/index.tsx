@@ -60,7 +60,21 @@ export const VglubPage = () => {
   const LinkIcon = colorMode === 'dark' ? LinkDarkIcon : LinkLightIcon
   const screenshots = screenshotsByTheme[colorMode === 'dark' ? 'dark' : 'light']
   const [openedScreenshotId, setOpenedScreenshotId] = React.useState<string | null>(null)
+  const [zoom, setZoom] = React.useState(1)
   const openedScreenshot = openedScreenshotId ? t.vglub.screenshots.items.find(item => item.id === openedScreenshotId) : undefined
+
+  const MIN_ZOOM = 1
+  const MAX_ZOOM = 4
+  const ZOOM_STEP = 1.5
+
+  const openScreenshot = (id: string) => {
+    setZoom(1)
+    setOpenedScreenshotId(id)
+  }
+
+  const zoomIn = () => setZoom(value => Math.min(MAX_ZOOM, value * ZOOM_STEP))
+  const zoomOut = () => setZoom(value => Math.max(MIN_ZOOM, value / ZOOM_STEP))
+  const toggleZoom = () => setZoom(value => (value > 1 ? 1 : 2))
 
   React.useEffect(() => {
     if (!openedScreenshotId) return
@@ -278,7 +292,7 @@ export const VglubPage = () => {
                 cursor="pointer"
                 transition="transform 0.15s ease"
                 _hover={{ transform: 'scale(1.01)' }}
-                onClick={() => setOpenedScreenshotId(item.id)}
+                onClick={() => openScreenshot(item.id)}
               >
                 <img src={screenshots[item.id].preview} alt={item.title} loading="lazy" style={{ width: '100%', display: 'block' }} />
                 <Card.Body p={4}>
@@ -307,22 +321,32 @@ export const VglubPage = () => {
             >
               <Box
                 maxW="100%"
-                maxH="85vh"
+                maxH="80vh"
                 overflow="auto"
                 borderRadius={8}
                 boxShadow="0 8px 40px rgba(0, 0, 0, 0.6)"
-                cursor="default"
+                cursor={zoom > 1 ? 'grab' : 'zoom-in'}
                 onClick={event => event.stopPropagation()}
               >
                 <Image
                   src={screenshots[openedScreenshot.id].full}
                   alt={openedScreenshot.title}
                   display="block"
-                  minW={{ base: '1100px', lg: 'auto' }}
-                  maxW={{ base: 'none', lg: '100%' }}
-                  maxH={{ lg: '85vh' }}
+                  onDoubleClick={toggleZoom}
+                  {...(zoom > 1 ? { w: `${zoom * 100}%`, maxW: 'none' } : { maxW: '100%', maxH: '80vh' })}
                 />
               </Box>
+              <HStack gap={3} onClick={event => event.stopPropagation()}>
+                <Button size="sm" variant="solid" colorPalette="gray" onClick={zoomOut} disabled={zoom <= MIN_ZOOM} aria-label="Zoom out">
+                  −
+                </Button>
+                <Text color="whiteAlpha.900" fontSize="sm" minW="48px" textAlign="center">
+                  {Math.round(zoom * 100)}%
+                </Text>
+                <Button size="sm" variant="solid" colorPalette="gray" onClick={zoomIn} disabled={zoom >= MAX_ZOOM} aria-label="Zoom in">
+                  +
+                </Button>
+              </HStack>
               <Text color="whiteAlpha.900" fontSize="sm" px={2} textAlign="center">
                 {openedScreenshot.title}
               </Text>
