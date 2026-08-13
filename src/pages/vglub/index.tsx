@@ -348,10 +348,24 @@ export const VglubPage = () => {
               cursor="zoom-out"
               onClick={() => setOpenedScreenshotId(null)}
             >
+              <Flex w="100%" justify="flex-end">
+                <Button
+                  aria-label="Close"
+                  size="sm"
+                  variant="solid"
+                  colorPalette="gray"
+                  onClick={event => {
+                    event.stopPropagation()
+                    setOpenedScreenshotId(null)
+                  }}
+                >
+                  ✕
+                </Button>
+              </Flex>
               <Box
                 ref={scrollAreaRef}
                 maxW="100%"
-                maxH="80vh"
+                maxH="75vh"
                 overflow="auto"
                 css={{ scrollbarWidth: 'none', msOverflowStyle: 'none', '&::-webkit-scrollbar': { display: 'none' } }}
                 borderRadius={8}
@@ -370,7 +384,7 @@ export const VglubPage = () => {
                   draggable={false}
                   userSelect="none"
                   onDoubleClick={toggleZoom}
-                  {...(zoom > 1 ? { w: `${zoom * 100}%`, maxW: 'none' } : { maxW: '100%', maxH: '80vh' })}
+                  {...(zoom > 1 ? { w: `${zoom * 100}%`, maxW: 'none' } : { maxW: '100%', maxH: '75vh' })}
                 />
               </Box>
               <HStack gap={3} onClick={event => event.stopPropagation()}>
@@ -387,21 +401,6 @@ export const VglubPage = () => {
               <Text color="whiteAlpha.900" fontSize="sm" px={2} textAlign="center">
                 {openedScreenshot.title}
               </Text>
-              <Button
-                aria-label="Close"
-                position="absolute"
-                top={3}
-                right={3}
-                size="sm"
-                variant="solid"
-                colorPalette="gray"
-                onClick={event => {
-                  event.stopPropagation()
-                  setOpenedScreenshotId(null)
-                }}
-              >
-                ✕
-              </Button>
             </Box>
           )}
         </Box>
