@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Stack, Heading, Text, Link, HStack, VStack, Image, Flex, chakra, BoxProps, TextProps } from '@chakra-ui/react'
 import { Layout } from '../../components/layout'
+import { CLink } from '../../components/clink'
 import { useT } from '../../i18n'
 import GithubIconExternal from '../../static-resources/icons/github.svg'
 import TelegramIconExternal from '../../static-resources/icons/telegram.svg'
@@ -63,18 +64,24 @@ export const AboutPage: React.FC = () => {
               <VStack align="start" gap={4}>
                 {t.about.paragraphs.map((paragraph, pIndex) => (
                   <Box key={pIndex}>
-                    {paragraph.map((line, index) => (
-                      <Text
-                        key={index}
-                        as="span"
-                        fontWeight={line.kind === 'strong' ? 'bold' : 'normal'}
-                        fontSize="md"
-                        lineHeight={1.7}
-                        color="fg.subtle"
-                      >
-                        {line.text}
-                      </Text>
-                    ))}
+                    {paragraph.map((line, index) =>
+                      line.kind === 'link' ? (
+                        <CLink key={index} to={line.to} color="fg.link" fontSize="md" lineHeight={1.7} fontWeight="bold">
+                          {line.text}
+                        </CLink>
+                      ) : (
+                        <Text
+                          key={index}
+                          as="span"
+                          fontWeight={line.kind === 'strong' ? 'bold' : 'normal'}
+                          fontSize="md"
+                          lineHeight={1.7}
+                          color="fg.subtle"
+                        >
+                          {line.text}
+                        </Text>
+                      )
+                    )}
                   </Box>
                 ))}
               </VStack>

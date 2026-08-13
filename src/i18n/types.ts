@@ -1,6 +1,6 @@
 export type Language = 'ru' | 'en'
 
-export type TextLine = { kind: 'text'; text: string } | { kind: 'strong'; text: string }
+export type TextLine = { kind: 'text'; text: string } | { kind: 'strong'; text: string } | { kind: 'link'; text: string; to: string }
 
 export interface ITranslationKeys {
   // Navigation

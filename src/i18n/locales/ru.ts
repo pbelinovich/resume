@@ -157,7 +157,7 @@ export const ru: ITranslationKeys = {
       [{ kind: 'strong', text: `Павел Белинович, ${new Date().getFullYear() - BIRTH_YEAR} лет` }],
       [{ kind: 'strong', text: 'Санкт-Петербург' }],
 
-      [{ kind: 'text', text: 'Сижу на разработке чего-то тяжелого, нового, чего никто никогда ранее не делал.' }],
+      [{ kind: 'text', text: 'Берусь за тяжёлое, новое — то, чего никто раньше не делал.' }],
       [
         { kind: 'strong', text: '«Problem solving»' },
         { kind: 'text', text: ' как смысл жизни.' },
@@ -165,7 +165,7 @@ export const ru: ITranslationKeys = {
       [{ kind: 'text', text: 'Особенно радует, когда результат работы можно посмотреть, пощупать, показать друзьям.' }],
       [
         { kind: 'text', text: 'Сейчас строю свой продукт ' },
-        { kind: 'strong', text: '«Вглубь»' },
+        { kind: 'link', text: '«Вглубь»', to: '/vglub' },
         { kind: 'text', text: ' — рабочее пространство для психологов с AI-супервизором (vglub.space).' },
       ],
       [

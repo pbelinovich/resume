@@ -165,7 +165,7 @@ export const en: ITranslationKeys = {
       [{ kind: 'text', text: 'Especially enjoy when work results can be seen, touched, shown to friends.' }],
       [
         { kind: 'text', text: 'Currently building my own product ' },
-        { kind: 'strong', text: 'Vglub' },
+        { kind: 'link', text: 'Vglub', to: '/vglub' },
         { kind: 'text', text: ' — a workspace for psychologists with an AI supervisor (vglub.space).' },
       ],
       [
