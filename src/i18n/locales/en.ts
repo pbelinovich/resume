@@ -42,7 +42,7 @@ export const en: ITranslationKeys = {
 
     professionalSummary: {
       title: 'Professional Summary',
-      description: `Senior Frontend/Fullstack Developer with 10+ years of experience, including 7 years building digital banking and fintech solutions for top Russian banks (VTB, Gazprom Bank, UBRiR, Otkritie) with React, TypeScript, and Node.js. Since 2026 — founder and architect of the Vglub SaaS product: brought a platform with E2E encryption (152-FZ), real-time SSE, and AI features to pre-release using agentic AI development (Claude Code, Codex) under my own architecture and review. Previously — a low-code platform migration to RavenDB and a DOM-based code editor.`,
+      description: `Senior Frontend / Fullstack Developer with 10+ years of experience, including 7 years building digital banking and fintech solutions for top Russian banks (VTB, Gazprom Bank, UBRiR, Otkritie) with React, TypeScript, and Node.js. Since 2026 — founder and architect of the Vglub SaaS product: brought a platform with E2E encryption (152-FZ), real-time SSE, and AI features to pre-release using agentic AI development (Claude Code, Codex) under my own architecture and review. Previously — a low-code platform migration to RavenDB and a DOM-based code editor.`,
     },
 
     keySkills: {
