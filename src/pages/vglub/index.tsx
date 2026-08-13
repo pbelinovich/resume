@@ -74,7 +74,7 @@ export const VglubPage = () => {
 
   const zoomIn = () => setZoom(value => Math.min(MAX_ZOOM, value * ZOOM_STEP))
   const zoomOut = () => setZoom(value => Math.max(MIN_ZOOM, value / ZOOM_STEP))
-  const toggleZoom = () => setZoom(value => (value > 1 ? 1 : 2))
+  const stepZoom = () => setZoom(value => (value >= MAX_ZOOM ? MIN_ZOOM : Math.min(MAX_ZOOM, value * ZOOM_STEP)))
 
   const scrollAreaRef = React.useRef<HTMLDivElement | null>(null)
   const dragStateRef = React.useRef<{ startX: number; startY: number; scrollLeft: number; scrollTop: number } | null>(null)
@@ -378,8 +378,9 @@ export const VglubPage = () => {
                 }}
                 borderRadius={8}
                 boxShadow="0 8px 40px rgba(0, 0, 0, 0.6)"
-                cursor={zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in'}
+                cursor={zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'}
                 onClick={event => event.stopPropagation()}
+                onDoubleClick={stepZoom}
                 onPointerDown={onPanStart}
                 onPointerMove={onPanMove}
                 onPointerUp={onPanEnd}
@@ -391,7 +392,6 @@ export const VglubPage = () => {
                   display="block"
                   draggable={false}
                   userSelect="none"
-                  onDoubleClick={toggleZoom}
                   {...(zoom > 1 ? { w: `${zoom * 100}%`, maxW: 'none' } : { maxW: '100%', maxH: '75vh' })}
                 />
               </Box>
