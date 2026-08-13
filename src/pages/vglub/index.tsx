@@ -76,6 +76,35 @@ export const VglubPage = () => {
   const zoomOut = () => setZoom(value => Math.max(MIN_ZOOM, value / ZOOM_STEP))
   const toggleZoom = () => setZoom(value => (value > 1 ? 1 : 2))
 
+  const scrollAreaRef = React.useRef<HTMLDivElement | null>(null)
+  const dragStateRef = React.useRef<{ startX: number; startY: number; scrollLeft: number; scrollTop: number } | null>(null)
+  const [isDragging, setIsDragging] = React.useState(false)
+
+  const onPanStart = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== 'mouse' || zoom <= 1 || !scrollAreaRef.current) return
+
+    dragStateRef.current = {
+      startX: event.clientX,
+      startY: event.clientY,
+      scrollLeft: scrollAreaRef.current.scrollLeft,
+      scrollTop: scrollAreaRef.current.scrollTop,
+    }
+    setIsDragging(true)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const onPanMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragStateRef.current || !scrollAreaRef.current) return
+
+    scrollAreaRef.current.scrollLeft = dragStateRef.current.scrollLeft - (event.clientX - dragStateRef.current.startX)
+    scrollAreaRef.current.scrollTop = dragStateRef.current.scrollTop - (event.clientY - dragStateRef.current.startY)
+  }
+
+  const onPanEnd = () => {
+    dragStateRef.current = null
+    setIsDragging(false)
+  }
+
   React.useEffect(() => {
     if (!openedScreenshotId) return
 
@@ -315,23 +344,30 @@ export const VglubPage = () => {
               alignItems="center"
               justifyContent="center"
               gap={3}
-              p={{ base: 2, md: 8 }}
+              p={3}
               cursor="zoom-out"
               onClick={() => setOpenedScreenshotId(null)}
             >
               <Box
+                ref={scrollAreaRef}
                 maxW="100%"
                 maxH="80vh"
                 overflow="auto"
                 borderRadius={8}
                 boxShadow="0 8px 40px rgba(0, 0, 0, 0.6)"
-                cursor={zoom > 1 ? 'grab' : 'zoom-in'}
+                cursor={zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in'}
                 onClick={event => event.stopPropagation()}
+                onPointerDown={onPanStart}
+                onPointerMove={onPanMove}
+                onPointerUp={onPanEnd}
+                onPointerCancel={onPanEnd}
               >
                 <Image
                   src={screenshots[openedScreenshot.id].full}
                   alt={openedScreenshot.title}
                   display="block"
+                  draggable={false}
+                  userSelect="none"
                   onDoubleClick={toggleZoom}
                   {...(zoom > 1 ? { w: `${zoom * 100}%`, maxW: 'none' } : { maxW: '100%', maxH: '80vh' })}
                 />
