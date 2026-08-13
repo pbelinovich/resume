@@ -7,6 +7,7 @@ import { ResumePage, ResumePDF } from './pages/resume'
 import { JTCPage, JTCPDF } from './pages/jtc'
 import { RecifraPage, RecifraPDF } from './pages/recifra'
 import { SmartCartPage } from './pages/smart-cart'
+import { VglubPage } from './pages/vglub'
 import { NotFoundPage } from './pages/not-found'
 import { ColorModeProvider } from './components/color-mode'
 import { I18nProvider, Language } from './i18n'
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/jtc',
     element: <JTCPage />,
+  },
+  {
+    path: '/vglub',
+    element: <VglubPage />,
   },
   {
     path: '/recifra-pdf',

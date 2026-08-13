@@ -107,7 +107,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.frontend}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['JavaScript', 'React', 'TypeScript', 'Redux', 'Web Workers', 'WebSocket', 'SCSS/CSS', 'React Native'].map(skill => (
+                {['JavaScript', 'React', 'TypeScript', 'Redux', 'Tailwind CSS', 'Web Workers', 'WebSocket', 'SCSS/CSS'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.blue">
                     {skill}
                   </Badge>
@@ -122,7 +122,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.backendDatabases}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['Node.js', 'Express', 'RavenDB', 'REST API', 'SSE'].map(skill => (
+                {['Node.js', 'Express', 'Hono', 'RavenDB', 'REST API', 'SSE', 'gRPC'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.green">
                     {skill}
                   </Badge>
@@ -137,7 +137,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.aiMachineLearning}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['Fine-tuning', 'LoRA', 'Ollama', 'Mistral 7B', 'Quantization', 'NLP'].map(skill => (
+                {['Claude Code', 'Codex', 'LLM Integration', 'Fine-tuning (LoRA)', 'Ollama'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.purple">
                     {skill}
                   </Badge>
@@ -152,7 +152,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.tools}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['Jest', 'Webpack', 'Git', 'Docker', 'Gerrit', 'Jenkins', 'Nexus', 'NPM CLI'].map(skill => (
+                {['Jest', 'Playwright', 'Webpack', 'Docker', 'GitHub Actions', 'Yandex Cloud'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.orange">
                     {skill}
                   </Badge>
@@ -169,8 +169,98 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
           {t.resume.workExperience.title}
         </Heading>
 
-        {/* JTC Senior */}
+        {/* Vglub */}
         <Card.Root mb={8} bg="bg.card">
+          <Card.Body p={6}>
+            <VStack align="stretch" gap={4}>
+              <Box>
+                <Flex align="start" justify="space-between" mb={1} gap={4}>
+                  <Box>
+                    <Heading display={{ base: 'none', md: 'block' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.vglub.period}
+                    </Heading>
+                    <Heading display={{ base: 'block', md: 'none' }} size="sm" color="fg.subtle" mb={1}>
+                      {t.resume.workExperience.vglub.periodShort}
+                    </Heading>
+                    <CLink to="/vglub" pdf={pdf} color="fg.blue" fontSize={{ base: 'md', md: 'lg' }} fontWeight="semibold">
+                      {t.resume.workExperience.vglub.position}
+                    </CLink>
+                  </Box>
+                  <CLink to="/vglub" pdf={pdf} _hover={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="outline"
+                      colorPalette="blue"
+                      fontSize="xs"
+                      fontWeight="medium"
+                      color="fg.blue"
+                      gap={1}
+                      size="xs"
+                      mb={1}
+                    >
+                      <Box display={{ base: 'none', md: 'block' }}>{t.system.more}</Box>
+                      <RightIcon w={3} h={3} fill="fg.blue" />
+                    </Button>
+                  </CLink>
+                </Flex>
+
+                <Wrap display={{ base: 'block', md: 'flex' }}>
+                  <WrapItem>
+                    <Link href="https://vglub.space/" color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} target="_blank">
+                      <Box display={{ base: 'none', md: 'block' }}>
+                        <LinkIcon width={16} height={16} />
+                      </Box>
+                      {t.resume.workExperience.vglub.company}
+                    </Link>
+                  </WrapItem>
+                  <WrapItem display={{ base: 'none', md: 'flex' }}>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }}>
+                      •
+                    </Text>
+                  </WrapItem>
+                  <WrapItem>
+                    <Text color="fg.subtle" fontSize={{ base: 'xs', md: 'sm' }} fontStyle="italic">
+                      {t.resume.workExperience.vglub.location}
+                    </Text>
+                  </WrapItem>
+                </Wrap>
+              </Box>
+
+              <Box>
+                <List.Root pl={4} gap={1}>
+                  {t.resume.workExperience.vglub.achievements.map((item, index) => (
+                    <List.Item key={index}>
+                      <Text fontSize="sm">{item}</Text>
+                    </List.Item>
+                  ))}
+                </List.Root>
+              </Box>
+
+              <Box>
+                <Flex wrap="wrap" gap={2}>
+                  {[
+                    'React 19',
+                    'TypeScript',
+                    'Node.js',
+                    'Hono',
+                    'RavenDB',
+                    'SSE',
+                    'Web Crypto',
+                    'Docker',
+                    'GitHub Actions',
+                    'Yandex Cloud',
+                  ].map(skill => (
+                    <Badge key={skill} colorPalette="gray" variant="outline" fontSize="xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </Flex>
+              </Box>
+            </VStack>
+          </Card.Body>
+        </Card.Root>
+
+        {/* JTC Senior */}
+        <Card.Root mb={8} bg="bg.card" css={pageBreak}>
           <Card.Body p={6}>
             <VStack align="stretch" gap={4}>
               <Box>

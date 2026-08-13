@@ -20,6 +20,7 @@ export const TopLine: React.FC = () => {
 
   const navItems: { path: string; label: string }[] = [
     { path: '/', label: t.nav.resume },
+    { path: '/vglub', label: t.nav.vglub },
     { path: '/jtc', label: t.nav.jtc },
     { path: '/recifra', label: t.nav.recifra },
     { path: '/smart-cart', label: t.nav.smartCart },

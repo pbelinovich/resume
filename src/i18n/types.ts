@@ -6,6 +6,7 @@ export interface ITranslationKeys {
   // Navigation
   nav: {
     resume: string
+    vglub: string
     jtc: string
     recifra: string
     about: string
@@ -55,6 +56,14 @@ export interface ITranslationKeys {
     }
     workExperience: {
       title: string
+      vglub: {
+        period: string
+        periodShort: string
+        position: string
+        company: string
+        location: string
+        achievements: string[]
+      }
       jtcSenior: {
         period: string
         periodShort: string
@@ -395,6 +404,94 @@ export interface ITranslationKeys {
       development: {
         title: string
         tools: string[]
+      }
+    }
+  }
+
+  // Vglub page
+  vglub: {
+    pageTitle: string
+    subtitle: string
+    overview: {
+      title: string
+      description: string
+      goal: string
+      features: Array<{
+        id: string
+        title: string
+      }>
+    }
+    role: {
+      title: string
+      description: string
+      items: string[]
+    }
+    aiDrivenDev: {
+      title: string
+      description: string
+      items: string[]
+    }
+    architecture: {
+      title: string
+      encryption: {
+        title: string
+        description: string
+        features: string[]
+      }
+      realtime: {
+        title: string
+        description: string
+        features: string[]
+      }
+      backend: {
+        title: string
+        description: string
+        features: string[]
+      }
+      infra: {
+        title: string
+        description: string
+        features: string[]
+      }
+    }
+    aiFeatures: {
+      title: string
+      analysis: {
+        title: string
+        description: string
+        features: string[]
+      }
+      chat: {
+        title: string
+        description: string
+        features: string[]
+      }
+      voice: {
+        title: string
+        description: string
+        features: string[]
+      }
+    }
+    screenshots: {
+      title: string
+      items: Array<{
+        id: string
+        title: string
+      }>
+    }
+    techStack: {
+      title: string
+      frontend: {
+        title: string
+        items: string[]
+      }
+      backend: {
+        title: string
+        items: string[]
+      }
+      infra: {
+        title: string
+        items: string[]
       }
     }
   }

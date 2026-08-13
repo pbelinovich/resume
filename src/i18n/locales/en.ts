@@ -4,6 +4,7 @@ import { BIRTH_YEAR, START_YEAR } from './constants'
 export const en: ITranslationKeys = {
   nav: {
     resume: 'resume',
+    vglub: 'vglub',
     jtc: 'jtc',
     recifra: 'recifra',
     about: 'about me',
@@ -37,11 +38,11 @@ export const en: ITranslationKeys = {
   resume: {
     pageTitle: 'Resume - Pavel Belinovich',
     name: 'Pavel Belinovich',
-    jobTitle: 'Senior Frontend / Fullstack Developer',
+    jobTitle: 'Senior Frontend / Fullstack Developer (React, TypeScript, Node.js)',
 
     professionalSummary: {
       title: 'Professional Summary',
-      description: `Senior Frontend/Fullstack Developer with 9+ years of experience designing and developing enterprise applications with React, TypeScript, and Node.js. Experienced in building fintech solutions for top Russian banks (VTB, Gazprom Bank, UBRiR, Otkritie). Architected low-code platform migration from file system to RavenDB, built an innovative DOM-based code editor and an automated deployment system. Applying AI/ML in practice: fine-tuned Mistral 7B for NLP tasks in a personal pet project with microservices architecture.`,
+      description: `Senior Frontend/Fullstack Developer with 10+ years of experience, including 7 years building digital banking and fintech solutions for top Russian banks (VTB, Gazprom Bank, UBRiR, Otkritie) with React, TypeScript, and Node.js. Since 2026 — founder and architect of the Vglub SaaS product: brought a platform with E2E encryption (152-FZ), real-time SSE, and AI features to pre-release using agentic AI development (Claude Code, Codex) under my own architecture and review. Previously — a low-code platform migration to RavenDB and a DOM-based code editor.`,
     },
 
     keySkills: {
@@ -54,6 +55,21 @@ export const en: ITranslationKeys = {
 
     workExperience: {
       title: 'Work Experience',
+      vglub: {
+        period: 'March 2026 – Present',
+        periodShort: 'Mar 2026 – Present',
+        position: 'Founder / Software Architect',
+        company: 'Vglub (vglub.space)',
+        location: 'Russia, Saint Petersburg',
+        achievements: [
+          'Founded Vglub, a SaaS product for psychologists and coaches — a workspace with session templates, clinical assessments, and an AI supervisor — and brought it to pre-release in partnership with a design studio owner',
+          'Designed the architecture and single-handedly brought the product to production (~255k lines of TypeScript) through agentic AI development (Claude Code, Codex): formal specifications and ADRs as the contract for agents, mandatory review, typing, lint, and 600+ test files as the quality gate',
+          'Designed true end-to-end encryption of client personal data in line with the Russian personal data law 152-FZ (Web Crypto: AES-GCM, PBKDF2, passkeys/WebAuthn) — the server never sees the data',
+          'Designed an event-driven backend with CQRS and a real-time SSE layer: JSON-patch state diffs, LLM response streaming, automatic reconnect, background workers for AI analysis',
+          'Integrated a multi-provider AI layer (DeepSeek, Cloud.ru, Yandex SpeechKit over gRPC) with fallback chains for provider outages, per-request cost accounting, and per-user budgets',
+          'Set up infrastructure and zero-downtime CI/CD in Yandex Cloud: Docker, GitHub Actions with OIDC federation and no stored secrets, health-gated deploys, and cascade rollback',
+        ],
+      },
       jtcSenior: {
         period: 'October 2019 – August 2025',
         periodShort: 'Oct 2019 – Aug 2025',
@@ -147,6 +163,11 @@ export const en: ITranslationKeys = {
         { kind: 'text', text: ' as life purpose.' },
       ],
       [{ kind: 'text', text: 'Especially enjoy when work results can be seen, touched, shown to friends.' }],
+      [
+        { kind: 'text', text: 'Currently building my own product ' },
+        { kind: 'strong', text: 'Vglub' },
+        { kind: 'text', text: ' — a workspace for psychologists with an AI supervisor (vglub.space).' },
+      ],
       [
         {
           kind: 'text',
@@ -782,6 +803,168 @@ export const en: ITranslationKeys = {
       development: {
         title: 'Development Tools',
         tools: ['Webpack', 'TypeScript', 'Docker', 'Git', 'NPM'],
+      },
+    },
+  },
+
+  vglub: {
+    pageTitle: 'Vglub',
+    subtitle: 'SaaS platform for psychologists and coaches: a workspace with session templates, clinical assessments, and an AI supervisor',
+
+    overview: {
+      title: 'Project Overview',
+      description:
+        'Vglub is a PWA where a psychologist manages clients and sessions, runs clinical assessments, gets AI analysis of their work, and dictates notes by voice. The idea and architecture are mine; the product is built together with a partner — a design studio owner responsible for design and communication. The product is at the pre-release stage.',
+      goal: 'Build a modern workspace for practicing psychologists with privacy by construction: client personal data is encrypted on the device, and the server never has access to it.',
+      features: [
+        { id: 'clients', title: 'Client records with E2E encryption of personal data' },
+        {
+          id: 'sessions',
+          title: 'Sessions with structured templates per therapeutic approach (Gestalt, CBT, Coaching) and freeform notes',
+        },
+        { id: 'tests', title: 'Clinical assessments with scoring, interpretation, and score-dynamics charts' },
+        { id: 'ai-supervisor', title: "AI supervisor: background analysis of the client's recent sessions" },
+        { id: 'ai-chat', title: 'AI chat with streaming responses scoped to a client or session' },
+        { id: 'voice', title: 'Voice input into any field with multi-provider speech recognition' },
+        { id: 'calendar', title: 'Custom calendar with drag-and-drop and overlap packing' },
+        { id: 'search', title: 'Global Cmd+K search across clients, sessions, pages, and actions' },
+      ],
+    },
+
+    role: {
+      title: 'Role in Project',
+      description:
+        'Founder and architect. Not a single line of code written by hand — all code is produced by AI agents under my direction, and every line has passed my review.',
+      items: [
+        'Product decisions, prioritization, and roadmap',
+        'Architecture design: 25+ specifications and ADRs in a linked knowledge base',
+        'AI agent orchestration (Claude Code, Codex): task definition, review, quality control',
+        'Infrastructure, CI/CD, and quality process setup (typing, lint, tests)',
+      ],
+    },
+
+    aiDrivenDev: {
+      title: 'AI-Driven Development',
+      description: 'The product is practical proof that a single architect with AI agents can build a production-scale system.',
+      items: [
+        '~255,000 lines of TypeScript: ~1,000 frontend and ~1,000 backend files',
+        '600+ test files (unit + Playwright E2E) run by a local CI harness',
+        'Spec-first approach: every feature has a normative specification the code anchors back to',
+        'Custom checks harness: incremental prettier/lint/typecheck on changed files, flaky-test quarantine',
+      ],
+    },
+
+    architecture: {
+      title: 'System Architecture',
+      encryption: {
+        title: 'E2E Encryption',
+        description:
+          "Client personal data is encrypted on the psychologist's device — the server only ever sees ciphertext. The approach covers the requirements of the Russian personal data law 152-FZ.",
+        features: [
+          'Client-side 256-bit master key: PBKDF2 (600k iterations) + AES-KW',
+          'AES-GCM for personal data, extensible key-wrapping model',
+          'Three unlock paths: password, device key in IndexedDB, passkey (WebAuthn PRF)',
+          'Tab coordination via Web Locks and device-key self-healing',
+        ],
+      },
+      realtime: {
+        title: 'Real-Time over SSE',
+        description: 'A unified server-sent events infrastructure for live UI updates and AI response streaming.',
+        features: [
+          'Single /events channel with typed, scoped events',
+          'State diffs via JSON-patch',
+          'Token-by-token AI chat streaming',
+          'Three-signal auto-reconnect surviving backend restarts with no UI errors',
+        ],
+      },
+      backend: {
+        title: 'CQRS & Event-Driven Backend',
+        description: 'Read/write separation per domain with an event bus and background workers.',
+        features: [
+          'Read/write operations across ~35 business domains',
+          'Event bus: repository events fan out to SSE, analytics, and workers',
+          'Background worker pool for AI analysis and email, startup task recovery',
+          'AI cost accounting: unified micro-dollar unit, versioned prices, per-user budgets',
+        ],
+      },
+      infra: {
+        title: 'Infrastructure & CI/CD',
+        description: 'Production in Yandex Cloud with zero-downtime deploys and no stored secrets.',
+        features: [
+          'Yandex Cloud: app + RavenDB on an isolated network, nginx edge, Cloudflare DNS',
+          'Zero-downtime deploys: health-gated container swaps, cascade rollback',
+          'GitHub Actions + OIDC federation for registry access without stored secrets',
+          'Docker Compose, private Verdaccio npm registry, Telegram deploy notifications',
+        ],
+      },
+    },
+
+    aiFeatures: {
+      title: 'Product AI Features',
+      analysis: {
+        title: 'AI Supervisor',
+        description: "Background analysis of the psychologist's work with a client based on recent sessions.",
+        features: [
+          "Digest built from the client's last 5 sessions",
+          'Background workers + live status via SSE',
+          'Staleness detection when new data arrives',
+        ],
+      },
+      chat: {
+        title: 'AI Chat',
+        description: 'Streaming assistant chat scoped to a specific client or session.',
+        features: [
+          'Token-by-token response streaming over SSE',
+          'Topical guardrails: off-topic requests politely declined',
+          'Model fallback chain when a provider is unavailable',
+        ],
+      },
+      voice: {
+        title: 'Voice Input',
+        description: 'Note dictation into any field of the app with speech recognition.',
+        features: [
+          'Recordings from 0.5 to 180 seconds into any text field',
+          'Multi-provider STT with fallback: Yandex SpeechKit (gRPC), Cloud.ru, OpenAI',
+          'Server-side audio normalization via ffmpeg (16 kHz mono WAV)',
+        ],
+      },
+    },
+
+    screenshots: {
+      title: 'Screenshots',
+      items: [
+        { id: 'home', title: 'Home: weekly overview and upcoming sessions' },
+        { id: 'schedule', title: 'Schedule: session overlaps and conflicts' },
+        { id: 'patients', title: 'Clients: a live list with meeting rhythm' },
+        { id: 'patient-card', title: 'Client card: sessions and AI chat' },
+        { id: 'session', title: 'Session card: CBT protocol and notes' },
+        { id: 'settings', title: 'Settings: profile and AI usage' },
+      ],
+    },
+
+    techStack: {
+      title: 'Tech Stack',
+      frontend: {
+        title: 'Frontend',
+        items: [
+          'React 19',
+          'TypeScript',
+          'Vite',
+          'TanStack Router',
+          'Tailwind CSS v4',
+          'Radix UI',
+          'IndexedDB (Dexie)',
+          'Web Crypto API',
+          'PWA',
+        ],
+      },
+      backend: {
+        title: 'Backend',
+        items: ['Node.js 24', 'Hono', 'RavenDB', 'Zod', 'JWT', 'S3', 'gRPC', 'node-cron', 'SSE'],
+      },
+      infra: {
+        title: 'Infrastructure & Quality',
+        items: ['Yandex Cloud', 'Docker', 'GitHub Actions', 'nginx', 'Cloudflare', 'Verdaccio', 'Playwright', 'Vitest'],
       },
     },
   },
