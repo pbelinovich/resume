@@ -353,6 +353,7 @@ export const VglubPage = () => {
                 maxW="100%"
                 maxH="80vh"
                 overflow="auto"
+                css={{ scrollbarWidth: 'none', msOverflowStyle: 'none', '&::-webkit-scrollbar': { display: 'none' } }}
                 borderRadius={8}
                 boxShadow="0 8px 40px rgba(0, 0, 0, 0.6)"
                 cursor={zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in'}
