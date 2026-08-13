@@ -367,7 +367,15 @@ export const VglubPage = () => {
                 maxW="100%"
                 maxH="75vh"
                 overflow="auto"
-                css={{ scrollbarWidth: 'none', msOverflowStyle: 'none', '&::-webkit-scrollbar': { display: 'none' } }}
+                css={{
+                  scrollbarWidth: 'thin',
+                  scrollbarColor: 'rgba(120, 120, 120, 0.6) transparent',
+                  '&::-webkit-scrollbar': { width: '8px', height: '8px' },
+                  '&::-webkit-scrollbar-track': { background: 'transparent' },
+                  '&::-webkit-scrollbar-thumb': { background: 'rgba(120, 120, 120, 0.6)', borderRadius: '4px' },
+                  '&::-webkit-scrollbar-thumb:hover': { background: 'rgba(120, 120, 120, 0.85)' },
+                  '&::-webkit-scrollbar-corner': { background: 'transparent' },
+                }}
                 borderRadius={8}
                 boxShadow="0 8px 40px rgba(0, 0, 0, 0.6)"
                 cursor={zoom > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in'}
