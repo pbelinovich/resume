@@ -137,7 +137,7 @@ const ResumeContent = ({ pdf }: { pdf?: boolean }) => {
                 {t.resume.keySkills.aiMachineLearning}
               </Heading>
               <Flex wrap="wrap" gap={2}>
-                {['Claude Code', 'Codex', 'LLM Integration', 'Fine-tuning (LoRA)', 'Ollama'].map(skill => (
+                {['Claude Code', 'Codex', 'Cursor', 'LLM Integration', 'Fine-tuning (LoRA)', 'Ollama'].map(skill => (
                   <Badge key={skill} colorPalette="gray" variant="solid" bg="bg.badge.purple">
                     {skill}
                   </Badge>
