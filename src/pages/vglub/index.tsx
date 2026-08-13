@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Heading, Text, Badge, Card, Flex, Separator, VStack, Grid, List, Link, HStack } from '@chakra-ui/react'
+import { Box, Stack, Heading, Text, Badge, Button, Card, Flex, Separator, VStack, Grid, Image, List, Link, HStack } from '@chakra-ui/react'
 import { Layout } from '../../components'
 import { useColorMode } from '../../components/color-mode'
 import { useT } from '../../i18n'
@@ -305,14 +305,42 @@ export const VglubPage = () => {
               cursor="zoom-out"
               onClick={() => setOpenedScreenshotId(null)}
             >
-              <img
-                src={screenshots[openedScreenshot.id].full}
-                alt={openedScreenshot.title}
-                style={{ maxWidth: '100%', maxHeight: '90%', borderRadius: 8, boxShadow: '0 8px 40px rgba(0, 0, 0, 0.6)' }}
-              />
-              <Text color="whiteAlpha.900" fontSize="sm">
+              <Box
+                maxW="100%"
+                maxH="85vh"
+                overflow="auto"
+                borderRadius={8}
+                boxShadow="0 8px 40px rgba(0, 0, 0, 0.6)"
+                cursor="default"
+                onClick={event => event.stopPropagation()}
+              >
+                <Image
+                  src={screenshots[openedScreenshot.id].full}
+                  alt={openedScreenshot.title}
+                  display="block"
+                  minW={{ base: '1100px', lg: 'auto' }}
+                  maxW={{ base: 'none', lg: '100%' }}
+                  maxH={{ lg: '85vh' }}
+                />
+              </Box>
+              <Text color="whiteAlpha.900" fontSize="sm" px={2} textAlign="center">
                 {openedScreenshot.title}
               </Text>
+              <Button
+                aria-label="Close"
+                position="absolute"
+                top={3}
+                right={3}
+                size="sm"
+                variant="solid"
+                colorPalette="gray"
+                onClick={event => {
+                  event.stopPropagation()
+                  setOpenedScreenshotId(null)
+                }}
+              >
+                ✕
+              </Button>
             </Box>
           )}
         </Box>
